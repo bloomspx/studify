@@ -6,7 +6,7 @@
 
     <!-- Strings related to login -->
     <string name="username">Username</string>
-    <string name="prompt_email">Email</string>
+    <string name="prompt_email">Email Address</string>
     <string name="prompt_password">Password</string>
     <string name="action_register">Register</string>
     <string name="action_sign_in">Sign in</string>
@@ -14,6 +14,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="action_forgot_password">Forgot Password</string>
+    <string name="sign_up">Sign Up</string>
 
     <!-- Strings related to reset_password fragment -->
     <string name="action_reset_password">Reset Password</string>
@@ -29,7 +30,10 @@
     <string name="button_log_out">Log Out</string>
 
     <!-- Strings related to edit_profile fragment -->
+    <string name="action_change_pic">Change Profile Picture</string>
     <string name="action_change_email">Change Email</string>
     <string name="action_change_password">Change Password</string>
     <string name="action_delete_profile">Delete Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

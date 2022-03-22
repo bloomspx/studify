@@ -1,89 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.AuthActivity">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_register">
+        android:background="#F2F4F7"
+        android:padding="10dp"
+        tools:context=".views.RegisterFragment">
+
+        <TextView
+            android:id="@+id/SignUpCard"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_rect"
+            android:font="@font/redhatdisplay"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/midGuideline"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/backButtonSignUp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:background="#0000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/SignUpCard"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/midGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
 
         <EditText
             android:id="@+id/register_username"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="24dp"
-            android:inputType="textPersonName"
+            style="@style/user_text_input"
+            android:layout_marginTop="20dp"
             android:hint="@string/username"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/midGuideline"/>
 
         <EditText
             android:id="@+id/register_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="24dp"
+            style="@style/user_text_input"
+            android:layout_marginTop="20dp"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/register_username" />
+            app:layout_constraintTop_toBottomOf="@+id/register_username" />
 
         <EditText
             android:id="@+id/register_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
+            style="@style/user_text_input"
+            android:layout_marginTop="20dp"
             android:hint="@string/prompt_password"
-            android:imeActionLabel="@string/action_sign_in"
-            android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_email" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signUpButton"
+            style="@style/green_word_button_style"
+            android:text="@string/sign_up"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_password" />
+
+        <View
+            android:id="@+id/lineDivider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="25dp"
+            android:background="#c0c0c0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+
+        <TextView
+            android:id="@+id/orBox"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="#F2F4F7"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="OR"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/register_email" />
+            app:layout_constraintTop_toTopOf="@+id/lineDivider"
+            app:layout_constraintBottom_toBottomOf="@id/lineDivider"/>
 
-        <Button
-            android:id="@+id/button_register_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="64dp"
-            android:text="@string/action_register"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signUpGoogleButton"
+            style="@style/white_word_button_style"
+            android:text="Sign Up with Google"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/register_password" />
+            app:layout_constraintBottom_toBottomOf="@id/botGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/lineDivider" />
 
-        <ProgressBar
-            android:id="@+id/loading"
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/botGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="64dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/register_password"
-            app:layout_constraintStart_toStartOf="@id/register_password"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+</ScrollView>

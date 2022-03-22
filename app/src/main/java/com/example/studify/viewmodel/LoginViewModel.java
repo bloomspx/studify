@@ -27,8 +27,8 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public void register(String email, String password) {
-        authAppRepository.register(email, password); }
+    public void register(String name, String email, String password) {
+        authAppRepository.register(name, email, password); }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     public void resetPassword(String email) {

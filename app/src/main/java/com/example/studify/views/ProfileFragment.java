@@ -74,7 +74,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         });
     }
 
-    // TODO: Implement Username and Display Profile Picture
+    // TODO: Implement Display Username and Profile Picture
 
 
 }

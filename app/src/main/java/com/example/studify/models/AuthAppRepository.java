@@ -1,6 +1,7 @@
 package com.example.studify.models;
 
 import android.app.Application;
+import android.net.Uri;
 import android.os.Build;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class AuthAppRepository {
     private Application application;
@@ -20,9 +22,11 @@ public class AuthAppRepository {
     private FirebaseUser user;
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
+    Uri DefaultProfile;
 
     public AuthAppRepository(Application application) {
         this.application = application;
+        this.DefaultProfile = Uri.parse("android.resource://com.example.studify/drawable/ic_default_profile");
 
         // Authenticate User
         firebaseAuth = FirebaseAuth.getInstance();
@@ -37,14 +41,32 @@ public class AuthAppRepository {
     }
     // TODO: Check if getMainExecutor is needed
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public void register(String email, String password) {
+    public void register(String name, String email, String password) {
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(application.getMainExecutor(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            createProfile(name, DefaultProfile);
                             userLiveData.postValue(firebaseAuth.getCurrentUser());
                         } else {
+                            Toast.makeText(application, "Registration Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    public void createProfile(String name, Uri DefaultProfile) {
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .setPhotoUri(DefaultProfile)
+                .build();
+        user = firebaseAuth.getCurrentUser();
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!task.isSuccessful()) {
                             Toast.makeText(application, "Registration Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }

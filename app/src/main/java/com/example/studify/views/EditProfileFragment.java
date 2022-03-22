@@ -40,6 +40,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
     @Override
     public void onStart() {
         super.onStart();
+        binding.buttonChangePic.setOnClickListener(this);
         binding.buttonChangeEmail.setOnClickListener(this);
         binding.buttonChangePassword.setOnClickListener(this);
         binding.buttonDelete.setOnClickListener(this);
@@ -68,6 +69,9 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         } else if (id == binding.buttonDelete.getId()) {
             MainActivityViewModel.deleteProfile();
             Navigation.findNavController(view).navigate(R.id.action_editProfileFragment_to_authActivity);
+        } else if (id == binding.buttonChangePic.getId()) {
+            //TODO: implement update profile pic feature
+            // MainActivityViewModel.changeProfilePic();
         }
     }
 

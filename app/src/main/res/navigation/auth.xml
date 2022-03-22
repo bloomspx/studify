@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_registerFragment_to_navgraph"
             app:destination="@id/navgraph" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -24,7 +27,10 @@
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_loginFragment_to_navgraph"
-            app:destination="@id/navgraph" />
+            app:destination="@id/navgraph"
+            app:popUpTo="@id/navgraph"
+            app:popUpToInclusive="true"/>
+
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />

@@ -40,29 +40,36 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        binding.buttonRegisterRegister.setOnClickListener(this);
+        binding.signUpButton.setOnClickListener(this);
+        binding.backButtonSignUp.setOnClickListener(this);
+        binding.signUpGoogleButton.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (id == binding.buttonRegisterRegister.getId()) {
+        if (id == binding.signUpButton.getId()) {
             register();
+        } else if (id == binding.backButtonSignUp.getId()) {
+            Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
         }
     }
 
     // Register Function - Firebase
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void register() {
+        String name = binding.registerUsername.getText().toString();
         String email = binding.registerEmail.getText().toString();
         String password = binding.registerPassword.getText().toString();
         if (TextUtils.isEmpty(email)) {
             binding.registerEmail.setError("Email is Required");
         } else if (TextUtils.isEmpty(password)) {
             binding.registerPassword.setError("Password is Required");
+        } else if (TextUtils.isEmpty(name)) {
+            binding.registerUsername.setError("Username is Required");
         } else {
-            LoginViewModel.register(email, password);
+            LoginViewModel.register(name, email, password);
         }
     }
 

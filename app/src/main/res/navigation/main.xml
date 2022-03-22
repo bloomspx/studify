@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -42,4 +45,9 @@
         android:name="com.example.studify.views.AuthActivity"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/roomListFragment"
+        android:name="com.example.studify.views.RoomListFragment"
+        android:label="fragment_room_list"
+        tools:layout="@layout/fragment_room_list" />
 </navigation>

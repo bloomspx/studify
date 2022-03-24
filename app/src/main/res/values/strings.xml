@@ -1,3 +1,43 @@
 <resources>
-    <string name="app_name">studify</string>
+    <string name="app_name">Studify</string>
+
+    <!-- Strings related to get_started -->
+    <string name="get_started">Get Started</string>
+
+    <!-- Strings related to login -->
+    <string name="username">Username</string>
+    <string name="prompt_email">Email Address</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirmpassword">Confirm Password</string>
+    <string name="action_register">Register</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="action_forgot_password">Forgot Password</string>
+    <string name="sign_up">Sign Up</string>
+
+    <!-- Strings related to reset_password fragment -->
+    <string name="action_reset_password">Reset Password</string>
+    <string name="action_back">Back</string>
+
+    <!-- Strings related to main fragment -->
+    <string name="button_profile">Profile</string>
+    <string name="logged_in">you are now logged in!</string>
+
+
+    <!-- Strings related to profile fragment -->
+    <string name="button_edit_profile">Edit Profile</string>
+    <string name="button_log_out">Log Out</string>
+
+    <!-- Strings related to edit_profile fragment -->
+    <string name="action_change_pic">Change Profile Picture</string>
+    <string name="action_change_email">Change Email</string>
+    <string name="action_change_password">Change Password</string>
+    <string name="action_delete_profile">Delete Profile</string>
+
+    <!-- Strings related to room_list -->
+    <string name="create_room">Create Room</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

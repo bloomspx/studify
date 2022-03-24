@@ -27,9 +27,6 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_authActivity"
-            app:destination="@id/authActivity" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -37,14 +34,9 @@
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
         <action
-            android:id="@+id/action_editProfileFragment_to_authActivity"
-            app:destination="@id/authActivity" />
+            android:id="@+id/action_editProfileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
-    <activity
-        android:id="@+id/authActivity"
-        android:name="com.example.studify.views.AuthActivity"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/roomListFragment"
         android:name="com.example.studify.views.RoomListFragment"

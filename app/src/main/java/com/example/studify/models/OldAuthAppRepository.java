@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,19 +24,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthAppRepository{
+public class OldAuthAppRepository {
     private Application application;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private FirebaseFirestore firebaseFirestore;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
     private String userID;
     private String TAG = "AUTHENTICATION";
 
 
-    public AuthAppRepository(Application application) {
+    public OldAuthAppRepository(Application application) {
         this.application = application;
 
         // Authenticate User
@@ -83,7 +81,6 @@ public class AuthAppRepository{
         user.put("username", userData.getName());
         user.put("email",userData.getEmail());
         user.put("password", userData.getPassword());
-        // TODO: kiv not working atm
         user.put("photoUri", firebaseAuth.getCurrentUser().getPhotoUrl());
         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -128,11 +125,8 @@ public class AuthAppRepository{
     }
 
     public void changeEmail(String email) {
-       user = firebaseAuth.getInstance().getCurrentUser();
-        // Changes Email from FireStore Database first
-        firebaseFirestore.collection("users").document(user.getUid())
-                .update("email", email);
-       user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+        user = firebaseAuth.getInstance().getCurrentUser();
+        user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -146,10 +140,6 @@ public class AuthAppRepository{
 
     public void changePassword(String password) {
         user = firebaseAuth.getInstance().getCurrentUser();
-        // Changes Password from FireStore Database first
-        firebaseFirestore.collection("users").document(user.getUid())
-            .update("password", password);
-        // Change Password via FirebaseAuth
         user.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -164,19 +154,19 @@ public class AuthAppRepository{
 
     public void deleteProfile() {
         user = firebaseAuth.getInstance().getCurrentUser();
-        // Deletes from FireStore Database first
+        // TODO: delete from database
         firebaseFirestore.collection("users").document(user.getUid())
                 .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "Error deleting document", e);
-                }
-            });
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "DocumentSnapshot successfully deleted!");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error deleting document", e);
+            }
+        });
         user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -187,17 +177,14 @@ public class AuthAppRepository{
                 }
             }
         });
-        logOut();
-        loggedOutLiveData.postValue(true);
     }
 
 
 
     // Getter for MutableLiveData to access via ViewModels
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
-            return userLiveData;
+        return userLiveData;
     }
-
 
     public MutableLiveData<Boolean> getLoggedOutLiveData() {
         return loggedOutLiveData;

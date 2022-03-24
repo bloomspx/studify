@@ -76,13 +76,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_email" />
 
+        <EditText
+            android:id="@+id/confirm_password"
+            style="@style/user_text_input"
+            android:layout_marginTop="20dp"
+            android:hint="@string/prompt_confirmpassword"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_password" />
+
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signUpButton"
             style="@style/green_word_button_style"
             android:text="@string/sign_up"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_password" />
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
 
         <View
             android:id="@+id/lineDivider"
@@ -111,6 +121,7 @@
             android:id="@+id/signUpGoogleButton"
             style="@style/white_word_button_style"
             android:text="Sign Up with Google"
+            android:layout_marginTop="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/botGuideline"
             app:layout_constraintTop_toBottomOf="@+id/lineDivider" />

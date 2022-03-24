@@ -1,5 +1,7 @@
 package com.example.studify.views;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +23,14 @@ import android.widget.Toast;
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentLoginBinding;
 import com.example.studify.databinding.FragmentRegisterBinding;
+import com.example.studify.models.UserProfile;
 import com.example.studify.viewmodel.LoginViewModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
@@ -59,19 +68,34 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     // Register Function - Firebase
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void register() {
-        String name = binding.registerUsername.getText().toString();
-        String email = binding.registerEmail.getText().toString();
-        String password = binding.registerPassword.getText().toString();
+        String name = binding.registerUsername.getText().toString().trim();
+        String email = binding.registerEmail.getText().toString().trim();
+        String password = binding.registerPassword.getText().toString().trim();
+        String confirmPassword = binding.confirmPassword.getText().toString().trim();
+
         if (TextUtils.isEmpty(email)) {
             binding.registerEmail.setError("Email is Required");
+            return;
         } else if (TextUtils.isEmpty(password)) {
             binding.registerPassword.setError("Password is Required");
+            return;
         } else if (TextUtils.isEmpty(name)) {
             binding.registerUsername.setError("Username is Required");
-        } else {
-            LoginViewModel.register(name, email, password);
+            return;
+        } else if (!confirmPassword.equals(password)) {
+            binding.confirmPassword.setError("Please reconfirm your password, your password is not the same");
+            return;
+        }
+        else {
+            UserProfile user = new UserProfile.Builder()
+                    .setName(name)
+                    .setEmail(email)
+                    .setPassword(password)
+                    .build();
+            LoginViewModel.register(user);
         }
     }
+
 
     // Redirects if Registration is Successful
     @Override
@@ -83,7 +107,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onChanged(FirebaseUser firebaseUser) {
                 if (firebaseUser != null) {
-                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_navgraph);
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    startActivity(i);
                 }
             }
         });

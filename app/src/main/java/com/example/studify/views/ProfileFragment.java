@@ -1,5 +1,6 @@
 package com.example.studify.views;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import com.example.studify.databinding.FragmentLoginBinding;
 import com.example.studify.databinding.FragmentProfileBinding;
 import com.example.studify.viewmodel.LoginViewModel;
 import com.example.studify.viewmodel.MainActivityViewModel;
+import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -55,26 +58,27 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_editProfileFragment);
         } else if (id == binding.buttonLogOut.getId()) {
             MainActivityViewModel.logOut();
+            Log.i("SUCCESS", "Logged Out");
         }
     }
 
-    // Redirects if Logout is Successful
+//     Redirects if Logout is Successful
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // LiveData Observer
+        // LiveData Observer - if succesful, navigate back to AuthActivity
         MainActivityViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean loggedOut) {
                 if (loggedOut) {
                     Toast.makeText(getContext(), "User Logged Out", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_authActivity);
+                    Intent i = new Intent(getActivity(), AuthActivity.class);
+                    startActivity(i);
                 }
             }
         });
     }
 
     // TODO: Implement Display Username and Profile Picture
-
 
 }

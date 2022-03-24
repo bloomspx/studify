@@ -1,5 +1,6 @@
 package com.example.studify.views;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,7 +30,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(getLayoutInflater());
-        LoginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        LoginViewModel = new ViewModelProvider(getActivity()).get(LoginViewModel.class);
 
         return binding.getRoot();
     }
@@ -68,23 +69,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             LoginViewModel.login(email, password);
         }
     }
-
-    // Redirects if Login is Successful
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        // LiveData Observer - If logged in, redirect to main page
-        LoginViewModel.getUserLiveData().observe(getViewLifecycleOwner(), new Observer<FirebaseUser>() {
-            @Override
-            public void onChanged(FirebaseUser firebaseUser) {
-                if (firebaseUser != null) {
-                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_navgraph);
-                }
-            }
-        });
-    }
-
 
 
 }

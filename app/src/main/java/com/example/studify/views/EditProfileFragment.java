@@ -1,5 +1,6 @@
 package com.example.studify.views;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -68,7 +69,8 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             }
         } else if (id == binding.buttonDelete.getId()) {
             MainActivityViewModel.deleteProfile();
-            Navigation.findNavController(view).navigate(R.id.action_editProfileFragment_to_authActivity);
+
+
         } else if (id == binding.buttonChangePic.getId()) {
             //TODO: implement update profile pic feature
             // MainActivityViewModel.changeProfilePic();
@@ -84,9 +86,12 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             @Override
             public void onChanged(Boolean loggedOut) {
                 if (loggedOut) {
-                    Navigation.findNavController(view).navigate(R.id.action_editProfileFragment_to_authActivity);
+                    Intent i = new Intent(getActivity(), AuthActivity.class);
+                    startActivity(i);
                 }
             }
         });
     }
 }
+
+//TODO: optional change username

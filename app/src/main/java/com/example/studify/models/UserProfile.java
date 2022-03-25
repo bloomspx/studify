@@ -13,7 +13,7 @@ public class UserProfile {
 
     private String password;
 
-    private Uri img;
+    private String img;
 
     public UserProfile(final Builder builder) {
         name = builder.name;
@@ -26,7 +26,7 @@ public class UserProfile {
         private String name;
         private String email;
         private String password;
-        private Uri img;
+        private String img;
 
         public Builder setName(final String name) {
             this.name = name;
@@ -43,7 +43,7 @@ public class UserProfile {
             return this;
         }
 
-        public Builder setImg(Uri img) {
+        public Builder setImg(String img) {
             this.img = img;
             return this;
         }
@@ -78,18 +78,18 @@ public class UserProfile {
         this.password = password;
     }
 
-    public Uri getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(Uri img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
     public UserProfile() {
     }
 
-    public UserProfile(String name, String email, String password, Uri img) {
+    public UserProfile(String name, String email, String password, String img) {
         this.name = name;
         this.email = email;
         this.password = password;

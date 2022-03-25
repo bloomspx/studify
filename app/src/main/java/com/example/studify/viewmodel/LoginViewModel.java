@@ -20,8 +20,7 @@ public class LoginViewModel extends AndroidViewModel {
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
 
-    // Use ViewModels to hold LiveData
-
+    // LoginViewModel used to hold LiveData for Login Authentication
     public LoginViewModel(@NonNull Application application) {
         super(application);
         authAppRepository = new AuthAppRepository(application);
@@ -44,12 +43,6 @@ public class LoginViewModel extends AndroidViewModel {
         authAppRepository.resetPassword(email);
     }
 
-
-
-    // TODO: Observe changes in Authentication
-//    void addAuthListener()  {
-//        authAppRepository.addFirebaseAuthListener();
-//    }
 
     // Getter function to export LiveData to the View
     public MutableLiveData<FirebaseUser> getUserLiveData() {

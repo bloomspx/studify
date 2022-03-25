@@ -15,19 +15,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.studify.R;
 import com.example.studify.databinding.FragmentRoomListBinding;
-import com.example.studify.viewmodel.MainActivityViewModel;
+import com.example.studify.viewmodel.UserViewModel;
 
 public class RoomListFragment extends Fragment implements View.OnClickListener {
     private FragmentRoomListBinding binding;
-    private MainActivityViewModel MainActivityViewModel;
+    private UserViewModel UserViewModel;
     private NavController navController;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRoomListBinding.inflate(getLayoutInflater());
-        MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         return binding.getRoot();
 

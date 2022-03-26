@@ -5,7 +5,7 @@
     <string name="get_started">Get Started</string>
 
     <!-- Strings related to login -->
-    <string name="username">Username</string>
+    <string name="prompt_username">Username</string>
     <string name="prompt_email">Email Address</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_confirmpassword">Confirm Password</string>
@@ -27,15 +27,15 @@
 
 
     <!-- Strings related to profile fragment -->
+    <string name="button_change_pic">Change Profile Picture</string>
     <string name="button_edit_profile">Edit Profile</string>
     <string name="button_log_out">Log Out</string>
 
     <!-- Strings related to edit_profile fragment -->
-    <string name="action_change_pic">Change Profile Picture</string>
-    <string name="action_change_email">Change Email</string>
-    <string name="action_change_password">Change Password</string>
+    <string name="action_update_profile">Update Profile</string>
     <string name="action_delete_profile">Delete Profile</string>
-
+    <string name="action_change_pic">Change Profile Picture</string>
+    <string name="prompt_new_username">New Username</string>
     <!-- Strings related to room_list -->
     <string name="create_room">Create Room</string>
 

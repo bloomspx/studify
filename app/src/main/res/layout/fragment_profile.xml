@@ -13,12 +13,12 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="60dp"
-            android:src="@drawable/ic_default_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
             app:civ_border_width="2dp"
             app:civ_border_color="#000000"
+            android:src="@drawable/ic_default_profile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -30,11 +30,12 @@
             android:layout_marginTop="20dp"
             android:textColor="#000000"
             android:fontFamily="@font/redhatdisplay"
+            android:textSize="30dp"
+            android:textAlignment="center"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_image"/>
-
 
         <Button
             android:id="@+id/button_edit_profile"
@@ -53,12 +54,19 @@
             android:id="@+id/button_log_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="@string/button_log_out"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/botGuideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_edit_profile" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/botGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
 
         <ProgressBar
             android:id="@+id/loading"

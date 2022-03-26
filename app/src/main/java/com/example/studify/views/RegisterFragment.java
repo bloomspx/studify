@@ -1,7 +1,6 @@
 package com.example.studify.views;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -14,23 +13,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.studify.R;
-import com.example.studify.databinding.FragmentLoginBinding;
 import com.example.studify.databinding.FragmentRegisterBinding;
 import com.example.studify.models.UserProfile;
 import com.example.studify.viewmodel.LoginViewModel;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {

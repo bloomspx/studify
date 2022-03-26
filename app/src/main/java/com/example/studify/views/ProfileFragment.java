@@ -1,6 +1,7 @@
 package com.example.studify.views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,32 +13,29 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.studify.R;
-import com.example.studify.databinding.FragmentForgotPasswordBinding;
-import com.example.studify.databinding.FragmentLoginBinding;
 import com.example.studify.databinding.FragmentProfileBinding;
-import com.example.studify.viewmodel.LoginViewModel;
-import com.example.studify.viewmodel.MainActivityViewModel;
-import com.google.android.gms.auth.api.Auth;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.studify.models.UserProfile;
+import com.example.studify.viewmodel.UserViewModel;
+import com.google.firebase.firestore.auth.User;
 
-public class ProfileFragment extends Fragment implements View.OnClickListener{
+public class ProfileFragment extends Fragment implements View.OnClickListener {
     private FragmentProfileBinding binding;
-    private MainActivityViewModel MainActivityViewModel;
+    private UserViewModel UserViewModel;
+    private String TAG = "PROFILE";
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(getLayoutInflater());
-        MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         return binding.getRoot();
 
@@ -50,6 +48,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         binding.buttonLogOut.setOnClickListener(this);
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void onClick(View view) {
@@ -57,17 +56,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         if (id == binding.buttonEditProfile.getId()) {
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_editProfileFragment);
         } else if (id == binding.buttonLogOut.getId()) {
-            MainActivityViewModel.logOut();
+            UserViewModel.logOut();
             Log.i("SUCCESS", "Logged Out");
         }
     }
 
-//     Redirects if Logout is Successful
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // LiveData Observer - if succesful, navigate back to AuthActivity
-        MainActivityViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+
+        // LiveData Observer for LogOut - if successful, navigate back to AuthActivity
+        UserViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean loggedOut) {
                 if (loggedOut) {
@@ -77,8 +76,27 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                 }
             }
         });
+
+        // LiveData Observer for UserProfile
+        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+            @Override
+            public void onChanged(UserProfile userProfile) {
+                if (userProfile != null) {
+                    binding.username.setText(userProfile.getName());
+                    updateProfilePicture(userProfile);
+                    Log.d(TAG, "onChanged: userProfile is not empty, fields updated ");
+                }
+            }
+        });
+
     }
 
-    // TODO: Implement Display Username and Profile Picture
-
+    private void updateProfilePicture(UserProfile userProfile) {
+        String img = userProfile.getImg();
+        if (img != null) {
+            Glide.with(this)
+                    .load(Uri.parse(img))
+                    .into(binding.profileImage);
+        }
+    }
 }

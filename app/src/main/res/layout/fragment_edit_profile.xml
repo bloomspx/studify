@@ -13,11 +13,11 @@
         tools:context=".views.MainActivity">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="60dp"
+            android:id="@+id/change_profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/ic_default_profile"
+            android:layout_marginTop="40dp"
             app:civ_border_width="2dp"
             app:civ_border_color="#000000"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,71 +30,48 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="48dp"
             android:text="@string/action_change_pic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_image" />
+            app:layout_constraintTop_toBottomOf="@id/change_profile_image"/>
 
         <EditText
-            android:id="@+id/change_email"
+            android:id="@+id/change_username"
             style="@style/user_text_input"
+            android:textColorHint="#C0C0C0"
+            android:hint="@string/prompt_new_username"
+            android:inputType="textPersonName"
             android:layout_marginTop="20dp"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_change_pic" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_change_pic"/>
 
         <Button
-            android:id="@+id/button_change_email"
+            android:id="@+id/button_update_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="48dp"
-            android:text="@string/action_change_email"
+            android:text="@string/action_update_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/change_email" />
+            app:layout_constraintTop_toBottomOf="@id/change_username"/>
 
-        <EditText
-            android:id="@+id/change_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="24dp"
-            android:hint="@string/prompt_password"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_change_email" />
-
-        <Button
-            android:id="@+id/button_change_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/action_change_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/change_password" />
 
         <Button
             android:id="@+id/button_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="40dp"
             android:text="@string/action_delete_profile"
             app:layout_constraintBottom_toBottomOf="@id/botGuideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_change_password" />
+            app:layout_constraintTop_toBottomOf="@+id/button_update_profile" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/botGuideline"

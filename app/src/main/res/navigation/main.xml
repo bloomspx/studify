@@ -41,8 +41,17 @@
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.example.studify.views.TaskListFragment"
+        android:label="fragment_task_list"
+        tools:layout="@layout/fragment_task_list" />
+    <fragment
         android:id="@+id/roomListFragment"
         android:name="com.example.studify.views.RoomListFragment"
         android:label="fragment_room_list"
-        tools:layout="@layout/fragment_room_list" />
+        tools:layout="@layout/fragment_room_list" >
+        <action
+            android:id="@+id/action_rooListFragment_to_taskListFragment"
+            app:destination="@id/taskListFragment" />
+    </fragment>
 </navigation>

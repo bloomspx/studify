@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.studify.R;
 import com.example.studify.databinding.FragmentRoomListBinding;
 import com.example.studify.viewmodel.UserViewModel;
 
@@ -43,7 +44,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         int id = view.getId();
         if (id == binding.createRoomButton.getId()) {
-            //TODO: Fill in with new CreateRoom fragment
+            Navigation.findNavController(view).navigate(R.id.action_rooListFragment_to_taskListFragment);
         }
     }
 

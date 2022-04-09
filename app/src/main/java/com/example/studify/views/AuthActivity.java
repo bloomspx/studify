@@ -2,8 +2,6 @@ package com.example.studify.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -33,13 +31,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(firebaseUser != null) {
                     Intent intent = new Intent(AuthActivity.this, MainActivity.class);
                     startActivity(intent);
-                } else {
-                    Log.i("FAIL", "null" );
+                    finish();
                 }
             }
         });
-
-
     }
 
 }

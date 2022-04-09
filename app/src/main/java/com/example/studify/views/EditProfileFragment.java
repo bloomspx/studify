@@ -1,9 +1,13 @@
 package com.example.studify.views;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -12,77 +16,84 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentEditProfileBinding;
-import com.example.studify.databinding.FragmentProfileBinding;
-import com.example.studify.viewmodel.LoginViewModel;
-import com.example.studify.viewmodel.MainActivityViewModel;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.studify.models.UserProfile;
+import com.example.studify.viewmodel.UserViewModel;
 
 public class EditProfileFragment extends Fragment implements View.OnClickListener {
     private FragmentEditProfileBinding binding;
-    private MainActivityViewModel MainActivityViewModel;
-
+    private UserViewModel UserViewModel;
+    private ActivityResultLauncher<Intent> MainActivityResultLauncher;
+    private Uri img;
+    private String TAG = "EDIT_PROFILE";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentEditProfileBinding.inflate(getLayoutInflater());
-        MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        return binding.getRoot();
+        UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
+        return binding.getRoot();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        binding.buttonChangePic.setOnClickListener(this);
-        binding.buttonChangeEmail.setOnClickListener(this);
-        binding.buttonChangePassword.setOnClickListener(this);
+        binding.buttonUpdateProfile.setOnClickListener(this);
         binding.buttonDelete.setOnClickListener(this);
+        binding.buttonChangePic.setOnClickListener(this);
+        binding.changeProfileImage.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (id == binding.buttonChangeEmail.getId()) {
-            String email = binding.changeEmail.getText().toString().trim();
-            if (TextUtils.isEmpty(email)) {
-                binding.changeEmail.setError("Email is Required!");
-            } else {
-                MainActivityViewModel.changeEmail(email);
-                MainActivityViewModel.logOut();
-            }
-        } else if (id == binding.buttonChangePassword.getId()) {
-            String password = binding.changePassword.getText().toString().trim();
-            if (TextUtils.isEmpty(password)) {
-                binding.changePassword.setError("Email is Required!");
-            } else {
-                MainActivityViewModel.changePassword(password);
-                MainActivityViewModel.logOut();
-            }
-        } else if (id == binding.buttonDelete.getId()) {
-            MainActivityViewModel.deleteProfile();
+        if (id == binding.buttonDelete.getId()) {
+            UserViewModel.deleteProfile();
+        } else if (id == binding.changeProfileImage.getId() || id == binding.buttonChangePic.getId()) {
+            // Load Images from External Phone Storage
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            MainActivityResultLauncher.launch(intent);
+        } else if (id == binding.buttonUpdateProfile.getId()) {
+            String name = String.valueOf(binding.changeUsername.getText()).trim();
+            if (img == null && TextUtils.isEmpty(name)) {
 
-
-        } else if (id == binding.buttonChangePic.getId()) {
-            //TODO: implement update profile pic feature
-            // MainActivityViewModel.changeProfilePic();
+            } else if (img == null) {
+                UserViewModel.updateProfile(new UserProfile.Builder()
+                        .setName(name)
+                        .setImg(null)
+                        .build());
+            } else if (TextUtils.isEmpty(name)) {
+                UserViewModel.updateProfile(new UserProfile.Builder()
+                        .setName(null)
+                        .setImg(img.toString())
+                        .build());
+            } else {
+                UserViewModel.updateProfile(new UserProfile.Builder()
+                        .setImg(img.toString())
+                        .setName(name)
+                        .build());
+            }
+            Navigation.findNavController(view).navigate(R.id.action_editProfileFragment_to_profileFragment);
         }
     }
 
-    // Redirects if Logout is Successful
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // LiveData Observer
-        MainActivityViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+        // // Redirects if Logout is Successful
+        UserViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean loggedOut) {
                 if (loggedOut) {
@@ -91,7 +102,40 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                 }
             }
         });
+
+        // LiveData Observer for UserProfile
+        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+            @Override
+            public void onChanged(UserProfile userProfile) {
+                if (userProfile != null) {
+                    binding.changeUsername.setHint(userProfile.getName());
+                    if (userProfile.getImg() != null) {
+                        updateProfilePicture(Uri.parse(userProfile.getImg()));
+                    }
+                    Log.d(TAG, "onChanged: userProfile is not empty, fields updated ");
+                }
+            }
+        });
+
+        // TODO: check if this is appropriate - Manages Opening Images and Switching Profile Picture
+        MainActivityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result ->  {
+                    if(result.getResultCode() == Activity.RESULT_OK) { // no need for request code
+                        Intent data = result.getData();
+                        img = data.getData();
+                        updateProfilePicture(img);
+                    }
+                });
+    }
+
+
+    // Updates Profile Picture with Glide
+    private void updateProfilePicture(Uri img) {
+        if (img != null) {
+            Glide.with(this)
+                    .load(img)
+                    .into(binding.changeProfileImage);
+        }
     }
 }
-
-//TODO: optional change username

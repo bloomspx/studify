@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,17 +14,8 @@
 
         <TextView
             android:id="@+id/SignUpCard"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/round_rect"
-            android:font="@font/redhatdisplay"
-            android:gravity="center"
+            style="@style/sign_up_card"
             android:text="@string/sign_up"
-            android:textColor="#000000"
-            android:textSize="30sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/midGuideline"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -51,17 +41,15 @@
 
         <EditText
             android:id="@+id/register_username"
-            style="@style/user_text_input"
-            android:layout_marginTop="20dp"
-            android:hint="@string/username"
+            style="@style/register_text_button_style"
+            android:hint="@string/prompt_username"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/midGuideline"/>
 
         <EditText
             android:id="@+id/register_email"
-            style="@style/user_text_input"
-            android:layout_marginTop="20dp"
+            style="@style/register_text_button_style"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +57,7 @@
 
         <EditText
             android:id="@+id/register_password"
-            style="@style/user_text_input"
+            style="@style/register_text_button_style"
             android:layout_marginTop="20dp"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
@@ -78,9 +66,8 @@
 
         <EditText
             android:id="@+id/confirm_password"
-            style="@style/user_text_input"
-            android:layout_marginTop="20dp"
-            android:hint="@string/prompt_confirmpassword"
+            style="@style/register_text_button_style"
+            android:hint="@string/prompt_confirm_password"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_password" />
@@ -88,10 +75,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signUpButton"
-            style="@style/green_word_button_style"
+            style="@style/profile_white_button_style"
             android:text="@string/sign_up"
             android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:backgroundTint="@color/turquoise"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
 
         <View
@@ -112,20 +103,23 @@
             android:paddingRight="10dp"
             android:text="OR"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/lineDivider"
             app:layout_constraintBottom_toBottomOf="@id/lineDivider"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signUpGoogleButton"
-            style="@style/white_word_button_style"
+            android:drawableLeft="@drawable/google"
+            style="@style/profile_white_button_style"
             android:text="Sign Up with Google"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:drawablePadding="0dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/botGuideline"
             app:layout_constraintTop_toBottomOf="@+id/lineDivider" />
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/botGuideline"

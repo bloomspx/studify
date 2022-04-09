@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
+import com.example.studify.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,10 +30,9 @@ public class AuthAppRepository{
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private FirebaseFirestore firebaseFirestore;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
-    private String userID;
+    private String UserID;
     private String TAG = "AUTHENTICATION";
 
 
@@ -48,6 +47,10 @@ public class AuthAppRepository{
 
         // Checks if User is logged in
         if (firebaseAuth.getCurrentUser() != null) {
+//            userLiveData = new MutableLiveData<>();
+//            loggedOutLiveData = new MutableLiveData<>();
+//            firebaseAuth.signOut();
+
             userLiveData.postValue(firebaseAuth.getCurrentUser());
             loggedOutLiveData.postValue(false);
         }
@@ -56,14 +59,15 @@ public class AuthAppRepository{
     // TODO: Check if getMainExecutor is needed
     @RequiresApi(api = Build.VERSION_CODES.P)
     public void register(UserProfile user) {
-        firebaseAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())    // Creates Account
+        // Creates Firebase Account
+        firebaseAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(application.getMainExecutor(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            // Log user into App and updates UserProfile
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(user.getName())
-                                    .setPhotoUri(Uri.parse("android.resource://com.example.studify/drawable/ic_default_profile"))
                                     .build();
                             firebaseAuth.getCurrentUser().updateProfile(profileUpdates);
                             addUser(user);
@@ -75,20 +79,18 @@ public class AuthAppRepository{
                 });
     }
 
-    // Adds user data to Firebase
-    public void addUser(UserProfile userData) {
-        userID = firebaseAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = firebaseFirestore.collection("users").document(userID);
-        Map<String, Object> user = new HashMap<>();
-        user.put("username", userData.getName());
-        user.put("email",userData.getEmail());
-        user.put("password", userData.getPassword());
-        // TODO: kiv not working atm
-        user.put("photoUri", firebaseAuth.getCurrentUser().getPhotoUrl());
-        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+    // Creates Firestore Data based on UserID
+    public void addUser(UserProfile user) {
+        UserID = firebaseAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = firebaseFirestore.collection("users").document(UserID);
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("username", user.getName());
+        userData.put("email", user.getEmail());
+        userData.put("photoUri", null);
+        documentReference.set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Log.d(TAG, "onSuccess: userProfile is created for " + userID);
+                Log.d(TAG, "onSuccess: userProfile is created for " + UserID);
             }
         });
     }
@@ -108,6 +110,11 @@ public class AuthAppRepository{
                 });
     }
 
+    public void logOut () {
+        firebaseAuth.signOut();
+        loggedOutLiveData.postValue(true);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.P)
     public void resetPassword(String email) {
         firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(application.getMainExecutor(), new OnCompleteListener<Void>() {
@@ -122,49 +129,9 @@ public class AuthAppRepository{
         });
     }
 
-    public void logOut () {
-        firebaseAuth.signOut();
-        loggedOutLiveData.postValue(true);
-    }
-
-    public void changeEmail(String email) {
-       user = firebaseAuth.getInstance().getCurrentUser();
-        // Changes Email from FireStore Database first
-        firebaseFirestore.collection("users").document(user.getUid())
-                .update("email", email);
-       user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(application, "Email Address Updated.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(application, "Email Update Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    public void changePassword(String password) {
-        user = firebaseAuth.getInstance().getCurrentUser();
-        // Changes Password from FireStore Database first
-        firebaseFirestore.collection("users").document(user.getUid())
-            .update("password", password);
-        // Change Password via FirebaseAuth
-        user.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(application, "Password Updated.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(application, "Password Update Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
     public void deleteProfile() {
         user = firebaseAuth.getInstance().getCurrentUser();
-        // Deletes from FireStore Database first
+        // Deletes user data from FireStore Database first
         firebaseFirestore.collection("users").document(user.getUid())
                 .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
@@ -177,6 +144,7 @@ public class AuthAppRepository{
                     Log.w(TAG, "Error deleting document", e);
                 }
             });
+        // Deletes account from FirebaseAuth Database
         user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -188,14 +156,11 @@ public class AuthAppRepository{
             }
         });
         logOut();
-        loggedOutLiveData.postValue(true);
     }
-
-
 
     // Getter for MutableLiveData to access via ViewModels
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
-            return userLiveData;
+        return userLiveData;
     }
 
 
@@ -204,4 +169,6 @@ public class AuthAppRepository{
     }
 
 }
+
+
 

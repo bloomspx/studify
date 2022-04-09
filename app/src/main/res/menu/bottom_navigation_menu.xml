@@ -9,7 +9,7 @@
         android:id="@+id/roomListFragment"
         android:enabled="true"
         android:title=" "
-        android:icon="@drawable/ic_room"/>
+        android:icon="@drawable/app_logo"/>
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"

@@ -8,7 +8,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/createRoomButton"
-        style="@style/green_word_button_style"
+        style="@style/profile_white_button_style"
         android:text="@string/create_room"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"

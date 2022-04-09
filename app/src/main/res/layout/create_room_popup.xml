@@ -1,0 +1,139 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_black"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:background="@drawable/round_rect_create_room"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <RelativeLayout
+            android:id="@+id/TopRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="20dp">
+
+            <EditText
+                android:id="@+id/RoomTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="4dp"
+                android:background="@android:color/transparent"
+                android:hint="Room Title"
+                android:textSize="30dp" />
+
+            <ImageButton
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/close"
+                android:background="#00000000"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/lineDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/TopRow"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="#59FFFFFF" />
+
+        <RelativeLayout
+            android:id="@+id/AgendaRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/AgendaText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Agenda"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"></TextView>
+
+            <ImageButton
+                android:id="@+id/addRoomButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/AgendaText"
+                android:background="#00000000"
+                android:src="@drawable/whiteplus" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/label1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="BSTs"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/time1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:hint="Duration" />
+                </TableRow>
+
+            </TableLayout>
+        </ScrollView>
+
+        <View
+            android:id="@+id/lineDivider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/TopRow"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="#59FFFFFF" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/finalCreateRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/round_rect"
+            android:padding="10dp"
+            android:text="Create Room"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+
+            />
+    </LinearLayout>
+</FrameLayout>

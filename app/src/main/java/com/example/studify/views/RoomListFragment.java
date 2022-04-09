@@ -18,16 +18,24 @@ import android.view.ViewGroup;
 import com.example.studify.databinding.FragmentRoomListBinding;
 import com.example.studify.viewmodel.UserViewModel;
 
+import import androidx.recyclerview.widget.*;
+
+
 public class RoomListFragment extends Fragment implements View.OnClickListener {
     private FragmentRoomListBinding binding;
     private UserViewModel UserViewModel;
     private NavController navController;
-
+    RecyclerView recycleView;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRoomListBinding.inflate(getLayoutInflater());
         UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-
+        View view = inflater.inflate(R.fragment_room_list, container, false);
+        String[] s = {"Hello", "World","yes"};
+        recycleView = (RecyclerView) view.findViewById(R.id.roomsRecyclerView);
+        RoomAdapter adapter = new RoomAdapter(getActivity(), s);
+        recycleView.setAdapter(adapter);
+        recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return binding.getRoot();
 
     }

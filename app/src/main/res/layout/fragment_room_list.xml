@@ -14,4 +14,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <EditText
+        android:id="@+id/hash_id"
+        style="@style/user_text_input"
+        android:layout_marginTop="212dp"
+        android:hint="Enter Room ID"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/joinRoomButton"
+        style="@style/green_word_button_style"
+        android:layout_marginTop="272dp"
+        android:text="Join Room"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

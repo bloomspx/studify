@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< Updated upstream
         <entry key="..\:/Users/bloomspx/Documents/AndroidStudioProjects/studify-main/app/src/main/res/layout/activity_auth.xml" value="0.33" />
         <entry key="..\:/Users/bloomspx/Documents/AndroidStudioProjects/studify-main/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/bloomspx/Documents/AndroidStudioProjects/studify-main/app/src/main/res/layout/fragment_edit_profile.xml" value="0.36666666666666664" />
@@ -53,6 +54,15 @@
         <entry key="..\:/Users/bloomspx/Documents/GitHub/studify/app/src/main/res/layout/fragment_register.xml" value="0.21462163317657118" />
         <entry key="..\:/Users/bloomspx/Documents/GitHub/studify/app/src/main/res/layout/fragment_room_list.xml" value="0.21462163317657118" />
         <entry key="..\:/Users/bloomspx/Documents/GitHub/studify/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20179563916203505" />
+=======
+        <entry key="app/src/main/res/layout/dialog_input_task.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_update_task.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_room_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_task_list.xml" value="0.14583333333333334" />
+>>>>>>> Stashed changes
       </map>
     </option>
   </component>

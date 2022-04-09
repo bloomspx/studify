@@ -45,7 +45,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
         binding.buttonEditProfile.setOnClickListener(this);
-        binding.buttonLogOut.setOnClickListener(this);
     }
 
 
@@ -55,10 +54,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         int id = view.getId();
         if (id == binding.buttonEditProfile.getId()) {
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_editProfileFragment);
-        } else if (id == binding.buttonLogOut.getId()) {
+        }
+        /* else if (id == binding.buttonLogOut.getId()) {
             UserViewModel.logOut();
             Log.i("SUCCESS", "Logged Out");
-        }
+        }**/
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         });
 
         // LiveData Observer for UserProfile
-        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+        /*UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
             @Override
             public void onChanged(UserProfile userProfile) {
                 if (userProfile != null) {
@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     Log.d(TAG, "onChanged: userProfile is not empty, fields updated ");
                 }
             }
-        });
+        });**/
 
     }
 

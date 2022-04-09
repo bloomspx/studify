@@ -1,8 +1,8 @@
 package com.example.studify.views;
-
+import com.example.studify.R;
 import android.os.Build;
 import android.os.Bundle;
-
+import com.example.studify.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import com.example.studify.databinding.FragmentRoomListBinding;
 import com.example.studify.viewmodel.UserViewModel;
 
-import import androidx.recyclerview.widget.*;
+import androidx.recyclerview.widget.*;
 
 
 public class RoomListFragment extends Fragment implements View.OnClickListener {
@@ -30,7 +30,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRoomListBinding.inflate(getLayoutInflater());
         UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        View view = inflater.inflate(R.fragment_room_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_room_list, container, false);
         String[] s = {"Hello", "World","yes"};
         recycleView = (RecyclerView) view.findViewById(R.id.roomsRecyclerView);
         RoomAdapter adapter = new RoomAdapter(getActivity(), s);

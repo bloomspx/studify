@@ -1,5 +1,5 @@
 package com.example.studify.views;
-
+import com.example.studify.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.*;

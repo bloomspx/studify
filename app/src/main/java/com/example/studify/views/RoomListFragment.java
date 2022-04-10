@@ -54,6 +54,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
         binding.createRoomButton.setOnClickListener(this);
+        binding.joinRoomButton.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -63,9 +64,10 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         if (id == binding.joinRoomButton.getId()) {
             int width = Resources.getSystem().getDisplayMetrics().widthPixels;
             int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+            System.out.println("yes");
 
             View popupView = getLayoutInflater().inflate(R.layout.join_room_popup, null);
-            PopupWindow popupWindow = new PopupWindow(popupView, width, height+400, true);
+            PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
             popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
             //close the popup window when cross is clicked
             ImageButton close = (ImageButton) popupView.findViewById(R.id.closeButton);
@@ -75,11 +77,15 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                     popupWindow.dismiss();
                 }
             });
+
+        }
+        if (id == binding.createRoomButton.getId()){
+            Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
         }
 
 
 
-        if (id == binding.createRoomButton.getId()) {
+            if (id == binding.createRoomButton.getId()) {
             //TODO: Fill in with new CreateRoom fragment
         }
 

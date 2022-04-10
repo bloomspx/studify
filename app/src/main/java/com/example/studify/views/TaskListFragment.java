@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 
@@ -30,6 +32,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     private FragmentTaskListBinding binding;
     RecyclerView recycleView;
     private NavController navController;
+    TaskAdapter adapter;
     ArrayList<String> tasks = new ArrayList<String>();
     ArrayList<String> times = new ArrayList<String>();
 
@@ -37,10 +40,11 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentTaskListBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        String[] s = {"Hello", "World", "yes"};
-        String[] t = {"2", "3", "4"};
+        tasks.add("Sample Task");
+        times.add("3");
+
         recycleView = binding.tasksRecyclerView;
-        TaskAdapter adapter = new TaskAdapter(getActivity(), s, t);
+        adapter = new TaskAdapter(getActivity(), tasks, times);
         recycleView.setAdapter(adapter);
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         int id = view.getId();
@@ -69,17 +73,28 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
             popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
             //close the popup window when cross is clicked
             ImageButton close = popupView.findViewById(R.id.closeButton);
+            Button add = popupView.findViewById(R.id.addTaskButton);
             close.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View popupView) {
                     popupWindow.dismiss();
                 }
             });
-        }
+            add.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View popupView) {
+                    EditText taskName = (EditText) popupWindow.getContentView().findViewById(R.id.taskNameOption);
+                    EditText loopNo = (EditText) popupWindow.getContentView().findViewById(R.id.loopNumberOption);
+                    String taskString = taskName.getText().toString();
+                    String loopString = loopNo.getText().toString();
+                    tasks.add(taskString);
+                    times.add(loopString);
+                    adapter.notifyItemInserted(tasks.size() - 1);
+                    popupWindow.dismiss();
+                }
+            });
 
         }
 
-
-
+        }
 
 
     // Navigator Instantiation

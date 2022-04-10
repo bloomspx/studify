@@ -1,5 +1,7 @@
 package com.example.studify.views;
 
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -13,9 +15,13 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupWindow;
 
 import com.example.studify.databinding.FragmentRoomListBinding;
 import com.example.studify.viewmodel.UserViewModel;
@@ -54,9 +60,29 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        if (id == binding.joinRoomButton.getId()) {
+            int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+            int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+
+            View popupView = getLayoutInflater().inflate(R.layout.join_room_popup, null);
+            PopupWindow popupWindow = new PopupWindow(popupView, width, height+400, true);
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+            //close the popup window when cross is clicked
+            ImageButton close = (ImageButton) popupView.findViewById(R.id.closeButton);
+            close.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View popupView) {
+                    popupWindow.dismiss();
+                }
+            });
+        }
+
+
+
         if (id == binding.createRoomButton.getId()) {
             //TODO: Fill in with new CreateRoom fragment
         }
+
     }
 
     // Navigator Instantiation

@@ -24,9 +24,9 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
     public void logOut() { authAppRepository.logOut();}
 
-    public void changeEmail(String email) { authAppRepository.changeEmail(email); }
-
-    public void changePassword(String password) { authAppRepository.changePassword(password); }
+//    public void changeEmail(String email) { authAppRepository.changeEmail(email); }
+//
+//    public void changePassword(String password) { authAppRepository.changePassword(password); }
 
     public void deleteProfile()  {authAppRepository.deleteProfile();}
 

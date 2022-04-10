@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,17 +20,27 @@ import android.view.ViewGroup;
 import com.example.studify.databinding.FragmentRoomListBinding;
 import com.example.studify.viewmodel.UserViewModel;
 
+import com.example.studify.R;
+
+
 public class RoomListFragment extends Fragment implements View.OnClickListener {
     private FragmentRoomListBinding binding;
     private UserViewModel UserViewModel;
     private NavController navController;
+    RecyclerView recycleView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRoomListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        String[] s = {"Hello", "World","yes"};
+        recycleView = binding.roomsRecyclerView;
+        RoomAdapter adapter = new RoomAdapter(getActivity(), s);
+        recycleView.setAdapter(adapter);
+        recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-        return binding.getRoot();
+        return view;
 
     }
 

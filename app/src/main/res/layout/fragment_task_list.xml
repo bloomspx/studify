@@ -42,9 +42,10 @@
         </TextView>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/tasksCard"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:background="@drawable/round_rect_sessions"
@@ -64,15 +65,33 @@
             android:layout_height="wrap_content"
             android:text = "Tasks"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="27dp"
             android:fontFamily="@font/redhatdisplay"
 
             android:layout_marginBottom="20dp">
         </TextView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasksRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        </ScrollView>
 
     </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/finalCreateRoom"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop = "30dp"
+        android:background="@drawable/round_rect_create_room"
+        android:padding="10dp"
+        android:text="Create Room"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 </LinearLayout>

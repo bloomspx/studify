@@ -6,7 +6,7 @@
     >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
         android:background="@drawable/round_rect_create_room"
@@ -31,7 +31,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="4dp"
                 android:background="@android:color/transparent"
-                android:text="AddTask"
+                android:text="Add Task"
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -57,29 +57,24 @@
             android:layout_marginBottom="5dp"
             android:background="#59FFFFFF" />
 
-        <TextView
-            android:id="@+id/instructionTexxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="4dp"
-            android:background="@android:color/transparent"
-            android:fontFamily="@font/poppinsblack"
-            android:gravity="center"
-            android:text="Paste the room hash code below:"
-            android:layout_gravity="center"
-            android:textAlignment="viewStart"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
 
         <EditText
+            android:id="@+id/taskNameOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Code"
+            android:hint="Task Name"
             android:textColor="@color/white"
             android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/loopNumberOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of Loops"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:inputType="numberSigned"/>
 
         <View
             android:id="@+id/lineDivider2"
@@ -92,13 +87,14 @@
             android:background="#59FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/finalCreateRoom"
+            android:id="@+id/addTaskButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop = "20dp"
             android:background="@drawable/round_rect"
             android:padding="10dp"
-            android:text="Create Room"
+            android:text="Add Task"
             android:textColor="@color/black"
             android:textSize="20dp"
 

@@ -54,4 +54,7 @@
     <string name="save_task">Save</string>
     <string name="cancel_task">Cancel</string>
 
+    <!-- Strings related to task_list -->
+    <string name="task_list_title">Create Tasks</string>
+
 </resources>

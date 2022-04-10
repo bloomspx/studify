@@ -106,18 +106,6 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     }
     @RequiresApi(api = Build.VERSION_CODES.P)
 
-    private void joinRoom() {
-        String roomID = binding.hashId.getText().toString().trim();
-        if (TextUtils.isEmpty(roomID)) {
-            binding.hashId.setError("Email is Required");
-        }
-        else {
-            System.out.println("Hey There Doofus - 1");
-            RoomViewModel.joinRoom(roomID);
-        }
-    }
-
-
 
     // Navigator Instantiation
     @Override
@@ -131,19 +119,6 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                 Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
             }
         });
-        binding.joinRoomButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.P)
-            @Override
-            public void onClick(View v) {
-                System.out.println("meow");
-                joinRoom();
-            }
-        });
-        binding.testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_profileFragment);
-            }
-        });
+        ;
     }
 }

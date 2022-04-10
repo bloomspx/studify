@@ -2,11 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/room1"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/round_rect"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:layout_marginBottom="20dp">
 
 
     <RelativeLayout
@@ -14,12 +15,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/groupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Algorithms"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </TextView>
         <ImageView
             android:id="@+id/groupIconImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/groupicon"
-            android:padding="0dp">
+            android:padding="0dp"
+            android:layout_toLeftOf="@id/roomPax"
+            >
         </ImageView>
         <TextView
             android:id="@+id/roomPax"
@@ -28,19 +40,12 @@
             android:text="3"
             android:textSize="22dp"
             android:textStyle="bold"
-            android:layout_toRightOf="@id/groupIconImage">
+            android:layout_alignParentRight="true"
+           >
         </TextView>
     </RelativeLayout>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/groupName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Algorithms"
-        android:textSize="20sp"
-        android:textStyle="bold">
-    </TextView>
+
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/completionPercent"

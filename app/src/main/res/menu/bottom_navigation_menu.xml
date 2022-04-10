@@ -4,7 +4,7 @@
         android:id="@+id/roomListFragment"
         android:enabled="true"
         android:title=" "
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/app"/>
     <item
         android:id="@+id/mainFragment"
         android:enabled="true"
@@ -15,5 +15,5 @@
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:title=" "
-        android:icon="@drawable/ic_profile"/>
+        android:icon="@drawable/person"/>
 </menu>

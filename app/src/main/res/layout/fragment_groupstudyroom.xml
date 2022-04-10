@@ -54,6 +54,22 @@
             android:drawablePadding = "4dp"
             >
         </androidx.appcompat.widget.AppCompatButton>
+        <androidx.appcompat.widget.AppCompatButton
+                    android:id ="@+id/joinRoomButton"
+                    android:layout_height="wrap_content"
+                    android:layout_width = "wrap_content"
+                    android:text="Join Room"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/poppinsblack"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/round_rect_create_room"
+                    android:padding="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:drawableLeft="@drawable/pplus"
+                    android:drawablePadding = "4dp"
+                    >
+                </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/sessionsCard"

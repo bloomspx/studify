@@ -21,17 +21,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageButton
-            android:id="@+id/backButtonProfile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="30dp"
-            android:background="#0000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/profileTitle"
-            app:srcCompat="@drawable/ic_arrow_back" />
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="120dp"
@@ -61,7 +50,9 @@
             style="@style/profile_white_button_style"
             android:layout_width="140dp"
             android:drawableLeft="@drawable/ic_baseline_mode_edit_24"
+            android:drawableTint="@color/turquoise"
             android:text="@string/button_edit_profile"
+            android:textColor="@color/turquoise"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -79,7 +70,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             android:drawableLeft="@drawable/ic_baseline_logout_24"
+            android:drawableTint="@color/turquoise"
             android:text="@string/button_log_out"
+            android:textColor="@color/turquoise"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_edit_profile"

@@ -60,7 +60,11 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         int id = view.getId();
         if (id == binding.buttonDelete.getId()) {
             UserViewModel.deleteProfile();
-        } else if (id == binding.changeProfileImage.getId() || id == binding.buttonChangePic.getId()) {
+        }
+        else if (id == binding.backButtonProfile.getId()) {
+            Navigation.findNavController(view).navigate(R.id.action_editProfileFragment_to_profileFragment);
+        }
+        else if (id == binding.changeProfileImage.getId() || id == binding.buttonChangePic.getId()) {
             // Load Images from External Phone Storage
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             MainActivityResultLauncher.launch(intent);

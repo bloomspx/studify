@@ -122,7 +122,7 @@
             android:id="@+id/button_delete"
             style="@style/profile_white_button_style"
             android:layout_marginTop="40dp"
-            android:backgroundTint="@color/turquoise"
+            android:backgroundTint="@color/light_red"
             android:gravity="center"
             android:text="@string/action_delete_profile"
             android:textColor="@color/white"

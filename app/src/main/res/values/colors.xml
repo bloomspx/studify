@@ -12,4 +12,5 @@
     <color name="turquoise">#14D39A</color>
     <color name="transparent">#00000000</color>
     <color name="dark_grey">#545454</color>
+    <color name="light_red">#FF7A82</color>
 </resources>

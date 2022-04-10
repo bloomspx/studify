@@ -39,6 +39,7 @@ public class UserAppRepository {
         firebaseFirestore = FirebaseFirestore.getInstance();
         userProfileLiveData = new MutableLiveData<>();
 
+
         // If user is logged in, retrieve UserProfileLiveData
         if (firebaseAuth.getCurrentUser() != null) {
             getUserDetails();
@@ -51,13 +52,6 @@ public class UserAppRepository {
         // Update User Credentials via FireStore
         DocumentReference documentReference = firebaseFirestore.collection("users").document(user.getUid());
         Map<String, Object> data = new HashMap<>();
-
-        if (changedUser.getName() == null) {
-            changedUser.setName(user.getDisplayName());
-        }
-        if (changedUser.getImg() == null) {
-            changedUser.setImg(user.getPhotoUrl().toString());
-        }
         data.put("username", changedUser.getName());
         data.put("email", user.getEmail());
         data.put("photoUri",changedUser.getImg());

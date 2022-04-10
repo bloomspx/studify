@@ -8,9 +8,13 @@
 
         <androidx.drawerlayout.widget.DrawerLayout
             android:id="@+id/drawer_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/nav_host_fragment"
@@ -18,11 +22,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:defaultNavHost="true"
-                    app:navGraph="@navigation/main"
-                    app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:navGraph="@navigation/main" />
 
 
         </androidx.drawerlayout.widget.DrawerLayout>
@@ -34,6 +34,7 @@
             android:background="?android:attr/windowBackground"
             app:labelVisibilityMode="unlabeled"
             app:itemIconSize="35dp"
+
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

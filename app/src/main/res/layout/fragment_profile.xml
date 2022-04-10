@@ -115,6 +115,7 @@
             style="@style/profile_white_button_style"
             android:drawableLeft="@drawable/stats"
             android:text="My Statistics"
+
             app:layout_constraintBottom_toBottomOf="@id/botGuideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

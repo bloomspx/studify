@@ -15,7 +15,12 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.view.Gravity;
+
+import android.text.TextUtils;
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,16 +29,23 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 
 import com.example.studify.databinding.FragmentRoomListBinding;
-import com.example.studify.viewmodel.UserViewModel;
 
+import com.example.studify.models.RoomModel;
+import com.example.studify.viewmodel.UserViewModel;
+import com.example.studify.viewmodel.RoomViewModel;
 import com.example.studify.R;
+
 
 
 public class RoomListFragment extends Fragment implements View.OnClickListener {
     private FragmentRoomListBinding binding;
     private UserViewModel UserViewModel;
     private NavController navController;
+
     RecyclerView recycleView;
+    private RoomViewModel RoomViewModel;
+    private RoomModel room;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,6 +57,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         recycleView.setAdapter(adapter);
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
 
         return view;
 
@@ -89,12 +102,48 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             //TODO: Fill in with new CreateRoom fragment
         }
 
+
     }
+    @RequiresApi(api = Build.VERSION_CODES.P)
+
+    private void joinRoom() {
+        String roomID = binding.hashId.getText().toString().trim();
+        if (TextUtils.isEmpty(roomID)) {
+            binding.hashId.setError("Email is Required");
+        }
+        else {
+            System.out.println("Hey There Doofus - 1");
+            RoomViewModel.joinRoom(roomID);
+        }
+    }
+
+
 
     // Navigator Instantiation
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+
+        binding.createRoomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
+            }
+        });
+        binding.joinRoomButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.P)
+            @Override
+            public void onClick(View v) {
+                System.out.println("meow");
+                joinRoom();
+            }
+        });
+        binding.testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_profileFragment);
+            }
+        });
     }
 }

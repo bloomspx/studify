@@ -52,6 +52,7 @@
             android:id="@+id/change_profile_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
+
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_default_profile"
             app:civ_border_color="#000000"
@@ -70,7 +71,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/change_profile_image"/>
-
         <TextView
             android:id="@+id/usernameTitle"
             android:layout_width="wrap_content"
@@ -82,7 +82,8 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_change_pic" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_change_pic"/>
 
 
         <EditText
@@ -103,6 +104,7 @@
             android:background="#c0c0c0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/change_username"/>
+
 
         <TextView
             android:id="@+id/orBox"
@@ -130,6 +132,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lineDivider"
             app:layout_constraintBottom_toBottomOf="@id/botGuideline"/>
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/botGuideline"

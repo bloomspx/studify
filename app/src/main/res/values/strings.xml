@@ -33,16 +33,25 @@
     <string name="button_log_out">Log Out</string>
 
     <!-- Strings related to edit_profile fragment -->
+
     <string name="button_done">Done</string>
     <string name="action_delete_profile">Delete Profile</string>
     <string name="action_change_pic">Change Profile Picture</string>
     <string name="prompt_new_username">New Username</string>
+    <string name="action_update_profile">Update Profile</string>
+
+
     <!-- Strings related to room_list -->
     <string name="create_room">Create Room</string>
     <string name="group_study_room_title">Group Study Rooms</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- Strings related to task_list -->
-    <string name="task_list_title">Create Tasks</string>
+    <!-- Strings related to input_task fragment -->
+    <string name="add_task">Add Task</string>
+    <string name="add_task_name">Task</string>
+    <string name="add_task_name_hint">Task...</string>
+    <string name="add_taskTime">Time</string>
+    <string name="add_taskTime_hint">Time...</string>
+    <string name="save_task">Save</string>
+    <string name="cancel_task">Cancel</string>
 
 </resources>

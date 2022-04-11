@@ -6,7 +6,7 @@
     >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
         android:background="@drawable/round_rect_create_room"
@@ -33,7 +33,7 @@
                 android:background="@android:color/transparent"
                 android:text="Join Room"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="2sp"
                 android:textStyle="bold"
                 />
 
@@ -75,6 +75,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/hashId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Code"

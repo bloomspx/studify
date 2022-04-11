@@ -18,6 +18,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 
@@ -74,10 +76,21 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
             //close the popup window when cross is clicked
             ImageButton close = (ImageButton) popupView.findViewById(R.id.closeButton);
+            Button join = (Button) popupView.findViewById(R.id.finalJoinRoom);
             close.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View popupView) {
                     popupWindow.dismiss();
+                }
+            });
+            join.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View popupView) {
+                    popupWindow.dismiss();
+
+                    EditText taskName = (EditText) popupWindow.getContentView().findViewById(R.id.hashId);
+                    String hashID = taskName.getText().toString();
+                    //TODO implement join room()
                 }
             });
         }

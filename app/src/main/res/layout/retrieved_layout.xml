@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/room1"
-    android:layout_width="400dp"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/round_rect"
@@ -21,14 +21,14 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Task Name"
-            android:textSize="22dp"
+            android:textSize="15sp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/taskTv"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="22dp"
+            android:textSize="15sp"
             android:textStyle="bold">
         </TextView>
     </LinearLayout>
@@ -43,14 +43,14 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Time Loops"
-            android:textSize="22dp"
+            android:textSize="15sp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/timeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="22dp"
+            android:textSize="15sp"
             android:textStyle="bold">
         </TextView>
     </LinearLayout>

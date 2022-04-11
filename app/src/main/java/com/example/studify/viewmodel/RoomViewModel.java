@@ -33,6 +33,7 @@ public class RoomViewModel extends AndroidViewModel {
 
     public void joinRoom(String roomID){roomAppRepository.joinRoom(roomID);}
 
+
     public void startGroupTimer(String roomID){groupTimeRepository.join(roomID);}
 
     public  MutableLiveData<String> getGroupTimerLeftLiveDate(){return groupTimerLeftLiveDate;}

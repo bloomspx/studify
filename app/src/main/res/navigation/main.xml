@@ -7,8 +7,11 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.studify.views.RoomFragment"
+
         android:label="fragment_main"
         tools:layout="@layout/fragment_pomodoro1">
+        android:label="fragment_pomodoro"
+        tools:layout="@layout/fragment_pomodoro">
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />

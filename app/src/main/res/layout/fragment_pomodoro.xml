@@ -1,133 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:background="#E5E5E5"
+    android:orientation="vertical"
+    android:gravity="center"
     >
-
-
     <LinearLayout
+        android:id="@+id/titleCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:orientation="vertical">
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="180dp">
-
-
-            <TextView
-                android:id="@+id/t1"
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:text="Pomodoro"
-                android:textSize="30sp"
-                android:layout_marginTop="0dp"
-                android:gravity="center"
-                android:background="@color/white"
-                />
-            <androidx.constraintlayout.utils.widget.ImageFilterButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="185dp"
-                android:src="@drawable/refresh"/>
-            <androidx.constraintlayout.utils.widget.ImageFilterButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_back"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Change Focus Level"
-                android:layout_marginTop="60dp"
-                android:textColor="@color/black"
-                android:textAllCaps="false"
-                android:layout_gravity="center"/>
-
-            <androidx.constraintlayout.utils.widget.ImageFilterButton
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-
-                android:layout_marginLeft="75dp"
-                android:layout_marginTop="140dp"
-                android:src="@drawable/pplus"/>
-
-        </FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation = "vertical"
+        android:background="@drawable/round_rect"
+        android:gravity="center"
+        android:showDividers="middle"
+        android:divider="@drawable/divider"
+        android:paddingBottom ="20dp"
+        android:paddingTop="20dp"
+        >
 
         <TextView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:text="CLOCK"
-            android:textSize="30sp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginBottom="100dp"
-            android:gravity="center"
-            android:background="@drawable/shaperec"/>
-        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pomodoro"
+            android:textSize= "27sp"
+            android:textStyle="bold"
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="800dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/txt_radiuborder"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="40dp"
-                android:background="@color/white"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/plus"
-                    android:layout_gravity="right"/>
-
-                <TextView
-                    android:id="@+id/t2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/white"
-                    android:text="Tasks"
-                    android:textSize="30sp" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:background="@color/white"
-                    android:text="task1" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:background="@color/white"
-                    android:text="task2" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:background="@color/white"
-                    android:text="task3" />
-            </LinearLayout>
-        </FrameLayout>
+        </TextView>
 
     </LinearLayout>
-</ScrollView>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/pomoTime"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/circle_text"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
+            android:text="25:00"
+            android:textAlignment="gravity"
+            android:textSize="40sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppinsblack">
+
+        </TextView>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:indeterminate="false"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            android:background="@drawable/circle_shape"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:progress="50" />
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/sessionsCard"
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/round_rect_sessions"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Tasks"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="40dp">
+        </TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasksRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</LinearLayout>

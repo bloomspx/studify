@@ -129,6 +129,8 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
 
                     AddTaskModel model = new AddTaskModel(mTaskName, mTaskTime, id);
                     Room.add_tasks_lists(mTaskName);
+                    System.out.println("**Add Task**");
+                    System.out.println(Room.getTasks_Lists());
 
                     reference.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -178,6 +180,8 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
 
                 AddTaskModel model = new AddTaskModel(taskName, taskTime, key);
                 Room.add_tasks_lists(taskName);
+                System.out.println("**Update Task**");
+                System.out.println(Room.getTasks_Lists());
 
                 reference.child(key).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -313,6 +317,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
         binding.taskListCreateRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Room.setStartTime(Long.toString(System.currentTimeMillis()));
                 RoomViewModel.createRoom(Room); //Pushes Data to Firebase
                 //RoomViewModel.startGroupTimer(Room.getRoomID());
@@ -324,6 +329,8 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
                 //MainActivityViewModel.joinRoom(Room.getRoomID());
                 System.out.println("******CHECKER********");
                 System.out.println("ROOMID:"+RoomID);
+
+                RoomViewModel.createRoom(Room);
                 Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
             }
         });

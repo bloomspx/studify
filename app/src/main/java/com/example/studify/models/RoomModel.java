@@ -11,7 +11,9 @@ public class RoomModel {
     private ArrayList<String> User_IDs;
     private ArrayList<String> tasks_Lists;
     private String startTime;
+
     private int loop;
+
     //private Time
     //private HashMap<String,UserProfile> User_List;
 

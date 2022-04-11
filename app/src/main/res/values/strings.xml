@@ -16,6 +16,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="action_forgot_password">Forgot Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
 
     <!-- Strings related to reset_password fragment -->
     <string name="action_reset_password">Reset Password</string>

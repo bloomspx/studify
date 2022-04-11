@@ -54,4 +54,7 @@
     <string name="add_taskTime_hint">Time...</string>
     <string name="save_task">Save</string>
     <string name="cancel_task">Cancel</string>
+
+    <!-- Strings related to task_list -->
+    <string name="task_list_title">Create Tasks</string>
 </resources>

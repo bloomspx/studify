@@ -1,46 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#E5E5E5"
     android:orientation="vertical"
-    tools:context=".views.TaskListFragment">
-
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/taskListToolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="#555"-->
-<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-<!--        />-->
-    <Button
-        android:id="@+id/taskListCreateRoomButton"
-        style="@style/green_word_button_style"
-        android:text="@string/create_room"
+    >
+    <LinearLayout
+        android:id="@+id/titleCard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/taskListRecyclerView"
+        android:layout_height="wrap_content"
+        android:orientation = "vertical"
+        android:background="@drawable/round_rect"
+        android:gravity="center"
+        android:showDividers="middle"
+        android:divider="@drawable/divider"
+        android:paddingBottom="60dp"
+        >
+        <RelativeLayout
+            android:id="@+id/settingsiconRow"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="#0000"
+                android:src="@drawable/ic_arrow_back" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_list_title"
+            android:textSize= "27sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/redhatdisplay"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tasksCard"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/round_rect_sessions"
+        android:padding="20dp">
+
+        <ImageButton
             android:id="@+id/taskListFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_arrow_back"
-            app:backgroundTint="#555"/>
+            android:layout_alignParentRight="true"
+            android:background="#0000"
+            android:src="@drawable/plus"
+            android:layout_gravity="right"/>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Tasks"
+            android:textStyle="bold"
+            android:textSize="27dp"
+            android:fontFamily="@font/redhatdisplay"
+
+            android:layout_marginBottom="20dp">
+        </TextView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/taskListRecyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/taskListCreateRoomButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop = "30dp"
+        android:background="@drawable/round_rect_create_room"
+        android:padding="10dp"
+        android:text="Create Room"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
 </LinearLayout>

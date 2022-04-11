@@ -74,7 +74,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
         RoomViewModel = new ViewModelProvider(this).get(com.example.studify.viewmodel.RoomViewModel.class);
         Room = new RoomModel();
         // Room = new ViewModelProvider(this).get(com.example.studify.models.Room.class)
-       // Room =  new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(Room.class);
+        // Room =  new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(Room.class);
         return binding.getRoot();
     }
 
@@ -82,7 +82,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         int id = view.getId();
         if (id == binding.taskListCreateRoomButton.getId()) {
-           // tasksList = room.getTasks_Lists();
+            // tasksList = room.getTasks_Lists();
             RoomViewModel.createRoom(Room);
             Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
 //            RoomViewModel.createRoom(Room);
@@ -148,7 +148,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     }
 
     private void updateTask() {
-        AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext(),R.style.CustomAlertDialog);
         DialogUpdateTaskBinding dialogBinding = DialogUpdateTaskBinding.inflate(getLayoutInflater());
         myDialog.setView(dialogBinding.getRoot());
 

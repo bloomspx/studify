@@ -15,6 +15,7 @@ public class RoomModel {
     //private DateTime roomTimerStart;
     private ArrayList<String> User_IDs;
     private ArrayList<String> tasks_Lists;
+    private String startTime;
     //private Time
     //private HashMap<String,UserProfile> User_List;
 

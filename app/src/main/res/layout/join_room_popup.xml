@@ -92,13 +92,13 @@
             android:background="#59FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/finalCreateRoom"
+            android:id="@+id/finalJoinRoom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:background="@drawable/round_rect"
             android:padding="10dp"
-            android:text="Create Room"
+            android:text="Join Room"
             android:textColor="@color/black"
             android:textSize="20dp"
 

@@ -1,5 +1,6 @@
 package com.example.studify.views;
 
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -13,9 +14,12 @@ import androidx.navigation.Navigation;
 
 
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.PopupWindow;
 
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentRoomListBinding;
@@ -48,6 +52,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
         binding.createRoomButton.setOnClickListener(this);
+        binding.joinRoomButton.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -58,6 +63,23 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         if (id == binding.createRoomButton.getId()) {
            // RoomViewModel.createRoom(room.getTasks_Lists());
             Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
+        }
+        if (id == binding.joinRoomButton.getId()) {
+            int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+            int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+            System.out.println("yes");
+
+            View popupView = getLayoutInflater().inflate(R.layout.join_room_popup, null);
+            PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+            //close the popup window when cross is clicked
+            ImageButton close = (ImageButton) popupView.findViewById(R.id.closeButton);
+            close.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View popupView) {
+                    popupWindow.dismiss();
+                }
+            });
         }
 //        else if(id == binding.joinRoomButton.getId())
 //        {

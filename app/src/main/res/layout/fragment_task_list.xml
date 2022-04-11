@@ -36,6 +36,7 @@
 
 
                 </RelativeLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -47,36 +48,40 @@
 
                 </TextView>
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/taskListCreateRoomButton"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/round_rect_create_room"
+                    android:padding="10dp"
+                    android:text="Create Room"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
         </LinearLayout>
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="246dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/taskListRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="243dp" />
+
+                <ImageButton
+                    android:id="@+id/taskListFab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+
+                    android:layout_gravity="bottom|end"
+                    android:background="#0000"
+                    android:src="@drawable/plus" />
 
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        <ImageButton
-            android:id="@+id/taskListFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
 
-            android:background="#0000"
-            android:src="@drawable/plus"
-            android:layout_gravity="bottom|end"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/taskListCreateRoomButton"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop = "30dp"
-            android:background="@drawable/round_rect_create_room"
-            android:padding="10dp"
-            android:text="Create Room"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
 </LinearLayout>

@@ -48,24 +48,25 @@ public class RoomAppRepository {
         //room = new RoomModel();
         room.setUser_IDs(User_IDs);
         String roomID = room.getRoomID();
-        addTasks();
+//        addTasks();
+        System.out.println(room.getTasks_Lists());
         db.collection("rooms").document(roomID).set(room);
     }
-    public void addTasks() {
-        db = FirebaseFirestore.getInstance();
-        db.collection("rooms").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        db.collection("rooms").document(document.getId()).update("tasks", FieldValue.arrayUnion(room.getTasks_Lists()));
-                    }
-                } else {
-                    Toast.makeText(application, "Incorrect ID", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
+//    public void addTasks() {
+//        db = FirebaseFirestore.getInstance();
+//        db.collection("rooms").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        db.collection("rooms").document(document.getId()).update("tasks", FieldValue.arrayUnion(room.getTasks_Lists()));
+//                    }
+//                } else {
+//                    Toast.makeText(application, "Incorrect ID", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
 
     /*public void createRoom()
     {

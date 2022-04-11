@@ -28,8 +28,6 @@ public class RoomViewModel extends AndroidViewModel {
 
     public void joinRoom(String roomID){roomAppRepository.joinRoom(roomID);}
 
-    public void addTasks() { roomAppRepository.addTasks(); }
-
 
     //public void addTask(String taskName) { roomAppRepository.addTask(taskName); }
 

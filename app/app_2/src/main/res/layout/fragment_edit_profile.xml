@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F2F4F7"
+        tools:context=".views.MainActivity"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/editProfileTitle"
+            style="@style/profile_card"
+            android:text="@string/button_edit_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/backButtonProfile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:background="#0000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/editProfileTitle"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+        <Button
+            android:id="@+id/button_update_profile"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="@string/button_done"
+            android:fontFamily="@font/redhatdisplaybold"
+            android:textStyle="bold"
+            android:textColor="@color/turquoise"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/editProfileTitle" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/change_profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_default_profile"
+            app:civ_border_color="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editProfileTitle"/>
+
+        <Button
+            android:id="@+id/button_change_pic"
+            style="@style/login_green_text_style"
+            android:text="@string/action_change_pic"
+            android:layout_marginLeft="0dp"
+            android:fontFamily="@font/redhatdisplaybold"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/change_profile_image"/>
+        <TextView
+            android:id="@+id/usernameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/redhatdisplaybold"
+            android:text="@string/prompt_username"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_change_pic"/>
+
+
+        <EditText
+            android:id="@+id/change_username"
+            style="@style/user_text_input"
+            android:hint="@string/prompt_new_username"
+            android:textColorHint="@color/dark_grey"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usernameTitle"/>
+
+        <View
+            android:id="@+id/lineDivider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="25dp"
+            android:background="#c0c0c0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/change_username"/>
+
+
+        <TextView
+            android:id="@+id/orBox"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="#F2F4F7"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="OR"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/lineDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lineDivider" />
+
+        <Button
+            android:id="@+id/button_delete"
+            style="@style/profile_white_button_style"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/light_red"
+            android:gravity="center"
+            android:text="@string/action_delete_profile"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineDivider"
+            app:layout_constraintBottom_toBottomOf="@id/botGuideline"/>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/botGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

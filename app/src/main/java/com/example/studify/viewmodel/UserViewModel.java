@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.studify.models.AuthAppRepository;
 import com.example.studify.models.UserAppRepository;
 import com.example.studify.models.UserProfile;
-import com.google.firebase.auth.FirebaseUser;
 
 public class UserViewModel extends AndroidViewModel {
     private AuthAppRepository authAppRepository;

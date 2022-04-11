@@ -1,0 +1,105 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id = "@+id/taskBox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_rect"
+    android:layout_margin="20dp"
+    android:padding="10dp"
+    >
+
+    <TextView
+        android:id = "@+id/taskTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Binary Search Trees"
+        android:textStyle = "bold"
+        android:textSize = "25dp">
+
+    </TextView>
+    <TextView
+        android:id = "@+id/topics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 Topics"
+        android:textSize = "15dp"
+        android:layout_below="@id/taskTitle">
+    </TextView>
+    <TextView
+        android:id = "@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30:00"
+        android:textSize = "25dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/topics"
+        android:background = "@drawable/rounded_pomo"
+        android:padding="5dp"
+        android:textColor="#FFFFFF">
+    </TextView>
+    <View
+        android:id="@+id/lineDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below = "@id/topics"
+        android:layout_centerVertical="true"
+        android:background="#c0c0c0" />
+    <TableLayout
+        android:id="@+id/upcomingTaskTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lineDivider"
+        >
+        <TableRow><TextView
+            android:id = "@+id/Firsttask"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="In-Order Traversal"
+            android:textSize = "15dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/topics"
+            android:padding="5dp"
+            android:layout_weight="0.5"
+            >
+        </TextView>
+            <TextView
+                android:id = "@+id/FirstTaskStatus1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Now"
+                android:textSize = "15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@id/topics"
+                android:padding="5dp"
+                android:layout_weight="0.5"
+                >
+            </TextView>
+        </TableRow>
+        <TableRow><TextView
+            android:id = "@+id/Secondtask"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Insertion"
+            android:textSize = "15dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/topics"
+            android:padding="5dp"
+            android:layout_weight="0.5"
+            >
+        </TextView>
+            <TextView
+                android:id = "@+id/SecondTaskStatus1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Up Next"
+                android:textSize = "15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@id/topics"
+                android:padding="5dp"
+                android:layout_weight="0.5"
+                >
+            </TextView>
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

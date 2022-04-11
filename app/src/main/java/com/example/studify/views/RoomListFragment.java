@@ -1,33 +1,33 @@
 package com.example.studify.views;
 
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-
-import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.PopupWindow;
-
 import com.example.studify.R;
+import com.example.studify.databinding.DialogJoinRoomBinding;
 import com.example.studify.databinding.FragmentRoomListBinding;
 import com.example.studify.models.RoomModel;
-import com.example.studify.viewmodel.UserViewModel;
 import com.example.studify.viewmodel.RoomViewModel;
+import com.example.studify.viewmodel.UserViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class RoomListFragment extends Fragment implements View.OnClickListener {
@@ -36,6 +36,16 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
     private RoomViewModel RoomViewModel;
     private RoomModel room;
+    private FirebaseAuth firebaseAuth;
+    private com.google.firebase.firestore.FieldValue FieldValue;
+    private FirebaseFirestore db;
+    private DocumentReference docRef;
+
+    public RoomListFragment() {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,9 +67,9 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         binding.joinRoomButton.setOnClickListener(this);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.P)
-    @Override
-    public void onClick(View view) {
+    //@RequiresApi(api = Build.VERSION_CODES.P)
+    //@Override
+    /*public void onClick(View view) {
         int id = view.getId();
 
         if (id == binding.createRoomButton.getId()) {
@@ -90,7 +100,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
 
                     EditText taskName = (EditText) popupWindow.getContentView().findViewById(R.id.hashId);
                     String hashID = taskName.getText().toString();
-                    //TODO implement join room()
+                    //Navigation.n
                 }
             });
         }
@@ -104,8 +114,78 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
 //            //System.out.println("HEREERERE");
 //            joinRoom();
 //        }
+    }*/
+    //@RequiresApi(api = Build.VERSION_CODES.P)
+    public void onClick(View view) {
+        int id = view.getId();
+
+        if (id == binding.createRoomButton.getId()) {
+            // RoomViewModel.createRoom(room.getTasks_Lists());
+            Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
+        }
+        if (id == binding.joinRoomButton.getId()) {
+            final boolean[] roomexists = {false};
+            System.out.println("Detects Join Room Button Click");
+            AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext());
+            DialogJoinRoomBinding dialogBinding = DialogJoinRoomBinding.inflate(getLayoutInflater());
+            myDialog.setView(dialogBinding.getRoot());
+
+            final AlertDialog dialog = myDialog.create();
+            dialog.setCancelable(false);
+
+            dialog.show();
+
+            dialogBinding.finalJoinRoom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("HERE SWEETIE");
+                    db = FirebaseFirestore.getInstance();
+                    System.out.println("**********Inside Join Room Button**********");
+                    String roomID = dialogBinding.hashId.getText().toString().trim();
+                    if (TextUtils.isEmpty(roomID)) {
+                        dialogBinding.hashId.setError("ID is required");
+                    } else {
+                        System.out.println("**********Inside Join Room **********");
+
+                        docRef = db.collection("rooms").document(roomID);
+                        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
+                                        db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("roomID", roomID);
+                                        roomexists[0] = true;
+                                        Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
+
+
+
+                                        // Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
+
+                                        //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                    } else {
+                                        dialogBinding.hashId.setError("Document does not exist");
+                                        //Log.d(TAG, "No such document");
+                                    }
+                                } else {
+                                    dialogBinding.hashId.setError("Request Failed:" + task.getException());
+                                    //dLog.d(TAG, "get failed with ", task.getException());
+                                }
+                            }
+                        });
+                    }
+//                    dialog.show();
+
+                }
+            });
+
+
+        }
+
     }
-    @RequiresApi(api = Build.VERSION_CODES.P)
 
     //private void joinRoom() {
         //String roomID = binding.hashId.getText().toString().trim();
@@ -137,6 +217,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 System.out.println("meow");
+                //String roomID = binding.
                 //joinRoom();
             }
         });

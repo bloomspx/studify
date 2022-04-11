@@ -22,15 +22,13 @@
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/fragment_register.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/fragment_room.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/fragment_room_list.xml" value="0.2" />
-        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/fragment_task_list.xml" value="0.4" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/fragment_task_list.xml" value="0.1" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/join_room_popup.xml" value="0.109375" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/pomodoro.xml" value="0.109375" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/retrieved_layout.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/room_card.xml" value="0.109375" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/task_card.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.109375" />
-        <entry key="..\:/Users/Kaveri Priya Putti/Desktop/github/studify/app/src/main/res/layout/retrieved_layout.xml" value="0.2" />
-        <entry key="..\:/Users/Kaveri Priya Putti/Desktop/github/studify/app/src/main/res/layout/room_card.xml" value="0.1490036231884058" />
         <entry key="..\:/Users/bloomspx/Documents/AndroidStudioProjects/studify-main/app/src/main/res/layout/activity_auth.xml" value="0.33" />
         <entry key="..\:/Users/bloomspx/Documents/AndroidStudioProjects/studify-main/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/bloomspx/Documents/AndroidStudioProjects/studify-main/app/src/main/res/layout/fragment_edit_profile.xml" value="0.36666666666666664" />
@@ -89,6 +87,10 @@
         <entry key="..\:/Users/bloomspx/Documents/GitHub/studify/app/src/main/res/layout/fragment_room_list.xml" value="0.21462163317657118" />
         <entry key="..\:/Users/bloomspx/Documents/GitHub/studify/app/src/main/res/layout/fragment_test.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/bloomspx/Documents/GitHub/studify/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20179563916203505" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1495" />
+        <entry key="app/src/main/res/layout/activity_auth.xml" value="0.11510416666666666" />
+        <entry key="app/src/main/res/layout/fragment_room.xml" value="0.15416666666666667" />
+        <entry key="app/src/main/res/layout/join_room_popup.xml" value="0.1" />
       </map>
     </option>
   </component>

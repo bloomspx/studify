@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "448503072855",
+    "project_id": "studify-eaed6",
+    "storage_bucket": "studify-eaed6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448503072855:android:3d64487a67291e5f7c3b12",
+        "android_client_info": {
+          "package_name": "com.example.studify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448503072855-i8rkv0f00m5jkvh68mk5k4neo194sjte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studify",
+            "certificate_hash": "4fb7dd302c307e2c2596be215718e41d42407469"
+          }
+        },
+        {
+          "client_id": "448503072855-fasr6dq70ok5ruhln0r6prbc7n3ardj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDthqYxh-in8t5vT7_m_XyA9Tumr84vVms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448503072855-fasr6dq70ok5ruhln0r6prbc7n3ardj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,18 +18,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentProfileBinding;
 import com.example.studify.models.UserProfile;
 import com.example.studify.viewmodel.UserViewModel;
-import com.google.firebase.firestore.auth.User;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     private FragmentProfileBinding binding;
@@ -36,7 +34,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(getLayoutInflater());
         UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-
+        System.out.println("In Profile Fragment");
         return binding.getRoot();
 
     }

@@ -1,0 +1,57 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/room1"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/round_rect"
+    android:padding="20dp"
+    android:layout_marginBottom="20dp">
+
+
+    <LinearLayout
+        android:id="@+id/taskrow1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/taskNameOption"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Task Name"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/taskTv"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="15sp"
+            android:textStyle="bold">
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/paxLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/loopNumberOption"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Time Loops"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="15sp"
+            android:textStyle="bold">
+        </TextView>
+    </LinearLayout>
+</LinearLayout>

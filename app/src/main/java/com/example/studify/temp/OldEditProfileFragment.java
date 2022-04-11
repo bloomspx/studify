@@ -1,4 +1,4 @@
-//package com.example.studify.temp;
+package com.example.studify.temp;//package com.example.studify.temp;
 //
 //import android.content.Intent;
 //import android.os.Build;

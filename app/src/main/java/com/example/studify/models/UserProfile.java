@@ -1,10 +1,5 @@
 package com.example.studify.models;
 
-import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.room.PrimaryKey;
-
 public class UserProfile {
 
     private String name;

@@ -72,16 +72,16 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     }
     @RequiresApi(api = Build.VERSION_CODES.P)
 
-    private void joinRoom() {
-        String roomID = binding.hashId.getText().toString().trim();
-        if (TextUtils.isEmpty(roomID)) {
-            binding.hashId.setError("Email is Required");
-        }
-        else {
-            System.out.println("Hey There Doofus - 1");
-            RoomViewModel.joinRoom(roomID);
-        }
-    }
+    //private void joinRoom() {
+        //String roomID = binding.hashId.getText().toString().trim();
+        //if (TextUtils.isEmpty(roomID)) {
+            //binding.hashId.setError("Email is Required");
+       // }
+       //else {
+            //System.out.println("Hey There Doofus - 1");
+            //RoomViewModel.joinRoom(roomID);
+        //}
+    //}
 
 
 
@@ -102,14 +102,14 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 System.out.println("meow");
-                joinRoom();
+                //joinRoom();
             }
         });
-        binding.testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_profileFragment);
-            }
-        });
+        //binding.testButton.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View v) {
+                //Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_profileFragment);
+            //}
+       // });
     }
 }

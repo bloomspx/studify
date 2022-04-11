@@ -80,13 +80,13 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
 
 
     public void onClick(View view) {
-        int id = view.getId();
-        if (id == binding.taskListCreateRoomButton.getId()) {
-            // tasksList = room.getTasks_Lists();
-            RoomViewModel.createRoom(Room);
-            Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
+//        int id = view.getId();
+//        if (id == binding.taskListCreateRoomButton.getId()) {
+//            // tasksList = room.getTasks_Lists();
 //            RoomViewModel.createRoom(Room);
-        }
+//            Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
+////            RoomViewModel.createRoom(Room);
+//        }
 
     }
 
@@ -296,20 +296,21 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
 
         binding.taskListFab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 addTask();
             }
         });
         binding.taskListFab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 addTask();
             }
         });
 
         binding.taskListCreateRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                RoomViewModel.createRoom(Room);
                 Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
             }
         });

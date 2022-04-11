@@ -18,20 +18,7 @@
         android:paddingBottom ="20dp"
         android:paddingTop="20dp"
         >
-        <RelativeLayout
-            android:id="@+id/settingsiconRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <ImageButton
-                android:id="@+id/backButton"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:background="#0000"
-                android:src="@drawable/ic_arrow_back" />
-        </RelativeLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

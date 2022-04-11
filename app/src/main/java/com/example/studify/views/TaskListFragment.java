@@ -28,6 +28,7 @@ import com.example.studify.databinding.DialogUpdateTaskBinding;
 import com.example.studify.databinding.FragmentTaskListBinding;
 import com.example.studify.models.AddTaskModel;
 import com.example.studify.models.RoomModel;
+import com.example.studify.viewmodel.MainActivityViewModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +42,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class TaskListFragment extends Fragment implements View.OnClickListener {
     private @NonNull FragmentTaskListBinding binding;
     private com.example.studify.viewmodel.RoomViewModel RoomViewModel;
+    //private MainActivityViewModel MainActivityViewModel;
     private NavController navController;
 
     private Toolbar toolbar;
@@ -72,21 +74,23 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
         //RoomViewModel = new ViewModelProvider(this).get(RoomViewModel.class);
         //room = new ViewModelProvider(this).get(Room.class);
         RoomViewModel = new ViewModelProvider(this).get(com.example.studify.viewmodel.RoomViewModel.class);
+       // MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         Room = new RoomModel();
         // Room = new ViewModelProvider(this).get(com.example.studify.models.Room.class)
-       // Room =  new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(Room.class);
+        // Room =  new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(Room.class);
         return binding.getRoot();
     }
 
 
     public void onClick(View view) {
-        int id = view.getId();
-        if (id == binding.taskListCreateRoomButton.getId()) {
-           // tasksList = room.getTasks_Lists();
-            RoomViewModel.createRoom(Room);
-            Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
+//        int id = view.getId();
+//        if (id == binding.taskListCreateRoomButton.getId()) {
+//            // tasksList = room.getTasks_Lists();
 //            RoomViewModel.createRoom(Room);
-        }
+//            Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
+////            RoomViewModel.createRoom(Room);
+//        }
+
     }
 
     private void addTask() {
@@ -148,7 +152,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     }
 
     private void updateTask() {
-        AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext(),R.style.CustomAlertDialog);
         DialogUpdateTaskBinding dialogBinding = DialogUpdateTaskBinding.inflate(getLayoutInflater());
         myDialog.setView(dialogBinding.getRoot());
 
@@ -295,20 +299,31 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
 
         binding.taskListFab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 addTask();
             }
         });
         binding.taskListFab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 addTask();
             }
         });
 
         binding.taskListCreateRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                Room.setStartTime(Long.toString(System.currentTimeMillis()));
+                RoomViewModel.createRoom(Room); //Pushes Data to Firebase
+                //RoomViewModel.startGroupTimer(Room.getRoomID());
+                String RoomID = Room.getRoomID();
+                Bundle result = new Bundle();
+                result.putString("RoomID", RoomID);
+                getParentFragmentManager().setFragmentResult("RoomIDdata", result);
+
+                //MainActivityViewModel.joinRoom(Room.getRoomID());
+                System.out.println("******CHECKER********");
+                System.out.println("ROOMID:"+RoomID);
                 Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
             }
         });

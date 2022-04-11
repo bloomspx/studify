@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/roomListFragment">
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.studify.views.RoomFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_pomodoro1">
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -27,6 +27,12 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pomodoroFragment"
+        android:name="com.example.studify.views.PomodoroFragment"
+        android:label="fragment_pomodoro"
+        tools:layout="@layout/fragment_pomodoro" >
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -48,12 +54,21 @@
         <action
             android:id="@+id/action_taskListFragment_to_roomFragment"
             app:destination="@id/roomFragment" />
+        <action
+            android:id="@+id/action_taskListFragment_to_roomListFragmentt"
+            app:destination="@id/roomListFragment" />
+
+
     </fragment>
     <fragment
         android:id="@+id/roomListFragment"
         android:name="com.example.studify.views.RoomListFragment"
         android:label="fragment_room_list"
         tools:layout="@layout/fragment_room_list" >
+
+        <action
+            android:id="@+id/action_roomListFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
         <action
             android:id="@+id/action_roomListFragment_to_taskListFragment"
             app:destination="@id/taskListFragment" />

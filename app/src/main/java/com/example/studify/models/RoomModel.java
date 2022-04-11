@@ -12,19 +12,24 @@ import java.util.UUID;
 public class RoomModel {
     private String roomID;
     private int roomUserCount;
+
     //private DateTime roomTimerStart;
     private ArrayList<String> User_IDs;
     private ArrayList<String> tasks_Lists;
+    private String startTime;
+    private int loop;
     //private Time
     //private HashMap<String,UserProfile> User_List;
 
     public RoomModel()
     {
+        //this.startTime = null;
         this.roomID = UUID.randomUUID().toString();
         this.roomUserCount = 1;
         //this.User_List = null;
         this.User_IDs = null;
         this.tasks_Lists = new ArrayList<String>();
+        this.loop = 1;
         //this.roomTimerStart = LocalDateTime.now();
     }
 
@@ -57,6 +62,19 @@ public class RoomModel {
 
     public void setRoomID(String roomID) {
         this.roomID = roomID;
+    }
+
+    public String getStartTime(){
+        return this.startTime;
+    }
+    public void setStartTime(String startTime){
+        this.startTime = startTime;
+    }
+    public int getLoop(){
+        return this.loop;
+    }
+    public void  setLoop(int loop){
+        this.loop = loop;
     }
 
     public String getRoomID() {

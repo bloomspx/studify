@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(getLayoutInflater());
         UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-
+        System.out.println("In Profile Fragment");
         return binding.getRoot();
 
     }

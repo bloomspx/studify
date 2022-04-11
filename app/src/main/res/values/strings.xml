@@ -16,10 +16,13 @@
     <string name="login_failed">"Login failed"</string>
     <string name="action_forgot_password">Forgot Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
 
     <!-- Strings related to reset_password fragment -->
     <string name="action_reset_password">Reset Password</string>
     <string name="action_back">Back</string>
+    <string name="action_send_reset_email">Send Reset Email</string>
 
     <!-- Strings related to main fragment -->
     <string name="button_profile">Profile</string>
@@ -36,9 +39,12 @@
     <string name="action_delete_profile">Delete Profile</string>
     <string name="action_change_pic">Change Profile Picture</string>
     <string name="prompt_new_username">New Username</string>
+    <string name="button_done">Done</string>
+
 
     <!-- Strings related to room_list -->
     <string name="create_room">Create Room</string>
+    <string name="group_study_room_title">Group Study Rooms</string>
 
     <!-- Strings related to input_task fragment -->
     <string name="add_task">Add Task</string>
@@ -48,4 +54,7 @@
     <string name="add_taskTime_hint">Time...</string>
     <string name="save_task">Save</string>
     <string name="cancel_task">Cancel</string>
+
+    <!-- Strings related to task_list -->
+    <string name="task_list_title">Create Tasks</string>
 </resources>

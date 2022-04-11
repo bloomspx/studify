@@ -42,7 +42,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         super.onStart();
         binding.signUpButton.setOnClickListener(this);
         binding.backButtonSignUp.setOnClickListener(this);
-        binding.signUpGoogleButton.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)

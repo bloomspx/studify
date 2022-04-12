@@ -53,7 +53,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class RoomFragment extends Fragment {
+public class RoomFragment extends Fragment implements View.OnClickListener {
     private @NonNull FragmentRoomBinding binding;
    // private MainActivityViewModel MainActivityViewModel;
     private RoomViewModel roomViewModel;
@@ -76,29 +76,27 @@ public class RoomFragment extends Fragment {
     private RoomModel room;
     private FirebaseAuth firebaseAuth;
 
+
     public RoomFragment() {
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
-    //Hello Min Khant
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        binding.leaveRoom.setOnClickListener(this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentRoomBinding.inflate(getLayoutInflater());
-        //Todo : Import the display data from firebase.
-
-        //MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         roomViewModel = new ViewModelProvider(this).get(RoomViewModel.class);
         System.out.println("In Room Fragment");
         getParentFragmentManager().setFragmentResultListener("RoomIDdata", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 roomID = result.getString("RoomID");
-                //**********
-                //roomID = "de9c6d16-aaa0-4f06-aeef-cdf8cb881a0d";
-                //**********
                 System.out.println(roomID.toString());
                 roomViewModel.startGroupTimer(roomID);
                 db = FirebaseFirestore.getInstance();
@@ -127,8 +125,11 @@ public class RoomFragment extends Fragment {
         return binding.getRoot();
     }
 
+
+
+
+
     public void onClick(View view) {
-        System.out.println("Here");
         int id = view.getId();
         if (id == binding.leaveRoom.getId()) {
             db = FirebaseFirestore.getInstance();
@@ -140,24 +141,9 @@ public class RoomFragment extends Fragment {
 
 
 
-
-
     }
 
 
-
-
-
-
-
-
-
-        @Override
-    public void onStart() {
-        super.onStart();
-
-
-    }
 
 //        FirebaseRecyclerOptions<AddTaskModel> options = new FirebaseRecyclerOptions.Builder<AddTaskModel>()
 //                .setQuery(reference, AddTaskModel.class)

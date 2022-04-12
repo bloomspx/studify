@@ -34,7 +34,6 @@ import io.grpc.internal.JsonUtil;
 
 public class PomodoroFragment extends Fragment implements  View.OnClickListener {
     private @NonNull FragmentPomodoroBinding binding;
-    // private MainActivityViewModel MainActivityViewModel;
     private MainActivityViewModel MainActivityViewModel;
     private int count =1;
 
@@ -60,6 +59,7 @@ public class PomodoroFragment extends Fragment implements  View.OnClickListener 
         int id = view.getId();
         if (id == binding.buttonStartCountdown.getId()) {
             count = Integer.parseInt(binding.editCount.getText().toString());
+            // switching the buttion for Start and Pause
             if(binding.buttonStartCountdown.getText() == "PAUSE"){
                 binding.buttonStartCountdown.setText("START");
             }
@@ -85,6 +85,7 @@ public class PomodoroFragment extends Fragment implements  View.OnClickListener 
                 binding.textClock.setText(timerLeft);
             }
         });
+        //Once the timer is finished, setting the view to the default
         MainActivityViewModel.getIsFinished().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isFinished) {

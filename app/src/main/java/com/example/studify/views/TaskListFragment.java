@@ -42,10 +42,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class TaskListFragment extends Fragment implements View.OnClickListener {
     private @NonNull FragmentTaskListBinding binding;
     private com.example.studify.viewmodel.RoomViewModel RoomViewModel;
-    //private MainActivityViewModel MainActivityViewModel;
     private NavController navController;
 
-    private Toolbar toolbar;
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
 
@@ -61,8 +59,6 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     private String taskName;
     private String taskTime;
 
-    //TaskListFragment()
-    //{Room = new RoomModel();}
     public void setArguments (Bundle args)
     {
         Room = new RoomModel();
@@ -71,27 +67,13 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentTaskListBinding.inflate(getLayoutInflater());
-        //RoomViewModel = new ViewModelProvider(this).get(RoomViewModel.class);
-        //room = new ViewModelProvider(this).get(Room.class);
         RoomViewModel = new ViewModelProvider(this).get(com.example.studify.viewmodel.RoomViewModel.class);
-       // MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         Room = new RoomModel();
-        // Room = new ViewModelProvider(this).get(com.example.studify.models.Room.class)
-        // Room =  new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(Room.class);
         return binding.getRoot();
     }
 
 
-    public void onClick(View view) {
-//        int id = view.getId();
-//        if (id == binding.taskListCreateRoomButton.getId()) {
-//            // tasksList = room.getTasks_Lists();
-//            RoomViewModel.createRoom(Room);
-//            Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
-////            RoomViewModel.createRoom(Room);
-//        }
-
-    }
+    public void onClick(View view) {}
 
     private void addTask() {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext(),R.style.CustomAlertDialog);
@@ -189,12 +171,9 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
                             String err = task.getException().toString();
                             Toast.makeText(getContext(), "update failed "+err, Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
-
                 dialog.dismiss();
-
             }
         });
 
@@ -215,7 +194,6 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
                 dialog.dismiss();
             }
         });
-
         dialog.show();
     }
 

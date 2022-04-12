@@ -243,8 +243,6 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
                         updateTask();
                     }
                 });
-
-
             }
 
             @NonNull

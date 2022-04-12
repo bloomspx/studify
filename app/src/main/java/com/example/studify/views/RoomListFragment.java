@@ -132,6 +132,46 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
         }
         if (id == binding.joinRoomButton.getId()) {
+            db = FirebaseFirestore.getInstance();
+            String roomID = binding.hashId.getText().toString().trim();
+            if (TextUtils.isEmpty(roomID)) {
+                binding.hashId.setError("ID is required");
+
+            }
+            System.out.println("**********Inside Join Room **********");
+
+            docRef = db.collection("rooms").document(roomID);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
+                            db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
+                            Bundle bundle = new Bundle();
+                            bundle.putString("roomID", roomID);
+                            //roomexists = true;
+
+                            Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
+
+                            //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        } else {
+                            binding.hashId.setError("Document does not exist");
+                            //Log.d(TAG, "No such document");
+                        }
+                    } else {
+                        binding.hashId.setError("Request Failed:" + task.getException());
+                        //dLog.d(TAG, "get failed with ", task.getException());
+                    }
+                }
+            });
+        }
+    }
+
+
+
+     /*   else {
             final boolean[] roomexists = {false};
             System.out.println("Detects Join Room Button Click");
             AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext());
@@ -167,7 +207,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                                         Bundle bundle = new Bundle();
                                         bundle.putString("roomID", roomID);
                                         roomexists[0] = true;
-                                        //Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
+                                        Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
 
 
 
@@ -179,7 +219,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                                         //Log.d(TAG, "No such document");
                                     }
                                 } else {
-                                    dialogBinding.hashId.setError("Request Failed:" + task.getException());
+                                    //dialogBinding.hashId.setError("Request Failed:" + task.getException());
                                     //dLog.d(TAG, "get failed with ", task.getException());
                                 }
                             }
@@ -191,19 +231,19 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             });
 
 
-        }
+        }*/
 
-    }
+
 
     //private void joinRoom() {
-        //String roomID = binding.hashId.getText().toString().trim();
-        //if (TextUtils.isEmpty(roomID)) {
-            //binding.hashId.setError("Email is Required");
-       // }
-       //else {
-            //System.out.println("Hey There Doofus - 1");
-            //RoomViewModel.joinRoom(roomID);
-        //}
+    //String roomID = binding.hashId.getText().toString().trim();
+    //if (TextUtils.isEmpty(roomID)) {
+    //binding.hashId.setError("Email is Required");
+    // }
+    //else {
+    //System.out.println("Hey There Doofus - 1");
+    //RoomViewModel.joinRoom(roomID);
+    //}
     //}
 
 
@@ -230,10 +270,10 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             }
         });
         //binding.testButton.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View v) {
-                //Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_profileFragment);
-            //}
-       // });
+        //@Override
+        //public void onClick(View v) {
+        //Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_profileFragment);
+        //}
+        // });
     }
 }

@@ -1,26 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/grey"
+    >
 
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+<!--        <TextView-->
+<!--            android:id="@+id/timer"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginTop="96dp"-->
+<!--            android:fontFamily="@font/redhatdisplay"-->
+<!--            android:text="25:00"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="50sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.498"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/timerHeading"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:text="Timer"
+            android:textSize="30sp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:background="@color/white"
+            />
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="185dp"
+            android:src="@drawable/refresh"/>
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_back"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Focus Level"
+            android:layout_marginTop="60dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:layout_gravity="center"/>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="140dp"
+            android:src="@drawable/pplus"/>
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="96dp"
-        android:fontFamily="@font/redhatdisplay"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:text="25:00"
-        android:textColor="#000000"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:background="@drawable/shaperec"/>
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/txt_radiuborder"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/plus"
+                android:layout_gravity="right"/>
+
+            <TextView
+                android:id="@+id/t2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:text="Tasks"
+                android:textSize="30sp" />
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="246dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/roomRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="243dp" />
+
+                <ImageButton
+                    android:id="@+id/taskListFab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+
+                    android:layout_gravity="bottom|end"
+                    android:background="#0000"
+                    android:src="@drawable/plus" />
+
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+<!--            <CheckBox-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:background="@color/white"-->
+<!--                android:text="task1" />-->
+
+<!--            <CheckBox-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:background="@color/white"-->
+<!--                android:text="task2" />-->
+
+<!--            <CheckBox-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:background="@color/white"-->
+<!--                android:text="task3" />-->
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
+</ScrollView>

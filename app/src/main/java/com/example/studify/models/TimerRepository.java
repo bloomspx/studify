@@ -10,49 +10,40 @@ import com.google.firebase.auth.FirebaseUser;
 public class TimerRepository {
     private Application application;
     private CountDownTimer countDownTimer;
-    private CountDownTimer breakcountDownTimer;
-    private long timeLeftInMilliseconds = 10000;
-    private long breaktimeLeftInMilliseconds = 5000;
+    private long timeLeftInMilliseconds = 30000;
 
     private boolean timerRunning;
     private String timeLeftText;
     private MutableLiveData<String> timeLeftLiveData;
+    private MutableLiveData<Boolean> isFinished;
     private int count = 2;
-    private Boolean isBreak = false;
     private Boolean isFirsttime = true;
 
     public TimerRepository(Application application){
         this.application = application;
         timeLeftLiveData = new MutableLiveData<>();
-
+        isFinished = new MutableLiveData<>();
 
     }
 
 
     public void startStop(int countIn){
-        if(isFirsttime){
-            count = countIn;
-            isFirsttime = false;
+        if (isFirsttime){
+            count = countIn * 2;
+            isFinished.postValue(false);
         }
         if (timerRunning){
-            System.out.println("I'm HERE!");
             stopTimer();
         }
         else{
-            if (!isBreak)
-            {
-                startTimer();
-            }
-            else{
-                startBreakTimer();
-            }
+            startTimer();
         }
 
     }
 
 
     public void startTimer(){
-        timerRunning = true;
+
         countDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
             @Override
             public void onTick(long l) {
@@ -63,65 +54,36 @@ public class TimerRepository {
 
             @Override
             public void onFinish() {
-                isBreak = true;
-                startBreakTimer();
-
-            }
-
-
-        }.start();
-
-    }
-
-    public void startBreakTimer(){
-        timerRunning = true;
-        breakcountDownTimer = new CountDownTimer(breaktimeLeftInMilliseconds, 1000) {
-            @Override
-            public void onTick(long l) {
-                breaktimeLeftInMilliseconds = l;
-                updateBreakTimer();
-
-            }
-
-            @Override
-            public void onFinish() {
-                isBreak = false;
-                int Intcount = (int) count -1;
-                count = Intcount;
-
-
-                if(count > 0) {
-                    timeLeftInMilliseconds = 10000;
-                    breaktimeLeftInMilliseconds= 5000;
+                count = count - 1;
+                System.out.println(count);
+                if (count > 0) {
+                    if (count % 2 == 1) {
+                        timeLeftInMilliseconds = 15000;
+                    } else {
+                        timeLeftInMilliseconds = 30000;
+                    }
                     startTimer();
-
                 }
-                else{
+
+                else if( count == 0) {
+                    timeLeftInMilliseconds = 30000;
+                    timerRunning = false;
+                    isFinished.postValue(true);
                     isFirsttime = true;
-                    timeLeftInMilliseconds = 10000;
-                    breaktimeLeftInMilliseconds= 5000;
-                    timeLeftText = "2:00";
-                    timeLeftLiveData.postValue(timeLeftText);
                 }
-
 
 
             }
-        }.start();
-    }
 
+
+        }.start();
+        timerRunning = true;
+
+    }
 
     public void stopTimer(){
-        if(isBreak = true){
-            breakcountDownTimer.cancel();
-            timerRunning = false;
-        }
-        else{
-            countDownTimer.cancel();
-            timerRunning = false;
-        }
-
-
+        countDownTimer.cancel();
+        timerRunning = false;
     }
 
     public void updateTimer(){
@@ -137,18 +99,7 @@ public class TimerRepository {
 
     }
 
-    public void updateBreakTimer(){
-        int minutes = (int) breaktimeLeftInMilliseconds /60000;
-        int seconds = (int) breaktimeLeftInMilliseconds % 60000 / 1000;
-
-
-        timeLeftText = ""+ minutes;
-        timeLeftText += ":";
-        if  (seconds < 10) timeLeftText += "0";
-        timeLeftText += seconds;
-        timeLeftLiveData.postValue(timeLeftText);
-
-    }
     public MutableLiveData<String>getTimeLeftLiveData(){return timeLeftLiveData;}
+    public MutableLiveData<Boolean>getIsFinished(){return isFinished;}
 
 }

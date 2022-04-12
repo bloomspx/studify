@@ -81,5 +81,8 @@
         android:name="com.example.studify.views.RoomFragment"
         android:label="fragment_room"
         tools:layout="@layout/fragment_room" >
+        <action
+            android:id="@+id/action_roomFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
     </fragment>
 </navigation>

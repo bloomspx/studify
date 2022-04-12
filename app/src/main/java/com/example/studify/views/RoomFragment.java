@@ -46,6 +46,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -72,6 +73,12 @@ public class RoomFragment extends Fragment {
     private adapter madapter;
     private DocumentSnapshot documentSnapshot;
     private RoomModel room;
+    private FirebaseAuth firebaseAuth;
+
+    public RoomFragment() {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+    }
 
 
 
@@ -105,6 +112,7 @@ public class RoomFragment extends Fragment {
                         System.out.println(room.getTasks_Lists());
                         madapter = new adapter(tasks, getContext(),mRecyclerView);
                         mRecyclerView.setAdapter(madapter);
+                        binding.timerHeading.setText(roomID);
                     }
                 });
 
@@ -117,9 +125,32 @@ public class RoomFragment extends Fragment {
         return binding.getRoot();
     }
 
+    public void onClick(View view) {
+        System.out.println("Here");
+        int id = view.getId();
+        if (id == binding.leaveRoom.getId()) {
+            db = FirebaseFirestore.getInstance();
+            // RoomViewModel.createRoom(room.getTasks_Lists());
+            db.collection("rooms").document(roomID).update("user_IDs", FieldValue.arrayRemove(firebaseAuth.getCurrentUser().getUid()));
+            Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
+        }
 
 
-    @Override
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+        @Override
     public void onStart() {
         super.onStart();
 

@@ -16,10 +16,10 @@ public class MainActivityViewModel extends AndroidViewModel {
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
     private MutableLiveData<String> timerLeftLiveData;
-    private MutableLiveData<String> groupTimerLeftLiveDate;
+    private MutableLiveData<Boolean>isFinished;
 
     private TimerRepository timerRepository;
-    private GroupTimeRepository groupTimeRepository;
+
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
@@ -28,10 +28,11 @@ public class MainActivityViewModel extends AndroidViewModel {
         userLiveData = authAppRepository.getUserMutableLiveData();
         loggedOutLiveData = authAppRepository.getLoggedOutLiveData();
         timerRepository = new TimerRepository(application);
-        groupTimeRepository = new GroupTimeRepository(application);
-        timerLeftLiveData = timerRepository.getTimeLeftLiveData();
 
-        groupTimerLeftLiveDate = groupTimeRepository.getTimeLeftLiveData();
+        timerLeftLiveData = timerRepository.getTimeLeftLiveData();
+        isFinished = timerRepository.getIsFinished();
+
+
 
     }
     public void logOut() { authAppRepository.logOut();}
@@ -44,7 +45,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public void startCountdown(int count){timerRepository.startStop(count);}
 
-    public void joinRoom(String roomID){groupTimeRepository.join(roomID);}
+
 
     public MutableLiveData<FirebaseUser> getUserLiveData() {
         return userLiveData;
@@ -57,8 +58,9 @@ public class MainActivityViewModel extends AndroidViewModel {
     public MutableLiveData<String> getTimerLeftLiveData() {
         return timerLeftLiveData;
     }
+    public MutableLiveData<Boolean>getIsFinished(){return isFinished;}
 
 
-    public  MutableLiveData<String> getGroupTimerLeftLiveDate(){return groupTimerLeftLiveDate;}
+
 
 }

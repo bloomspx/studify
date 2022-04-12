@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class TimerRepository {
     private Application application;
     private CountDownTimer countDownTimer;
-    private long timeLeftInMilliseconds = 30000;
+    private long timeLeftInMilliseconds = 1500000;
 
     private boolean timerRunning;
     private String timeLeftText;
@@ -58,15 +58,15 @@ public class TimerRepository {
                 System.out.println(count);
                 if (count > 0) {
                     if (count % 2 == 1) {
-                        timeLeftInMilliseconds = 15000;
+                        timeLeftInMilliseconds = 300000;
                     } else {
-                        timeLeftInMilliseconds = 30000;
+                        timeLeftInMilliseconds = 1500000;
                     }
                     startTimer();
                 }
 
                 else if( count == 0) {
-                    timeLeftInMilliseconds = 30000;
+                    timeLeftInMilliseconds = 1500000;
                     timerRunning = false;
                     isFinished.postValue(true);
                     isFirsttime = true;

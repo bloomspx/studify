@@ -14,31 +14,21 @@
 
         <TextView
             android:id="@+id/text_clock"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="84dp"
-            android:background="@drawable/shaperec"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@drawable/ellipse"
             android:gravity="center"
             android:text="25:00"
-            android:textSize="30sp"
+            android:fontFamily="@font/poppinsbold"
+
+            android:textSize="45sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button_start_countdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="48dp"
-            android:text="Start"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_count" />
+
 
         <EditText
             android:id="@+id/edit_count"
@@ -52,7 +42,20 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_clock" />
-
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonStartCountdown"
+            style="@style/profile_white_button_style"
+            android:text="Start"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="120dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:backgroundTint="@color/turquoise"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_count" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

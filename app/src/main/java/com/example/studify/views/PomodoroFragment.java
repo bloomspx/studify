@@ -78,7 +78,6 @@ public class PomodoroFragment extends Fragment implements  View.OnClickListener 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // LiveData Observer - if succesful, navigate back to AuthActivity
         MainActivityViewModel.getTimerLeftLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String timerLeft) {

@@ -26,5 +26,6 @@
     <color name="darkgreen">#c0c0c0</color>
     <color name="lightgreen">#89EFAF</color>
     <color name="transparent_black">#4D000000</color>
+    <color name="red">#FF0000</color>
 
 </resources>

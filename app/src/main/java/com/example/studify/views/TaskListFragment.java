@@ -180,6 +180,8 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println(key);
+
                 reference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -191,6 +193,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
                         }
                     }
                 });
+                // Todo Create a task ID: Delete it NOW
                 dialog.dismiss();
             }
         });

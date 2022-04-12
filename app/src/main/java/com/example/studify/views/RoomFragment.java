@@ -112,7 +112,7 @@ public class RoomFragment extends Fragment implements View.OnClickListener {
                         System.out.println(room.getTasks_Lists());
                         madapter = new adapter(tasks, getContext(),mRecyclerView);
                         mRecyclerView.setAdapter(madapter);
-                        binding.timerHeading.setText(roomID);
+                        binding.RoomIDCard.setText("Room ID: " + roomID);
                     }
                 });
 

@@ -21,8 +21,8 @@
                     android:id="@+id/roomListBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image" />
         </RelativeLayout>
 
         <androidx.constraintlayout.widget.Guideline
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@color/white"
+            android:background="#F2F4F7"
             app:layout_constraintTop_toBottomOf="@id/midGuideline"
             app:layout_constraintBottom_toBottomOf="@id/endGuideline">
 
@@ -98,9 +98,12 @@
                 <EditText
                     android:id="@+id/hash_id"
                     style="@style/user_text_input"
+                    android:backgroundTint="@color/colorWhite"
                     android:layout_width="200dp"
                     android:layout_marginTop="30dp"
                     android:hint="@string/add_room_id"
+                    android:textStyle="bold"
+                    android:textColorHint="@color/colorBlue"
                     android:inputType="textPassword"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lineDivider" />

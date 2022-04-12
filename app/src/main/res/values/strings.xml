@@ -49,6 +49,7 @@
     <string name="button_create_room">Create Room</string>
     <string name="add_room_id">Enter Room ID</string>
     <string name="room_id">Room ID:</string>
+    <string name="button_leave_room">Leave Room</string>
 
     <!-- Strings related to input_task fragment -->
     <string name="add_task">Add Task</string>

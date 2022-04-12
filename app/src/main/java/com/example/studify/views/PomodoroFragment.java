@@ -2,6 +2,8 @@ package com.example.studify.views;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +60,7 @@ public class PomodoroFragment extends Fragment implements  View.OnClickListener 
     public void onClick(View view) {
         int id = view.getId();
         if (id == binding.buttonStartCountdown.getId()) {
-            count = Integer.parseInt(binding.editCount.getText().toString());
+            String count = binding.editCount.getText().toString();
             // switching the buttion for Start and Pause
             if(binding.buttonStartCountdown.getText() == "PAUSE"){
                 binding.buttonStartCountdown.setText("START");
@@ -66,13 +68,11 @@ public class PomodoroFragment extends Fragment implements  View.OnClickListener 
             else{
                 binding.buttonStartCountdown.setText("PAUSE");
             }
-
-            MainActivityViewModel.startCountdown(count);
-
+            if (TextUtils.isEmpty(count)) {
+                count = "1";
+            }
+            MainActivityViewModel.startCountdown(Integer.parseInt(count));
         }
-
-
-
     }
 
     @Override

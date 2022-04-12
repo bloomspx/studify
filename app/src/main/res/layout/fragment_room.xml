@@ -13,21 +13,10 @@
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:text="@string/room_id"
+        android:backgroundTint="@color/grey"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/leaveRoom"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:background="#0000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back" />
 
     <TextView
         android:id="@+id/timer"
@@ -63,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/endGuideline">
+        app:layout_constraintBottom_toBottomOf="@id/endGuideline">
 
             <TextView
                 android:id="@+id/taskHeading"
@@ -97,6 +86,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.85"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/leaveRoom"
+        style="@style/profile_white_button_style"
+        android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/ic_baseline_logout_24"
+        android:drawableTint="@color/colorWhite"
+        android:backgroundTint="@color/colorRed"
+        android:text="@string/button_leave_room"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/endGuideline"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

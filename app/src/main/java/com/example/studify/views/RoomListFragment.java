@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     private com.google.firebase.firestore.FieldValue FieldValue;
     private FirebaseFirestore db;
+    private static final String TAG = "RoomListFragment";
     private DocumentReference docRef;
 
     public RoomListFragment() {
@@ -57,12 +59,12 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         binding = FragmentRoomListBinding.inflate(getLayoutInflater());
+
         UserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         RoomViewModel = new ViewModelProvider(this).get(com.example.studify.viewmodel.RoomViewModel.class);
-
-        //room = new ViewModelProvider(this).get(room)
 
         return binding.getRoot();
 
@@ -75,103 +77,63 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         binding.joinRoomButton.setOnClickListener(this);
     }
 
-    //@RequiresApi(api = Build.VERSION_CODES.P)
-    //@Override
-    /*public void onClick(View view) {
-        int id = view.getId();
 
-        if (id == binding.createRoomButton.getId()) {
-           // RoomViewModel.createRoom(room.getTasks_Lists());
-            Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
-        }
-        if (id == binding.joinRoomButton.getId()) {
-            int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-            int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-            System.out.println("yes");
-
-            View popupView = getLayoutInflater().inflate(R.layout.join_room_popup, null);
-            PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
-            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-            //close the popup window when cross is clicked
-            ImageButton close = (ImageButton) popupView.findViewById(R.id.closeButton);
-            Button join = (Button) popupView.findViewById(R.id.finalJoinRoom);
-            close.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View popupView) {
-                    popupWindow.dismiss();
-                }
-            });
-            join.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View popupView) {
-                    popupWindow.dismiss();
-
-                    EditText taskName = (EditText) popupWindow.getContentView().findViewById(R.id.hashId);
-                    String hashID = taskName.getText().toString();
-                    //Navigation.n
-                }
-            });
-        }
-//        else if(id == binding.joinRoomButton.getId())
-//        {
-//            System.out.println("HERE***********");
-//        }
-//        else if(id == binding.joinRoomButton.getId())
-//        {
-//            System.out.println("HEY");
-//            //System.out.println("HEREERERE");
-//            joinRoom();
-//        }
-    }*/
-    //@RequiresApi(api = Build.VERSION_CODES.P)
+    @RequiresApi(api = Build.VERSION_CODES.P)
     public void onClick(View view) {
         int id = view.getId();
 
         if (id == binding.createRoomButton.getId()) {
-            // RoomViewModel.createRoom(room.getTasks_Lists());
+            Log.i(TAG, "Create Room Button Clicked");
             Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
         }
         if (id == binding.joinRoomButton.getId()) {
             db = FirebaseFirestore.getInstance();
             String roomID = binding.hashId.getText().toString().trim();
             if (TextUtils.isEmpty(roomID)) {
+                Log.w(TAG, "Invalid ID enter");
                 binding.hashId.setError("ID is required");
 
-            }
-            System.out.println("**********Inside Join Room **********");
+            } else {
+                Log.i(TAG, "Join Room Activated");
 
-            docRef = db.collection("rooms").document(roomID);
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
-                            db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
-                            Bundle bundle = new Bundle();
-                            bundle.putString("roomID", roomID);
-                            //roomexists = true;
+                docRef = db.collection("rooms").document(roomID);
+                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
+                                db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
+                                Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
 
-                            Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
 
-                            //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                            } else {
+                                binding.hashId.setError("Document does not exist");
+                                Log.d(TAG, "No such document");
+                            }
                         } else {
-                            binding.hashId.setError("Document does not exist");
-                            //Log.d(TAG, "No such document");
+                            binding.hashId.setError("Request Failed:" + task.getException());
+                            Log.d(TAG, "get failed with ", task.getException());
                         }
-                    } else {
-                        binding.hashId.setError("Request Failed:" + task.getException());
-                        //dLog.d(TAG, "get failed with ", task.getException());
                     }
-                }
-            });
+                });
+            }
         }
     }
+}
 
 
 
 
+
+
+
+
+    /* Comments : This is a Dump Space for reduntant code
+
+
+     */
      /*   else {
             final boolean[] roomexists = {false};
             System.out.println("Detects Join Room Button Click");
@@ -232,25 +194,56 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
             });
 
 
-        }*/
+        }
+        //@RequiresApi(api = Build.VERSION_CODES.P)
+    //@Override
+    /*public void onClick(View view) {
+        int id = view.getId();
 
+        if (id == binding.createRoomButton.getId()) {
+           // RoomViewModel.createRoom(room.getTasks_Lists());
+            Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_taskListFragment);
+        }
+        if (id == binding.joinRoomButton.getId()) {
+            int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+            int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+            System.out.println("yes");
 
+            View popupView = getLayoutInflater().inflate(R.layout.join_room_popup, null);
+            PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+            //close the popup window when cross is clicked
+            ImageButton close = (ImageButton) popupView.findViewById(R.id.closeButton);
+            Button join = (Button) popupView.findViewById(R.id.finalJoinRoom);
+            close.setOnClickListener(new View.OnClickListener() {
 
-    //private void joinRoom() {
-    //String roomID = binding.hashId.getText().toString().trim();
-    //if (TextUtils.isEmpty(roomID)) {
-    //binding.hashId.setError("Email is Required");
-    // }
-    //else {
-    //System.out.println("Hey There Doofus - 1");
-    //RoomViewModel.joinRoom(roomID);
-    //}
-    //}
+                public void onClick(View popupView) {
+                    popupWindow.dismiss();
+                }
+            });
+            join.setOnClickListener(new View.OnClickListener() {
 
+                public void onClick(View popupView) {
+                    popupWindow.dismiss();
 
-
-    // Navigator Instantiation
-    @Override
+                    EditText taskName = (EditText) popupWindow.getContentView().findViewById(R.id.hashId);
+                    String hashID = taskName.getText().toString();
+                    //Navigation.n
+                }
+            });
+        }
+//        else if(id == binding.joinRoomButton.getId())
+//        {
+//            System.out.println("HERE***********");
+//        }
+//        else if(id == binding.joinRoomButton.getId())
+//        {
+//            System.out.println("HEY");
+//            //System.out.println("HEREERERE");
+//            joinRoom();
+//        }
+    }
+     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
@@ -270,11 +263,26 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                 //joinRoom();
             }
         });
-        //binding.testButton.setOnClickListener(new View.OnClickListener() {
-        //@Override
-        //public void onClick(View v) {
-        //Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_profileFragment);
-        //}
-        // });
+
     }
 }
+
+
+
+
+
+
+    //private void joinRoom() {
+    //String roomID = binding.hashId.getText().toString().trim();
+    //if (TextUtils.isEmpty(roomID)) {
+    //binding.hashId.setError("Email is Required");
+    // }
+    //else {
+    //System.out.println("Hey There Doofus - 1");
+    //RoomViewModel.joinRoom(roomID);
+    //}
+    //}
+
+      */
+
+

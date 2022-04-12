@@ -94,7 +94,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     }
 
     private void addTask() {
-        AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext(),R.style.CustomAlertDialog);
         DialogInputTaskBinding dialogBinding = DialogInputTaskBinding.inflate(getLayoutInflater());
         myDialog.setView(dialogBinding.getRoot());
 

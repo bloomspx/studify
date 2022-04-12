@@ -38,9 +38,4 @@ public class RoomViewModel extends AndroidViewModel {
 
     public  MutableLiveData<String> getGroupTimerLeftLiveDate(){return groupTimerLeftLiveDate;}
 
-
-    //public void addTask(String taskName) { roomAppRepository.addTask(taskName); }
-
-
-    //public void updateTask(String taskName) { roomAppRepository.updateTask(taskName); }
 }

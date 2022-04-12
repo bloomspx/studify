@@ -171,7 +171,6 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
 
 
 
-
      /*   else {
             final boolean[] roomexists = {false};
             System.out.println("Detects Join Room Button Click");

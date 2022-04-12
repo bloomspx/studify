@@ -32,39 +32,17 @@ import java.util.ArrayList;
 
 import io.grpc.internal.JsonUtil;
 
-public class PomodoroFragment extends Fragment {
+public class PomodoroFragment extends Fragment implements  View.OnClickListener {
     private @NonNull FragmentPomodoroBinding binding;
     // private MainActivityViewModel MainActivityViewModel;
-    private RoomViewModel roomViewModel;
-    private NavController navController;
-    private String roomID = "";
-    private ArrayList<String> task_list = null;
+    private MainActivityViewModel MainActivityViewModel;
+    private int count =1;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPomodoroBinding.inflate(getLayoutInflater());
-        System.out.println("IN POMODORO FRAGMENT");
-        //Todo : Import the display data from firebase.
-
-        //MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        roomViewModel = new ViewModelProvider(this).get(RoomViewModel.class);
-        System.out.println("In Room Fragment");
-        getParentFragmentManager().setFragmentResultListener("RoomIDdata", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                roomID = result.getString("RoomID");
-                //**********
-                //roomID = "de9c6d16-aaa0-4f06-aeef-cdf8cb881a0d";
-                //**********
-                System.out.println(roomID.toString());
-                roomViewModel.startGroupTimer(roomID);
-
-            }
-
-        });
-
-
+        MainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
         return binding.getRoot();
     }
@@ -72,20 +50,52 @@ public class PomodoroFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        binding.buttonStartCountdown.setOnClickListener(this);
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == binding.buttonStartCountdown.getId()) {
+            count = Integer.parseInt(binding.editCount.getText().toString());
+            if(binding.buttonStartCountdown.getText() == "PAUSE"){
+                binding.buttonStartCountdown.setText("START");
+            }
+            else{
+                binding.buttonStartCountdown.setText("PAUSE");
+            }
+
+            MainActivityViewModel.startCountdown(count);
+
+        }
+
+
+
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
-        roomViewModel.getGroupTimerLeftLiveDate().observe(getViewLifecycleOwner(), new Observer<String>() {
+        // LiveData Observer - if succesful, navigate back to AuthActivity
+        MainActivityViewModel.getTimerLeftLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String timerLeft) {
-                //binding.timer.setText(timerLeft);
+                binding.textClock.setText(timerLeft);
             }
         });
+        MainActivityViewModel.getIsFinished().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isFinished) {
+                if(isFinished){
+                    binding.textClock.setText("25:00");
+                    binding.buttonStartCountdown.setText("Start");
+                    binding.editCount.setText("");
+                }
+            }
+        });
+
     }
 
 

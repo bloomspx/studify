@@ -1,77 +1,59 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E5E5E5"
-    android:orientation="vertical"
-    android:gravity="center"
-    >
-    <LinearLayout
-        android:id="@+id/titleCard"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation = "vertical"
-        android:background="@drawable/round_rect"
-        android:gravity="center"
-        android:showDividers="middle"
-        android:divider="@drawable/divider"
-        android:paddingBottom ="20dp"
-        android:paddingTop="20dp"
-        >
+        android:padding="10dp"
+        tools:context=".views.MainActivity">
+
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pomodoro"
-            android:textSize= "27sp"
-            android:textStyle="bold"
-
-            >
-
-        </TextView>
-
-    </LinearLayout>
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background">
-
-        <TextView
-            android:id="@+id/pomoTime"
+            android:id="@+id/text_clock"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:background="@drawable/circle_text"
-            android:gravity="center_horizontal|center_vertical"
-            android:layout_gravity="center"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/shaperec"
+            android:gravity="center"
             android:text="25:00"
-            android:textAlignment="gravity"
-            android:textSize="40sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppinsblack">
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </TextView>
-    </FrameLayout>
-    <LinearLayout
-        android:id="@+id/sessionsCard"
-        android:layout_height="fill_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/round_rect_sessions"
-        android:padding="20dp">
-        <TextView
+        <Button
+            android:id="@+id/button_start_countdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "Tasks"
-            android:textStyle="bold"
-            android:textSize="22dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="40dp">
-        </TextView>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tasksRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="48dp"
+            android:text="Start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_count" />
 
-    </LinearLayout>
-</LinearLayout>
+        <EditText
+            android:id="@+id/edit_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:ems="10"
+            android:hint="Count Number"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_clock" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

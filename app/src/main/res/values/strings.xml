@@ -45,6 +45,9 @@
     <!-- Strings related to room_list -->
     <string name="create_room">Create Room</string>
     <string name="group_study_room_title">Group Study Rooms</string>
+    <string name="button_join_room">Join Room</string>
+    <string name="button_create_room">Create Room</string>
+    <string name="add_room_id">Enter Room ID</string>
 
     <!-- Strings related to input_task fragment -->
     <string name="add_task">Add Task</string>

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import android.text.TextUtils;
@@ -32,11 +33,14 @@ import com.example.studify.models.RoomModel;
 import com.example.studify.viewmodel.UserViewModel;
 import com.example.studify.viewmodel.RoomViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 
 public class RoomListFragment extends Fragment implements View.OnClickListener {
@@ -45,6 +49,8 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
     private RoomViewModel RoomViewModel;
     private RoomModel room;
+    private String roomID;
+    private ArrayList<String> user_IDs;
     private FirebaseAuth firebaseAuth;
     private com.google.firebase.firestore.FieldValue FieldValue;
     private FirebaseFirestore db;
@@ -88,7 +94,10 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         }
         if (id == binding.joinRoomButton.getId()) {
             db = FirebaseFirestore.getInstance();
-            String roomID = binding.hashId.getText().toString().trim();
+            roomID = binding.hashId.getText().toString().trim();
+            Bundle result = new Bundle();
+            result.putString("RoomID", roomID);
+            getParentFragmentManager().setFragmentResult("RoomIDdata", result);
             if (TextUtils.isEmpty(roomID)) {
                 Log.w(TAG, "Invalid ID enter");
                 binding.hashId.setError("ID is required");
@@ -103,8 +112,19 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
-                                db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
+                                DocumentReference docRef = db.collection("rooms").document(roomID);
+                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        room = documentSnapshot.toObject(RoomModel.class);
+                                        user_IDs =  room.getUser_IDs();
+                                        if(user_IDs.contains(firebaseAuth.getCurrentUser().getUid())==false)
+                                        {
+                                            db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
+                                            db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
+                                        }
+                                    }
+                                });
                                 Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
 
 

@@ -5,14 +5,20 @@ import com.google.type.DateTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+
+
+
+
+
 public class RoomModel {
     private String roomID;
     private int roomUserCount;
-
     //private DateTime roomTimerStart;
     private ArrayList<String> User_IDs;
     private ArrayList<String> tasks_Lists;
@@ -24,7 +30,7 @@ public class RoomModel {
     public RoomModel()
     {
         //this.startTime = null;
-        this.roomID = UUID.randomUUID().toString();
+        this.roomID = RandomString.getAlphaNumericString(5);
         this.roomUserCount = 1;
         //this.User_List = null;
         this.User_IDs = null;

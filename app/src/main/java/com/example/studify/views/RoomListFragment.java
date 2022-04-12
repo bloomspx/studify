@@ -89,6 +89,9 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         if (id == binding.joinRoomButton.getId()) {
             db = FirebaseFirestore.getInstance();
             String roomID = binding.hashId.getText().toString().trim();
+            Bundle result = new Bundle();
+            result.putString("RoomID", roomID);
+            getParentFragmentManager().setFragmentResult("RoomIDdata", result);
             if (TextUtils.isEmpty(roomID)) {
                 Log.w(TAG, "Invalid ID enter");
                 binding.hashId.setError("ID is required");

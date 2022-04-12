@@ -57,6 +57,7 @@ public class RoomFragment extends Fragment {
     private @NonNull FragmentRoomBinding binding;
    // private MainActivityViewModel MainActivityViewModel;
     private RoomViewModel roomViewModel;
+    private String dummy;
     private NavController navController;
     private String roomID = "";
     private ArrayList<String> task_list = null;
@@ -79,6 +80,7 @@ public class RoomFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
+    //Hello Min Khant
 
 
 

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/grey"
-    >
-
-
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey">
 
-    android:orientation="vertical">
-
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
 
 <!--        <TextView-->
 <!--            android:id="@+id/timer"-->
@@ -37,14 +34,25 @@ android:background="@color/grey"
         <EditText
             android:id="@+id/timerHeading"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:text=""
-            android:textSize="25sp"
-            android:fontFamily="@font/poppinsblack"
+            android:layout_height="170dp"
             android:layout_marginTop="0dp"
-            android:gravity="center"
             android:background="@color/white"
-            />
+            android:fontFamily="@font/poppinsblack"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text=""
+            android:textSize="25sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Room ID:"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            android:textSize="32sp"
+            android:fontFamily="@font/poppinsblack"
+            android:background="@color/white"/>
 <!--        <androidx.constraintlayout.utils.widget.ImageFilterButton-->
 <!--            android:layout_width="40dp"-->
 <!--            android:layout_height="40dp"-->
@@ -85,31 +93,41 @@ android:background="@color/grey"
         android:text="25:00"
         android:textColor="@color/white"
         android:textSize="45sp"
-        android:layout_marginTop="90dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:layout_gravity="center"
         android:background="@drawable/ellipse"/>
-    <FrameLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Tasks"
+        android:textSize="30sp" />
+<!--    <FrameLayout-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="800dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/txt_radiuborder"/>
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="800dp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:background="@drawable/txt_radiuborder"/>-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
-            android:background="@color/white"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:orientation="vertical">-->
 <!--            <ImageView-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
@@ -117,24 +135,16 @@ android:background="@color/grey"
 <!--                android:src="@drawable/plus"-->
 <!--                android:layout_gravity="right"/>-->
 
-            <TextView
-                android:id="@+id/t2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/white"
-                android:text="Tasks"
-                android:textSize="30sp" />
 
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="246dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/roomRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="246dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/roomRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="243dp" />
+                android:layout_height="wrap_content" />
 
 <!--                <ImageButton-->
 <!--                    android:id="@+id/taskListFab"-->
@@ -147,7 +157,7 @@ android:background="@color/grey"
 <!--                    android:src="@drawable/plus" />-->
 
 
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 <!--            <CheckBox-->
 <!--                android:layout_width="wrap_content"-->
@@ -169,8 +179,8 @@ android:background="@color/grey"
 <!--                android:layout_marginLeft="20dp"-->
 <!--                android:background="@color/white"-->
 <!--                android:text="task3" />-->
-        </LinearLayout>
-    </FrameLayout>
+<!--        </LinearLayout>-->
+<!--    </FrameLayout>-->
 
-</LinearLayout>
+    </LinearLayout>
 </ScrollView>

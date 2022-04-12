@@ -56,15 +56,17 @@ public class TimerRepository {
             public void onFinish() {
                 count = count - 1;
                 System.out.println(count);
+                // check still count left or not
                 if (count > 0) {
                     if (count % 2 == 1) {
-                        timeLeftInMilliseconds = 300000;
+                        timeLeftInMilliseconds = 300000;// for breaktime
                     } else {
-                        timeLeftInMilliseconds = 1500000;
+                        timeLeftInMilliseconds = 1500000;// for studytime
                     }
                     startTimer();
                 }
 
+                //Once finish loop, resetting all the values to default.
                 else if( count == 0) {
                     timeLeftInMilliseconds = 1500000;
                     timerRunning = false;
@@ -86,6 +88,7 @@ public class TimerRepository {
         timerRunning = false;
     }
 
+    //converting timeLeftInMilliseconds in to String in Format "MM:SS"
     public void updateTimer(){
         int minutes = (int) timeLeftInMilliseconds /60000;
         int seconds = (int) timeLeftInMilliseconds % 60000 / 1000;

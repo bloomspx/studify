@@ -11,7 +11,7 @@
     <string name="prompt_confirmpassword">Confirm Password</string>
     <string name="action_register">Register</string>
     <string name="action_sign_in">Sign in</string>
-    <string name="welcome">"Welcome!"</string>
+    <string name="welcome">"Welcome"</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="action_forgot_password">Forgot Password</string>

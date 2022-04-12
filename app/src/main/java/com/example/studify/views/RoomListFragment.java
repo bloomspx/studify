@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -30,6 +31,7 @@ import com.example.studify.R;
 import com.example.studify.databinding.FragmentRoomListBinding;
 import com.example.studify.databinding.DialogJoinRoomBinding;
 import com.example.studify.models.RoomModel;
+import com.example.studify.models.UserProfile;
 import com.example.studify.viewmodel.UserViewModel;
 import com.example.studify.viewmodel.RoomViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -83,6 +85,19 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
         binding.joinRoomButton.setOnClickListener(this);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // LiveData Observer for UserProfile
+        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+            @Override
+            public void onChanged(UserProfile userProfile) {
+                if (userProfile != null) {
+                    binding.WelcomeCard.setText("Welcome, " + userProfile.getName() + "!");
+                }
+            }
+        });
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     public void onClick(View view) {

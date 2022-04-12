@@ -9,7 +9,7 @@
         android:id="@+id/pomodoroFragment"
         android:enabled="true"
         android:title=" "
-        android:icon="@drawable/app_logo"/>
+        android:icon="@drawable/new_app_logo"/>
 
     <item
         android:id="@+id/profileFragment"

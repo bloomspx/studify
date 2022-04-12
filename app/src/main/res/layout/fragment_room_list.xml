@@ -10,31 +10,19 @@
         <RelativeLayout
             android:id="@+id/roomListTopContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
             app:layout_constraintHeight_percent="0.5"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/midGuideline">
 
                 <ImageView
                     android:id="@+id/roomListBackground"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image" />
-
-                <TextView
-                    android:id="@+id/WelcomeCard"
-                    android:text="@string/welcome"
-                    android:textSize="40dp"
-                    android:fontFamily="@font/redhatdisplaybold"
-                    android:backgroundTint="@color/transparent"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/roomListBackground"
-                    android:layout_alignTop="@id/roomListBackground"
-                    android:layout_alignRight="@id/roomListBackground"
-                    android:layout_alignBottom="@id/roomListBackground"
-                    android:gravity="center"/>
+                    android:src="@drawable/image"
+                    android:scaleType="centerCrop"/>
         </RelativeLayout>
 
         <androidx.constraintlayout.widget.Guideline
@@ -42,48 +30,87 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5"/>
+            app:layout_constraintGuide_percent="0.35"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/roomListBottomContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintHeight_percent="0.5"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/midGuideline">
+            app:layout_constraintTop_toBottomOf="@id/midGuideline"
+            app:layout_constraintBottom_toBottomOf="@id/endGuideline">
 
-                <EditText
-                    android:id="@+id/hash_id"
-                    style="@style/user_text_input"
+                <TextView
+                    android:id="@+id/WelcomeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:hint="@string/add_room_id"
-                    android:inputType="textPassword"
+                    android:backgroundTint="@color/transparent"
+                    android:fontFamily="@font/redhatdisplaybold"
+                    android:gravity="start"
+                    android:text="@string/welcome"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/createRoomButton"
                     style="@style/profile_white_button_style"
-                    android:layout_width="140dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:drawableLeft="@drawable/ic_baseline_mode_edit_24"
                     android:drawableTint="@color/turquoise"
                     android:text="@string/button_create_room"
                     android:textColor="@color/turquoise"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
                     android:gravity="center"
-                    app:layout_constraintEnd_toStartOf="@+id/joinRoomButton"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hash_id" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/WelcomeCard"/>
+
+                <View
+                    android:id="@+id/lineDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="25dp"
+                    android:background="#c0c0c0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/createRoomButton" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@color/colorWhite"
+                    android:text="OR"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/createRoomButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/hash_id"
+                    style="@style/user_text_input"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="30dp"
+                    android:hint="@string/add_room_id"
+                    android:inputType="textPassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lineDivider" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/joinRoomButton"
                     style="@style/profile_white_button_style"
                     android:layout_width="140dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
                     android:drawableLeft="@drawable/ic_baseline_logout_24"
@@ -92,8 +119,8 @@
                     android:textColor="@color/colorRed"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/createRoomButton"
-                    app:layout_constraintTop_toBottomOf="@id/hash_id" />
+                    app:layout_constraintStart_toEndOf="@+id/hash_id"
+                    app:layout_constraintTop_toBottomOf="@id/lineDivider" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -46,6 +46,7 @@ public class GroupTimeRepository {
     }
 
     public void join(String RoomID){
+        //retriving room from firestore according the RoomID
         DocumentReference docRef = db.collection("rooms").document(RoomID);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -53,10 +54,12 @@ public class GroupTimeRepository {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        System.out.println("Doument Data :" + document.getData());
+                        //System.out.println("Doument Data :" + document.getData());
                         room.setLoop(Integer.parseInt(document.get("loop").toString()));
                         room.setRoomID(document.get("roomID").toString());
-                        if(document.get("startTime") != null)
+
+                        //checking the room has startTime or not
+                        if(document.get("startTime") != null)//if there is
                         {
                             room.setStartTime(document.get("startTime").toString());
                             System.out.println(room.getRoomID());
@@ -64,31 +67,33 @@ public class GroupTimeRepository {
                             System.out.println(room.getStartTime());
                             long currentTime = System.currentTimeMillis();
                             long startTime = Long.parseLong(room.getStartTime());
-                            int finishedCount = (int)(currentTime - startTime) / 1500000;
-                            count = room.getLoop() - finishedCount;
-                            timeLeftInMilliseconds = 1500000- ((currentTime - startTime) % 1500000);
+                            int finishedCount = (int)(currentTime - startTime) / 1500000; // calculating how much 25min time loop has passed once he join the room
+                            count = room.getLoop() - finishedCount; // calculating the loop left
+                            timeLeftInMilliseconds = 1500000- ((currentTime - startTime) % 1500000); // calculating how much time is loop left in the first loop
                             breaktimeLeftInMilliseconds = 300000;
+
+                            // running the countdown timer
                             while(count > 0){
                                 //isRunning.postValue(true);
                                 startTimer();
                                 count = count -1;
                             }
                         }
-                        else
-                        //String currentTime = Long.toString(System.currentTimeMillis());
+                        else // if there is no starttime in the room that is retrived with RoomID
+
                         {
+                            //storing the currenttime in milliseconds as the starttime in the room from firestore
                             DocumentReference washingtonRef = db.collection("rooms").document("X0BnGnpkgifMHgldCYPA");
 
-// Set the "isCapital" field of the city 'DC'
                             washingtonRef
                                     .update("startTime", System.currentTimeMillis())
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            System.out.println("Success");
+                                            //System.out.println("Success");
+                                            //running the countdown timer from the loop 1
                                             breaktimeLeftInMilliseconds =300000;
                                             timeLeftInMilliseconds = 1500000;
-                                            //startBreakTimer();// for waiting the group mate 5 min
                                             count = room.getLoop();
                                             while(count>0){
                                                 startTimer();
@@ -100,11 +105,11 @@ public class GroupTimeRepository {
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            //Log.w(TAG, "Error updating document", e);
-                                            System.out.println("Error");
+
+                                            //System.out.println("Error");
                                         }
                                     });
-                            //isRunning.postValue(true);
+
 
 
 
@@ -166,6 +171,7 @@ public class GroupTimeRepository {
         }.start();
     }
 
+    //converting timeLeftInMilliseconds to String in format "MM:SS"
     public void updateTimer() {
         int minutes = (int) timeLeftInMilliseconds / 60000;
         int seconds = (int) timeLeftInMilliseconds % 60000 / 1000;
@@ -179,6 +185,7 @@ public class GroupTimeRepository {
 
     }
 
+    //converting breaktimeLeftInMilliseconds to String in format "MM:SS"
     public void updateBreakTimer() {
         int minutes = (int) breaktimeLeftInMilliseconds / 60000;
         int seconds = (int) breaktimeLeftInMilliseconds % 60000 / 1000;
@@ -198,8 +205,5 @@ public class GroupTimeRepository {
 
     public MutableLiveData<String> getTimeLeftLiveData() {
         return timeLeftLiveData;
-    }
-    public MutableLiveData<Boolean> getIsRunning() {
-        return isRunning;
     }
 }

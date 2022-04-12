@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_room_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.MainActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fragment_room_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".views.RoomListFragment">
+    android:layout_height="wrap_content"
+    tools:context=".views.RoomListFragment">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/roomListBackground"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="match_parent"
             android:src="@drawable/image"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/midGuideline"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -27,131 +24,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/createRoomButton"
-            style="@style/profile_white_button_style"
-            android:backgroundTint="@color/turquoise"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="@string/create_room"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView2"/>
+            app:layout_constraintGuide_percent="0.5"/>
 
         <EditText
             android:id="@+id/hash_id"
             style="@style/user_text_input"
-            android:layout_marginTop="16dp"
-            android:hint="Enter Room ID"
+            android:layout_marginTop="20dp"
+            android:hint="@string/add_room_id"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView2"/>
+            app:layout_constraintTop_toBottomOf="@id/midGuideline"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/createRoomButton"
+            style="@style/profile_white_button_style"
+            android:layout_width="140dp"
+            android:drawableLeft="@drawable/ic_baseline_mode_edit_24"
+            android:drawableTint="@color/turquoise"
+            android:text="@string/button_create_room"
+            android:textColor="@color/turquoise"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@+id/joinRoomButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hash_id"
+            app:layout_constraintBottom_toBottomOf="@id/endGuideline"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/joinRoomButton"
             style="@style/profile_white_button_style"
-            android:layout_marginTop="27dp"
-            android:backgroundTint="@color/turquoise"
+            android:layout_width="140dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:drawableLeft="@drawable/ic_baseline_logout_24"
+            android:drawableTint="@color/colorRed"
+            android:text="@string/button_join_room"
+            android:textColor="@color/colorRed"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:text="Join Room"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hash_id" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
-<!--<LinearLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="fill_parent"-->
-<!--    android:background="#E5E5E5"-->
-<!--    android:orientation="vertical"-->
-<!--    tools:context=".views.RoomListFragment">-->
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/createRoomButton"
+            app:layout_constraintTop_toBottomOf="@id/hash_id"
+            app:layout_constraintBottom_toBottomOf="@id/endGuideline"/>
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/titleCard"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation = "vertical"-->
-<!--        android:background="@drawable/round_rect"-->
-<!--        android:gravity="center"-->
-<!--        android:showDividers="middle"-->
-<!--        android:divider="@drawable/divider">-->
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/settingsiconRow"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--        </RelativeLayout>-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/group_study_room_title"-->
-<!--            android:textSize= "27sp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:fontFamily="@font/redhatdisplay"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            >-->
-
-<!--        </TextView>-->
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id ="@+id/createRoomButton"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width = "150dp"-->
-<!--            android:text="Create Room"-->
-<!--            android:textSize="15dp"-->
-<!--            android:fontFamily="@font/poppinsblack"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:textStyle="bold"-->
-<!--            android:background="@drawable/round_rect_create_room"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:drawableLeft="@drawable/pplus"-->
-<!--            android:drawablePadding = "4dp"-->
-<!--            >-->
-<!--        </androidx.appcompat.widget.AppCompatButton>-->
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id ="@+id/joinRoomButton"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width = "150dp"-->
-<!--            android:text="Join Room"-->
-<!--            android:textSize="15dp"-->
-<!--            android:fontFamily="@font/poppinsblack"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:textStyle="bold"-->
-<!--            android:background="@drawable/round_rect_create_room"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:drawableLeft="@drawable/pplus"-->
-<!--            android:drawablePadding = "4dp"-->
-<!--            >-->
-<!--        </androidx.appcompat.widget.AppCompatButton>-->
-<!--    </LinearLayout>-->
-<!--    <LinearLayout-->
-<!--        android:id="@+id/sessionsCard"-->
-<!--        android:layout_height="fill_parent"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        android:background="@drawable/round_rect_sessions"-->
-<!--        android:padding="20dp">-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text = "Open Sessions"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="22dp"-->
-<!--            android:fontFamily="@font/redhatdisplay"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginBottom="20dp">-->
-<!--        </TextView>-->
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/roomsRecyclerView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
-
-<!--    </LinearLayout>-->
-<!--</LinearLayout>-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+</androidx.constraintlayout.widget.ConstraintLayout>

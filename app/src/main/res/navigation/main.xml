@@ -49,14 +49,14 @@
             android:id="@+id/action_taskListFragment_to_roomListFragmentt"
             app:destination="@id/roomListFragment" />
         <action
-            android:id="@+id/action_taskListFragment_to_roomListFragment"
-            app:destination="@id/roomListFragment" />
-        <action
             android:id="@+id/action_taskListFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_taskListFragment_to_pomodoroFragment"
             app:destination="@id/pomodoroFragment" />
+        <action
+            android:id="@+id/action_taskListFragment_to_roomadminFragment"
+            app:destination="@id/roomadminFragment" />
 
 
     </fragment>
@@ -70,6 +70,9 @@
             android:id="@+id/action_roomListFragment_to_roomFragment"
             app:destination="@id/roomFragment" />
         <action
+            android:id="@+id/action_roomListFragment_to_roomadminFragment"
+            app:destination="@id/roomadminFragment" />
+        <action
             android:id="@+id/action_roomListFragment_to_taskListFragment"
             app:destination="@id/taskListFragment" />
         <action
@@ -79,6 +82,15 @@
     <fragment
         android:id="@+id/roomFragment"
         android:name="com.example.studify.views.RoomFragment"
+        android:label="fragment_room"
+        tools:layout="@layout/fragment_room" >
+        <action
+            android:id="@+id/action_roomFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomadminFragment"
+        android:name="com.example.studify.views.RoomAdminFragment"
         android:label="fragment_room"
         tools:layout="@layout/fragment_room" >
         <action

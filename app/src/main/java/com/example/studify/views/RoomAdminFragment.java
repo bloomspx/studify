@@ -7,16 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.app.FragmentTransaction;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-//import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,48 +19,26 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-//import androidx.fragment.app.FragmentManager;
-import androidx.room.Room;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studify.R;
-import com.example.studify.databinding.DialogInputTaskBinding;
-import com.example.studify.databinding.FragmentMainBinding;
 import com.example.studify.databinding.FragmentRoomAdminBinding;
 import com.example.studify.databinding.FragmentRoomBinding;
-import com.example.studify.models.AddTaskModel;
 import com.example.studify.models.RoomModel;
-import com.example.studify.viewmodel.MainActivityViewModel;
 import com.example.studify.viewmodel.RoomViewModel;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.QuerySnapshot;
 
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class RoomFragment extends Fragment implements View.OnClickListener {
-    private @NonNull FragmentRoomBinding binding;
+public class RoomAdminFragment extends Fragment implements View.OnClickListener {
+    private @NonNull FragmentRoomAdminBinding binding;
    // private MainActivityViewModel MainActivityViewModel;
     private RoomViewModel roomViewModel;
     private String dummy;
@@ -76,7 +49,7 @@ public class RoomFragment extends Fragment implements View.OnClickListener {
     private DocumentReference docRef;
     private ProgressDialog loader;
     private DatabaseReference reference;
-    //private CollectionReference reference_col;
+    private CollectionReference reference_col;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String UserID;
@@ -88,10 +61,9 @@ public class RoomFragment extends Fragment implements View.OnClickListener {
     private RoomModel room;
     private FirebaseAuth firebaseAuth;
     private Integer room_user_count;
-    private CollectionReference colRef;
 
 
-    public RoomFragment() {
+    public RoomAdminFragment() {
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
@@ -104,9 +76,8 @@ public class RoomFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentRoomBinding.inflate(getLayoutInflater());
+        binding = FragmentRoomAdminBinding.inflate(getLayoutInflater());
         roomViewModel = new ViewModelProvider(this).get(RoomViewModel.class);
-
         System.out.println("In Room Fragment");
         getParentFragmentManager().setFragmentResultListener("RoomIDdata", this, new FragmentResultListener() {
             @Override
@@ -135,6 +106,8 @@ public class RoomFragment extends Fragment implements View.OnClickListener {
             }
 
         });
+        //TODO: Implement Fragment Manager to move the fragment
+
 
 
         return binding.getRoot();
@@ -152,7 +125,12 @@ public class RoomFragment extends Fragment implements View.OnClickListener {
             db.collection("rooms").document(roomID).update("user_IDs", FieldValue.arrayRemove(firebaseAuth.getCurrentUser().getUid()));
             Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
         }
-
+        else if(id == binding.DeleteRoom.getId())
+        {
+            db.collection("rooms").document(roomID).delete();
+            Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
+        }
+        
 
 
 

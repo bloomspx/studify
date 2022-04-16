@@ -180,7 +180,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(key);
+                //System.out.println(key);
 
                 reference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -301,9 +301,10 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
                 getParentFragmentManager().setFragmentResult("RoomIDdata", result);
 
                 //MainActivityViewModel.joinRoom(Room.getRoomID());
-                System.out.println("******CHECKER********");
-                System.out.println("ROOMID:"+RoomID);
-                Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomFragment);
+                //System.out.println("******CHECKER********");
+                //System.out.println("ROOMID:"+RoomID);
+
+                Navigation.findNavController(view).navigate(R.id.action_taskListFragment_to_roomadminFragment);
             }
         });
     }

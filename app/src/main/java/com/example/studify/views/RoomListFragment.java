@@ -41,6 +41,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -58,10 +63,54 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     private FirebaseFirestore db;
     private static final String TAG = "RoomListFragment";
     private DocumentReference docRef;
+    private CollectionReference colRef;
+    private ArrayList<RoomModel> Open_Rooms=new ArrayList<>();
 
     public RoomListFragment() {
 
         firebaseAuth = FirebaseAuth.getInstance();
+        System.out.println("Inside Constructor");
+        db = FirebaseFirestore.getInstance();
+        colRef = db.collection("rooms");
+        //Query query = colRef.whereEqualTo("Admin_User",firebaseAuth.getCurrentUser().getUid());
+        /*db.collection("rooms")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                //System.out.println(document.get("admin_User"));
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });*/
+        db.collection("rooms")
+                .whereEqualTo("admin_User", firebaseAuth.getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        System.out.println("Inside OnComplete Query");
+                        if (task.isSuccessful()) {
+                            System.out.println("Inside Task Query");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                System.out.println("Inside Document Snapshot");
+                                System.out.println("Admin User:"+document.get("admin_User"));
+                                room = document.toObject(RoomModel.class);
+                                System.out.println("ROOM ID:"+room.getRoomID());
+                                Open_Rooms.add(room);
+                                System.out.println("ROOM ID in the ROOMListFragment:"+room.getRoomID());
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
 
@@ -140,7 +189,16 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                                         }
                                     }
                                 });
-                                Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
+                                System.out.println("Admin User:"+room.getAdmin_User());
+                                System.out.println("Current User:"+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                if(room.getAdmin_User().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                                    System.out.println("Admin User Fragment Activated");
+                                    Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomadminFragment);
+                                }
+                                else{
+                                    System.out.println("Inside Else");
+                                    Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomFragment);
+                                }
 
 
                             } else {

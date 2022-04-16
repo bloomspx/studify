@@ -21,6 +21,7 @@ public class RoomModel {
     private int roomUserCount;
     //private DateTime roomTimerStart;
     private ArrayList<String> User_IDs;
+    private String Admin_User;
     private ArrayList<String> tasks_Lists;
     private String startTime;
     private int loop;
@@ -36,7 +37,16 @@ public class RoomModel {
         this.User_IDs = null;
         this.tasks_Lists = new ArrayList<String>();
         this.loop = 1;
+        this.Admin_User = null;
         //this.roomTimerStart = LocalDateTime.now();
+    }
+
+    public void setAdmin_User(String admin_User) {
+        Admin_User = admin_User;
+    }
+
+    public String getAdmin_User() {
+        return Admin_User;
     }
 
     public void setTasks_Lists(ArrayList<String> tasks_Lists) { this.tasks_Lists = tasks_Lists; }

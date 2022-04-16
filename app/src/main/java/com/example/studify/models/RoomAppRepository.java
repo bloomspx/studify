@@ -44,9 +44,13 @@ public class RoomAppRepository {
         System.out.println("*****************Hey I'm Here-3");
         db = FirebaseFirestore.getInstance();
         ArrayList<String> User_IDs = new ArrayList<String>();
+        String Admin_User = firebaseAuth.getCurrentUser().getUid();
         User_IDs.add(firebaseAuth.getCurrentUser().getUid());
+
+
         //room = new RoomModel();
         room.setUser_IDs(User_IDs);
+        room.setAdmin_User(Admin_User);
         String roomID = room.getRoomID();
 //        addTasks();
         System.out.println(room.getTasks_Lists());

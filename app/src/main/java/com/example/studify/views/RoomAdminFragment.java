@@ -120,16 +120,19 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         int id = view.getId();
         if (id == binding.leaveRoom.getId()) {
+            System.out.println("Inside Leave Room");
             db = FirebaseFirestore.getInstance();
             // RoomViewModel.createRoom(room.getTasks_Lists());
             db.collection("rooms").document(roomID).update("user_IDs", FieldValue.arrayRemove(firebaseAuth.getCurrentUser().getUid()));
             Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
         }
-        else if(id == binding.DeleteRoom.getId())
+        /*else if(id == binding.DeleteRoom.getId())
         {
+            System.out.println("Inside Delete Room");
             db.collection("rooms").document(roomID).delete();
+            System.out.println("Navigaion View");
             Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
-        }
+        }*/
         
 
 
@@ -232,6 +235,16 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
             @Override
             public void onChanged(String timerLeft) {
                 binding.timer.setText(timerLeft);
+            }
+        });
+        binding.DeleteRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Inside Delete Room");
+                db.collection("rooms").document(roomID).delete();
+                System.out.println("Navigaion View");
+                Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
+
             }
         });
 

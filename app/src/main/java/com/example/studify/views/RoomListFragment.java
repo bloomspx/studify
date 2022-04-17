@@ -47,6 +47,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -56,6 +57,7 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
     private RoomViewModel RoomViewModel;
     private RoomModel room;
+    private String Admin_User;
     private String roomID;
     private ArrayList<String> user_IDs;
     private FirebaseAuth firebaseAuth;
@@ -170,28 +172,47 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
                 Log.i(TAG, "Join Room Activated");
 
                 docRef = db.collection("rooms").document(roomID);
+                System.out.println("Docuement Ref:"+docRef);
+                System.out.println("Room ID:"+roomID);
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
+                            System.out.println("Inside Task");
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                DocumentReference docRef = db.collection("rooms").document(roomID);
-                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                System.out.println("Inside document exists");
+                                System.out.println(document.getData());
+                                room = document.toObject(RoomModel.class);
+                                user_IDs =  room.getUser_IDs();
+                                System.out.println("Admin User (Inside Snapshot)"+room.getAdmin_User());
+                                Admin_User = room.getAdmin_User();
+                                if(user_IDs.contains(firebaseAuth.getCurrentUser().getUid())==false)
+                                {
+                                    db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
+                                    db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
+                                }
+
+                                System.out.println("ROOM ID:"+room.getRoomID());
+                                /*docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        System.out.println("Inside Document Snapshot");
                                         room = documentSnapshot.toObject(RoomModel.class);
                                         user_IDs =  room.getUser_IDs();
+                                        System.out.println("Admin User (Inside Snapshot)"+room.getAdmin_User());
+                                        Admin_User = room.getAdmin_User();
                                         if(user_IDs.contains(firebaseAuth.getCurrentUser().getUid())==false)
                                         {
                                             db.collection("rooms").document(document.getId()).update("user_IDs", FieldValue.arrayUnion(firebaseAuth.getCurrentUser().getUid()));
                                             db.collection("rooms").document(document.getId()).update("roomUserCount", FieldValue.increment(1));
                                         }
                                     }
-                                });
-                                System.out.println("Admin User:"+room.getAdmin_User());
+                                });*/
+                                //System.out.println("Admin User:"+room.getAdmin_User());
+                                System.out.println("Admin_User:"+Admin_User);
                                 System.out.println("Current User:"+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                if(room.getAdmin_User().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                                if(Admin_User.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                                     System.out.println("Admin User Fragment Activated");
                                     Navigation.findNavController(view).navigate(R.id.action_roomListFragment_to_roomadminFragment);
                                 }

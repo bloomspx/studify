@@ -32,7 +32,7 @@
             app:srcCompat="@drawable/ic_arrow_back" />
 
         <Button
-            android:id="@+id/button_update_profile"
+            android:id="@+id/buttonUpdateProfile"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
             android:layout_width="wrap_content"
@@ -49,10 +49,9 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/change_profile_image"
+            android:id="@+id/changeProfileImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_default_profile"
             app:civ_border_color="#000000"
@@ -61,7 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editProfileTitle"/>
 
         <Button
-            android:id="@+id/button_change_pic"
+            android:id="@+id/buttonChangePic"
             style="@style/login_green_text_style"
             android:text="@string/action_change_pic"
             android:layout_marginLeft="0dp"
@@ -70,7 +69,7 @@
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/change_profile_image"/>
+            app:layout_constraintTop_toBottomOf="@id/changeProfileImage"/>
         <TextView
             android:id="@+id/usernameTitle"
             android:layout_width="wrap_content"
@@ -82,8 +81,7 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_change_pic"/>
+            app:layout_constraintTop_toBottomOf="@+id/buttonChangePic"/>
 
 
         <EditText
@@ -121,7 +119,7 @@
             app:layout_constraintTop_toTopOf="@+id/lineDivider" />
 
         <Button
-            android:id="@+id/button_delete"
+            android:id="@+id/buttonDelete"
             style="@style/profile_white_button_style"
             android:layout_marginTop="40dp"
             android:backgroundTint="@color/light_red"
@@ -139,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_begin="495dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -47,7 +47,7 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
     public void onBindViewHolder(final adapter.ViewHolder holder, final int position){
         final String al = tasks.get(position);
         holder.cbactivitieslistreg.setText(al);
-        holder.cbactivitieslistreg.setBackgroundResource(R.drawable.boxes1);
+
         holder.cbactivitieslistreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

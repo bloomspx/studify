@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/fragment_main.xml" value="0.25" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/fragment_room.xml" value="0.10885416666666667" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/retrieved_layout.xml" value="0.10885416666666667" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/room_card.xml" value="0.10885416666666667" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/room_task_card.xml" value="0.10885416666666667" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/row_checkboxes.xml" value="0.10885416666666667" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/row_values.xml" value="0.10885416666666667" />
+        <entry key="..\:/Users/Cheng Xin/AndroidStudioProjects/studify/app/src/main/res/layout/task_card.xml" value="0.10885416666666667" />
         <entry key="..\:/Users/Kaveri Priya Putti/Desktop/github/studify/app/src/main/res/drawable/boxes.xml" value="0.172" />
         <entry key="..\:/Users/Kaveri Priya Putti/Desktop/github/studify/app/src/main/res/drawable/boxes1.xml" value="0.172" />
         <entry key="..\:/Users/Kaveri Priya Putti/Desktop/github/studify/app/src/main/res/layout/card_view.xml" value="0.16302083333333334" />

@@ -11,51 +11,76 @@
         android:padding="10dp"
         tools:context=".views.MainActivity">
 
+        <TextView
+            android:id="@+id/PomodoroTitle"
+            style="@style/profile_card"
+            android:background="@color/transparent"
+            android:text="Pomodoro"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/text_clock"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="310dp"
+            android:layout_height="310dp"
+            android:layout_marginTop="36dp"
             android:background="@drawable/ellipse"
+            android:fontFamily="@font/poppinsbold"
             android:gravity="center"
             android:text="25:00"
-            android:fontFamily="@font/poppinsbold"
-            android:textSize="45sp"
             android:textColor="@color/white"
+            android:textSize="50sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
+            app:layout_constraintTop_toTopOf="@+id/PomodoroTitle" />
 
         <EditText
             android:id="@+id/edit_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/shape_edittext"
             android:ems="10"
+            android:gravity="center"
             android:hint="Count Number"
             android:inputType="number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            android:paddingStart="3dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_clock" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonStartCountdown"
             style="@style/profile_white_button_style"
-            android:text="Start"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginRight="120dp"
-            android:gravity="center"
-            android:textSize="24sp"
+            android:layout_width="115dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
             android:backgroundTint="@color/turquoise"
+            android:gravity="center"
+            android:text="Start"
+            android:paddingTop="4dp"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_count" />
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toEndOf="@+id/edit_count"
+            app:layout_constraintTop_toBottomOf="@+id/text_clock" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/boy_studying_with_book1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_count" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

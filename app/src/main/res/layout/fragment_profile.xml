@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grey"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,6 +18,7 @@
             android:id="@+id/profileTitle"
             style="@style/profile_card"
             android:text="@string/button_profile"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -48,34 +50,34 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_edit_profile"
             style="@style/profile_white_button_style"
-            android:layout_width="140dp"
+            android:layout_width="147dp"
             android:drawableLeft="@drawable/ic_baseline_mode_edit_24"
             android:drawableTint="@color/turquoise"
             android:text="@string/button_edit_profile"
             android:textColor="@color/turquoise"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:gravity="center"
-            app:layout_constraintEnd_toStartOf="@+id/button_log_out"
+            android:paddingStart="8dp"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/username" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_log_out"
             style="@style/profile_white_button_style"
-            android:layout_width="140dp"
+            android:layout_width="147dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center"
             android:drawableLeft="@drawable/ic_baseline_logout_24"
             android:drawableTint="@color/colorRed"
             android:text="@string/button_log_out"
             android:textColor="@color/colorRed"
-            android:gravity="center"
+            android:paddingStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_edit_profile"
             app:layout_constraintTop_toBottomOf="@id/username" />
 
         <TextView
@@ -95,6 +97,8 @@
             style="@style/profile_white_button_style"
             android:drawableLeft="@drawable/profileperson"
             android:text="Manage Account"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileSettings" />
@@ -105,6 +109,8 @@
             style="@style/profile_white_button_style"
             android:drawableLeft="@drawable/privacy"
             android:text="Privacy"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/manageAccountButton" />
@@ -115,7 +121,8 @@
             style="@style/profile_white_button_style"
             android:drawableLeft="@drawable/stats"
             android:text="My Statistics"
-
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintBottom_toBottomOf="@id/botGuideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

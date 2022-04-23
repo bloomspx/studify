@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.repository.GroupTimeRepository;
-import com.example.studify.repository.RoomAppRepository;
+import com.example.studify.models.GroupTimeRepository;
+import com.example.studify.models.RoomAppRepository;
 import com.example.studify.models.RoomModel;
 
 public class RoomViewModel extends AndroidViewModel {

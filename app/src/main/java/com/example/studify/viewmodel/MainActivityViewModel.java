@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.repository.TimerRepository;
+import com.example.studify.models.TimerRepository;
 
 public class MainActivityViewModel extends AndroidViewModel {
 

@@ -1,4 +1,4 @@
-package com.example.studify.repository;
+package com.example.studify.models;
 
 import android.app.Application;
 import android.widget.Toast;

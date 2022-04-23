@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.repository.AuthAppRepository;
-import com.example.studify.repository.UserAppRepository;
+import com.example.studify.models.AuthAppRepository;
+import com.example.studify.models.UserAppRepository;
 import com.example.studify.models.UserProfileModel;
 
 public class UserViewModel extends AndroidViewModel {

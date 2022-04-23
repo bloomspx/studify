@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.repository.AuthAppRepository;
+import com.example.studify.models.AuthAppRepository;
 import com.example.studify.models.UserProfileModel;
 import com.google.firebase.auth.FirebaseUser;
 

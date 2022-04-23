@@ -24,33 +24,49 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 ## Commit <br>
 2 Activities: MainActivity, AuthActivity <br>
 11 Fragments: EditProfileFragment, ForgetPasswordFragment, LoginFragment, MainFragment, PomodoroFragment, ProfileFragment, RegisterFragment, RoomAdminFragment, RoomFragment, RoomList Fragment, TaskListFragment <br>
+Package: com.example.studify <br>
 
-Packages<br>
-### com.example.studify<br>
-#### data
+### data
 > *UserDatabase* <br>
 > * empty
-#### models
-> *AddTaskModel*<br>
-> * empty
+
+### models
+> *authentication*
+> > *AuthAppRepository* <br>
+> > * methods: register, addUser, login, logOut, resetPassword, deleteProfile 
+> >
+> *room* 
+> > *AddTaskModel*<br>
+> > * empty
+> >
+> > *RandomString*<br>
+> > * empty
+> >
+> > *RoomModel*<br>
+> > * empty
+> > *GroupTimeRepository* <br>
+> >* room methods: timer
+> >
+> > *RoomAppRepository* <br>
+> > * empty
+> >
+> > *TimerRepository* <br>
+> > * empty
 >
-> *RandomString*<br>
-> * empty
->
-> *RoomModel*<br>
-> * empty
->
-> *UserProfileModel*
-> * Data class to build new users
+> *user*
+> > *UserProfileModel* <br>
+> > * data class to build new users models
+> >
+> > *UserAppRepository* <br>
+> > * methods: updateProfile & getUserDetails
+
 
 ### navigation
 > *auth*<br>
 > * navigates between LoginFragment, ForgetPasswordFragment & RegisterFragment
 >
 > *main*<br>
-> * navigates between EditProfileFragment, MainFragment, PomodoroFragment, ProfileFragment,RoomAdminFragment, RoomFragment, RoomList Fragment &TaskListFragment
->
-### repository
+> * navigates between EditProfileFragment, MainFragment, PomodoroFragment, ProfileFragment, RoomAdminFragment, RoomFragment, RoomList Fragment &TaskListFragment
 
 ### viewmodels
 > *LoginViewModel* <br>
@@ -105,7 +121,7 @@ Packages<br>
 > > > TaskListFragment
 > > > * empty
 > >
-> > MainFragment
+
 > >
 > > *user*
 > > > *user profile* <br>
@@ -116,5 +132,6 @@ Packages<br>
 > > > EditProfileFragment<br>
 > > > * user methods: updateProfilePicture, updateUserName, deleteProfile
 > >
-> > MainActivity
+> > MainFragment <br>
+> > MainActivity 
 > >

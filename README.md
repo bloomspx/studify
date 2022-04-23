@@ -13,6 +13,14 @@ Figma App Designs <a>
 <a href=https://docs.google.com/document/d/14fCwcmqJ00WbVjJvHaYVmXaJhs1Pl9lmSTjH77cuVwY/edit#heading=h.7v9j2i4f9rgq>
 Final Report</a>
 
+### External Dependencies <br>
+<a href="https://github.com/bumptech/glide">
+Glide </a> - used to display and fetch user profile picture
+<br>
+<a href="https://github.com/hdodenhof/CircleImageView">
+CircleImageView </a> - fast circular ImageView used for user profile images
+<br>
+
 ## Commit <br>
 2 Activities: MainActivity, AuthActivity <br>
 11 Fragments: EditProfileFragment, ForgetPasswordFragment, LoginFragment, MainFragment, PomodoroFragment, ProfileFragment, RegisterFragment, RoomAdminFragment, RoomFragment, RoomList Fragment, TaskListFragment <br>

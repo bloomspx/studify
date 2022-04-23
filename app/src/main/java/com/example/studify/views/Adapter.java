@@ -1,11 +1,9 @@
 package com.example.studify.views;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import com.example.studify.R;
 
@@ -15,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private List<String> tasks;
     public List<String>selectedValues;
     private Context mContext1;
@@ -31,12 +29,12 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         }
 
     }
-    public adapter(List<String> myDataset, Context context, RecyclerView recyclerView) {
+    public Adapter(List<String> myDataset, Context context, RecyclerView recyclerView) {
         tasks = myDataset;
         mContext1 = context;
         mRecyclerV1 = recyclerView;
     }
-    public adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                  int viewType){
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
@@ -44,7 +42,7 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
-    public void onBindViewHolder(final adapter.ViewHolder holder, final int position){
+    public void onBindViewHolder(final Adapter.ViewHolder holder, final int position){
         final String al = tasks.get(position);
         holder.cbactivitieslistreg.setText(al);
 

@@ -1,53 +1,40 @@
 package com.example.studify.views;
 
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.PopupWindow;
 
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentRoomListBinding;
-import com.example.studify.databinding.DialogJoinRoomBinding;
 import com.example.studify.models.RoomModel;
-import com.example.studify.models.UserProfile;
+import com.example.studify.models.UserProfileModel;
 import com.example.studify.viewmodel.UserViewModel;
 import com.example.studify.viewmodel.RoomViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -139,12 +126,12 @@ public class RoomListFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // LiveData Observer for UserProfile
-        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+        // LiveData Observer for UserProfileModel
+        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfileModel>() {
             @Override
-            public void onChanged(UserProfile userProfile) {
-                if (userProfile != null) {
-                    binding.WelcomeCard.setText("Welcome, " + userProfile.getName() + "!");
+            public void onChanged(UserProfileModel userProfileModel) {
+                if (userProfileModel != null) {
+                    binding.WelcomeCard.setText("Welcome, " + userProfileModel.getName() + "!");
                 }
             }
         });

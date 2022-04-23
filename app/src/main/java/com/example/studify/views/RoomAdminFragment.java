@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentRoomAdminBinding;
-import com.example.studify.databinding.FragmentRoomBinding;
 import com.example.studify.models.RoomModel;
 import com.example.studify.viewmodel.RoomViewModel;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -56,7 +55,7 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
     private ArrayList<String> tasks;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private adapter madapter;
+    private Adapter madapter;
     private DocumentSnapshot documentSnapshot;
     private RoomModel room;
     private FirebaseAuth firebaseAuth;
@@ -97,7 +96,7 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
                         mLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
                         System.out.println(room.getTasks_Lists());
-                        madapter = new adapter(tasks, getContext(),mRecyclerView);
+                        madapter = new Adapter(tasks, getContext(),mRecyclerView);
                         mRecyclerView.setAdapter(madapter);
                         binding.RoomIDCard.setText("Room ID: " + roomID);
                     }
@@ -146,7 +145,7 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
 //                .setQuery(reference, AddTaskModel.class)
 //                .build();
 //
-//        FirebaseRecyclerAdapter<String, RoomFragment.MyViewHolder> adapter = new FirebaseRecyclerAdapter<String, RoomFragment.MyViewHolder>(options) {
+//        FirebaseRecyclerAdapter<String, RoomFragment.MyViewHolder> Adapter = new FirebaseRecyclerAdapter<String, RoomFragment.MyViewHolder>(options) {
 //            @Override
 //            protected void onBindViewHolder(@NonNull RoomFragment.MyViewHolder holder, final int position, @NonNull final String task) {
 //                holder.setTask(task);
@@ -166,8 +165,8 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
 //            }
 //        };
 //
-//        recyclerView.setAdapter(adapter);
-//        adapter.startListening();
+//        recyclerView.setAdapter(Adapter);
+//        Adapter.startListening();
 //        db = FirebaseFirestore.getInstance();
 //        //Bundle bundle = new Bundle();
 //        // roomID = bundle.getString("roomID"); // Throws a null error

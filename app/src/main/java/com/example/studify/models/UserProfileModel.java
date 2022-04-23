@@ -1,11 +1,6 @@
 package com.example.studify.models;
 
-import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.room.PrimaryKey;
-
-public class UserProfile {
+public class UserProfileModel {
 
     private String name;
 
@@ -15,7 +10,7 @@ public class UserProfile {
 
     private String img;
 
-    public UserProfile(final Builder builder) {
+    public UserProfileModel(final Builder builder) {
         name = builder.name;
         email = builder.email;
         password = builder.password;
@@ -48,8 +43,8 @@ public class UserProfile {
             return this;
         }
 
-        public UserProfile build() {
-            return new UserProfile(this);
+        public UserProfileModel build() {
+            return new UserProfileModel(this);
         }
     }
 
@@ -86,10 +81,10 @@ public class UserProfile {
         this.img = img;
     }
 
-    public UserProfile() {
+    public UserProfileModel() {
     }
 
-    public UserProfile(String name, String email, String password, String img) {
+    public UserProfileModel(String name, String email, String password, String img) {
         this.name = name;
         this.email = email;
         this.password = password;

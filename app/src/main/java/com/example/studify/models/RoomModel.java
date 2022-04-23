@@ -26,7 +26,7 @@ public class RoomModel {
     private String startTime;
     private int loop;
     //private Time
-    //private HashMap<String,UserProfile> User_List;
+    //private HashMap<String,UserProfileModel> User_List;
 
     public RoomModel()
     {

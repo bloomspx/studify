@@ -1,17 +1,14 @@
 package com.example.studify.viewmodel;
 
 import android.app.Application;
-import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.models.AuthAppRepository;
-import com.example.studify.models.GroupTimeRepository;
-import com.example.studify.models.RoomAppRepository;
+import com.example.studify.repository.GroupTimeRepository;
+import com.example.studify.repository.RoomAppRepository;
 import com.example.studify.models.RoomModel;
-import com.example.studify.models.UserAppRepository;
 
 public class RoomViewModel extends AndroidViewModel {
 

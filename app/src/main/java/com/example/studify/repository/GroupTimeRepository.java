@@ -1,4 +1,4 @@
-package com.example.studify.models;
+package com.example.studify.repository;
 
 
 import android.app.Application;
@@ -8,6 +8,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.studify.models.RoomModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

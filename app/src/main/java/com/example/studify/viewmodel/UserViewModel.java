@@ -6,16 +6,15 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.models.AuthAppRepository;
-import com.example.studify.models.UserAppRepository;
-import com.example.studify.models.UserProfile;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.studify.repository.AuthAppRepository;
+import com.example.studify.repository.UserAppRepository;
+import com.example.studify.models.UserProfileModel;
 
 public class UserViewModel extends AndroidViewModel {
     private AuthAppRepository authAppRepository;
     private UserAppRepository userAppRepository;
     private MutableLiveData<Boolean> loggedOutLiveData;
-    private final MutableLiveData<UserProfile> userProfileLiveData;
+    private final MutableLiveData<UserProfileModel> userProfileLiveData;
 
     // LoginViewModel used to hold LiveData for User data changes
     public UserViewModel(@NonNull Application application) {
@@ -38,8 +37,8 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     // UserAppRepository
-    public void updateProfile(UserProfile user) { userAppRepository.updateProfile(user); }
+    public void updateProfile(UserProfileModel user) { userAppRepository.updateProfile(user); }
 
-    public MutableLiveData<UserProfile> getUserProfileLiveData() { return userProfileLiveData;}
+    public MutableLiveData<UserProfileModel> getUserProfileLiveData() { return userProfileLiveData;}
 
 }

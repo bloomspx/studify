@@ -1,4 +1,4 @@
-package com.example.studify.models;
+package com.example.studify.repository;
 
 import android.app.Application;
 import android.widget.Toast;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.room.Room;
 
+import com.example.studify.models.RoomModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

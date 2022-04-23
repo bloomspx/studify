@@ -6,10 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.models.AuthAppRepository;
-import com.example.studify.models.GroupTimeRepository;
-import com.example.studify.models.TimerRepository;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.studify.repository.TimerRepository;
 
 public class MainActivityViewModel extends AndroidViewModel {
 

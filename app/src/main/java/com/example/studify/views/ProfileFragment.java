@@ -22,9 +22,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentProfileBinding;
-import com.example.studify.models.UserProfile;
+import com.example.studify.models.UserProfileModel;
 import com.example.studify.viewmodel.UserViewModel;
-import com.google.firebase.firestore.auth.User;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     private FragmentProfileBinding binding;
@@ -77,22 +76,22 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        // LiveData Observer for UserProfile
-        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+        // LiveData Observer for UserProfileModel
+        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfileModel>() {
             @Override
-            public void onChanged(UserProfile userProfile) {
-                if (userProfile != null) {
-                    binding.username.setText(userProfile.getName());
-                    updateProfilePicture(userProfile);
-                    Log.d(TAG, "onChanged: userProfile is not empty, fields updated ");
+            public void onChanged(UserProfileModel userProfileModel) {
+                if (userProfileModel != null) {
+                    binding.username.setText(userProfileModel.getName());
+                    updateProfilePicture(userProfileModel);
+                    Log.d(TAG, "onChanged: userProfileModel is not empty, fields updated ");
                 }
             }
         });
 
     }
 
-    private void updateProfilePicture(UserProfile userProfile) {
-        String img = userProfile.getImg();
+    private void updateProfilePicture(UserProfileModel userProfileModel) {
+        String img = userProfileModel.getImg();
         if (img != null) {
             Glide.with(this)
                     .load(Uri.parse(img))

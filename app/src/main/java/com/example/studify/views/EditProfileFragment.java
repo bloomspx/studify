@@ -22,12 +22,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentEditProfileBinding;
-import com.example.studify.models.UserProfile;
+import com.example.studify.models.UserProfileModel;
 import com.example.studify.viewmodel.UserViewModel;
 
 public class EditProfileFragment extends Fragment implements View.OnClickListener {
@@ -72,17 +71,17 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             if (img == null && TextUtils.isEmpty(name)) {
 
             } else if (img == null) {
-                UserViewModel.updateProfile(new UserProfile.Builder()
+                UserViewModel.updateProfile(new UserProfileModel.Builder()
                         .setName(name)
                         .setImg(null)
                         .build());
             } else if (TextUtils.isEmpty(name)) {
-                UserViewModel.updateProfile(new UserProfile.Builder()
+                UserViewModel.updateProfile(new UserProfileModel.Builder()
                         .setName(null)
                         .setImg(img.toString())
                         .build());
             } else {
-                UserViewModel.updateProfile(new UserProfile.Builder()
+                UserViewModel.updateProfile(new UserProfileModel.Builder()
                         .setImg(img.toString())
                         .setName(name)
                         .build());
@@ -95,7 +94,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         @Override
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-            // // Redirects if Logout is Successful
+            // Redirects if Logout is Successful
             UserViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
                 @Override
                 public void onChanged(Boolean loggedOut) {
@@ -106,21 +105,21 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                 }
             });
 
-            // LiveData Observer for UserProfile
-            UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+            // LiveData Observer for UserProfileModel
+            UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfileModel>() {
                 @Override
-                public void onChanged(UserProfile userProfile) {
-                    if (userProfile != null) {
-                        binding.changeUsername.setHint(userProfile.getName());
-                        if (userProfile.getImg() != null) {
-                            updateProfilePicture(Uri.parse(userProfile.getImg()));
+                public void onChanged(UserProfileModel userProfileModel) {
+                    if (userProfileModel != null) {
+                        binding.changeUsername.setHint(userProfileModel.getName());
+                        if (userProfileModel.getImg() != null) {
+                            updateProfilePicture(Uri.parse(userProfileModel.getImg()));
                         }
-                        Log.d(TAG, "onChanged: userProfile is not empty, fields updated ");
+                        Log.d(TAG, "onChanged: userProfileModel is not empty, fields updated ");
                     }
                 }
             });
 
-            // TODO: check if this is appropriate - Manages Opening Images and Switching Profile Picture
+            // ActivityResultLauncher - Manages Opening Images and Switching Profile Picture
             MainActivityResultLauncher = registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
                     result ->  {

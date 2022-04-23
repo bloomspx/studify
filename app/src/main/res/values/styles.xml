@@ -2,7 +2,6 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight">
-        <!-- TODO: Customize your theme here. -->
         <item name="colorPrimary">@color/turquoise</item>
         <item name="colorPrimaryDark">@color/colorRedAccent</item>
         <item name="colorAccent">@color/colorBlueAccent</item>

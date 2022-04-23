@@ -1,18 +1,15 @@
 package com.example.studify.viewmodel;
 
 import android.app.Application;
-import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
-import com.example.studify.models.AuthAppRepository;
-import com.example.studify.models.UserProfile;
-import com.example.studify.views.MainActivity;
+import com.example.studify.repository.AuthAppRepository;
+import com.example.studify.models.UserProfileModel;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginViewModel extends AndroidViewModel {
@@ -35,7 +32,7 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public void register(UserProfile user) {
+    public void register(UserProfileModel user) {
         authAppRepository.register(user); }
 
     @RequiresApi(api = Build.VERSION_CODES.P)

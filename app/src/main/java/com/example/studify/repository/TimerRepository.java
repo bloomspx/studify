@@ -1,4 +1,4 @@
-package com.example.studify.models;
+package com.example.studify.repository;
 
 import android.app.Application;
 import android.os.CountDownTimer;

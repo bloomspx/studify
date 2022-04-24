@@ -53,8 +53,9 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > > * methods: createroom
 > >
 > > *TimerRepository* <br>
-> > * empty
->
+> > * methods: startStop,startTimer,stopTimer,updateTimer, getTimerLeftLiveData,getIsFinished
+>*GroupTimerRepository*<br>
+> > * methods: join,startTimer,startBreakTimer,updaterTimer,updateBreakTimer,getCount,getTimerLeftLiveData
 > *user*
 > > *UserProfileModel* <br>
 > > * data class to build new users models

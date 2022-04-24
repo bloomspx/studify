@@ -1,5 +1,3 @@
-# App Package Outline
-
 ## Description
 Studify is designed to make group studying more efficient and convenient for all by providing a virtual, collaborative platform that allows individuals to be more productive with friends, or even alone. 
 

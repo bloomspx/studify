@@ -22,9 +22,9 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 <br>
 
 ## Commit <br>
-2 Activities: MainActivity, AuthActivity <br>
-11 Fragments: EditProfileFragment, ForgetPasswordFragment, LoginFragment, MainFragment, PomodoroFragment, ProfileFragment, RegisterFragment, RoomAdminFragment, RoomFragment, RoomList Fragment, TaskListFragment <br>
-Package: com.example.studify <br>
+**2 Activities:** MainActivity, AuthActivity <br>
+**11 Fragments:** EditProfileFragment, ForgetPasswordFragment, LoginFragment, MainFragment, PomodoroFragment, ProfileFragment, RegisterFragment, RoomAdminFragment, RoomFragment, RoomList Fragment, TaskListFragment <br>
+**Package Name:** com.example.studify <br>
 
 <!-- ### data
 > *UserDatabase* <br>

@@ -10,7 +10,7 @@ Take charge and create your own private room as an admin. Invite more peers to j
 <img src="images/Layout2.png" width="750dp"> <br>
 <img src="images/Layout3.png" width="750dp"> <br>
 
-## Resources<br>
+## Resources
 <a href="https://www.figma.com/file/VLmQeGFdPmF4EEZmRTI5M2/App-Layout">
 Figma App Designs <a>
 <br>

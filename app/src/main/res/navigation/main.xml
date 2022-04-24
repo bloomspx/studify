@@ -3,39 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
-    app:startDestination="@id/mainFragment">
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.studify.views.RoomFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_roomListFragment"
-            app:destination="@id/roomListFragment" />
-    </fragment>
+    app:startDestination="@id/roomListFragment">
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.studify.views.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_pomodoroFragment"
+            app:destination="@id/pomodoroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pomodoroFragment"
+        android:name="com.example.studify.views.PomodoroFragment"
+        android:label="fragment_pomodoro"
+        tools:layout="@layout/fragment_pomodoro" >
+        <action
+            android:id="@+id/action_pomodoroFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+        <action
+            android:id="@+id/action_pomodoroFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.studify.views.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
-        <action
-            android:id="@+id/action_editProfileFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -48,12 +45,33 @@
         <action
             android:id="@+id/action_taskListFragment_to_roomFragment"
             app:destination="@id/roomFragment" />
+        <action
+            android:id="@+id/action_taskListFragment_to_roomListFragmentt"
+            app:destination="@id/roomListFragment" />
+        <action
+            android:id="@+id/action_taskListFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_taskListFragment_to_pomodoroFragment"
+            app:destination="@id/pomodoroFragment" />
+        <action
+            android:id="@+id/action_taskListFragment_to_roomadminFragment"
+            app:destination="@id/roomadminFragment" />
+
+
     </fragment>
     <fragment
         android:id="@+id/roomListFragment"
         android:name="com.example.studify.views.RoomListFragment"
         android:label="fragment_room_list"
         tools:layout="@layout/fragment_room_list" >
+
+        <action
+            android:id="@+id/action_roomListFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
+        <action
+            android:id="@+id/action_roomListFragment_to_roomadminFragment"
+            app:destination="@id/roomadminFragment" />
         <action
             android:id="@+id/action_roomListFragment_to_taskListFragment"
             app:destination="@id/taskListFragment" />
@@ -66,5 +84,17 @@
         android:name="com.example.studify.views.RoomFragment"
         android:label="fragment_room"
         tools:layout="@layout/fragment_room" >
+        <action
+            android:id="@+id/action_roomFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomadminFragment"
+        android:name="com.example.studify.views.RoomAdminFragment"
+        android:label="fragment_room"
+        tools:layout="@layout/fragment_room" >
+        <action
+            android:id="@+id/action_roomFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
     </fragment>
 </navigation>

@@ -1,55 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:elevation="10dp"
-    app:cardElevation="10dp"
-    android:layout_margin="10dp"
+    android:id="@+id/room1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="85dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="8dp"
+    android:layout_centerInParent="true">
 
     <LinearLayout
+        android:id="@+id/taskrow1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/taskNameOption"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-        </LinearLayout>
+            android:paddingStart="25dp"
+            android:text="Task Name"
+            android:paddingTop="15dp"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/taskTv"
+            android:layout_width="148dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:paddingTop="15dp"
+            android:text=""
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/taskTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Task"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:padding="5dp"
-                android:maxLines="1"
-                android:textColor="#000"/>
+    <LinearLayout
+        android:id="@+id/paxLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/timeTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:textColor="#000"
-                android:text="Time"
-                android:textSize="15sp"
-                android:maxLines="3"/>
+        <TextView
+            android:id="@+id/loopNumberOption"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Time Loops"
+            android:paddingStart="25dp"
+            android:paddingTop="50dp"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:paddingTop="50dp"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

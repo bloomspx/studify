@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentRegisterBinding;
-import com.example.studify.models.UserProfile;
+import com.example.studify.models.UserProfileModel;
 import com.example.studify.viewmodel.LoginViewModel;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -42,7 +42,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         super.onStart();
         binding.signUpButton.setOnClickListener(this);
         binding.backButtonSignUp.setOnClickListener(this);
-        binding.signUpGoogleButton.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -78,7 +77,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             return;
         }
         else {
-            UserProfile user = new UserProfile.Builder()
+            UserProfileModel user = new UserProfileModel.Builder()
                     .setName(name)
                     .setEmail(email)
                     .setPassword(password)

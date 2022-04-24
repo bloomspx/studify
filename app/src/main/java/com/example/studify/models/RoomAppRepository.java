@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.room.Room;
 
+import com.example.studify.models.RoomModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,28 +45,33 @@ public class RoomAppRepository {
         System.out.println("*****************Hey I'm Here-3");
         db = FirebaseFirestore.getInstance();
         ArrayList<String> User_IDs = new ArrayList<String>();
+        String Admin_User = firebaseAuth.getCurrentUser().getUid();
         User_IDs.add(firebaseAuth.getCurrentUser().getUid());
+
+
         //room = new RoomModel();
         room.setUser_IDs(User_IDs);
+        room.setAdmin_User(Admin_User);
         String roomID = room.getRoomID();
-        addTasks();
+//        addTasks();
+        System.out.println(room.getTasks_Lists());
         db.collection("rooms").document(roomID).set(room);
     }
-    public void addTasks() {
-        db = FirebaseFirestore.getInstance();
-        db.collection("rooms").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        db.collection("rooms").document(document.getId()).update("tasks", FieldValue.arrayUnion(room.getTasks_Lists()));
-                    }
-                } else {
-                    Toast.makeText(application, "Incorrect ID", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
+//    public void addTasks() {
+//        db = FirebaseFirestore.getInstance();
+//        db.collection("rooms").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        db.collection("rooms").document(document.getId()).update("tasks", FieldValue.arrayUnion(room.getTasks_Lists()));
+//                    }
+//                } else {
+//                    Toast.makeText(application, "Incorrect ID", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
 
     /*public void createRoom()
     {

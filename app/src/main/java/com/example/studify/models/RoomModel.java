@@ -5,27 +5,48 @@ import com.google.type.DateTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+
+
+
+
+
 
 public class RoomModel {
     private String roomID;
     private int roomUserCount;
     //private DateTime roomTimerStart;
     private ArrayList<String> User_IDs;
+    private String Admin_User;
     private ArrayList<String> tasks_Lists;
+    private String startTime;
+    private int loop;
     //private Time
-    //private HashMap<String,UserProfile> User_List;
+    //private HashMap<String,UserProfileModel> User_List;
 
     public RoomModel()
     {
-        this.roomID = UUID.randomUUID().toString();
+        //this.startTime = null;
+        this.roomID = RandomString.getAlphaNumericString(5);
         this.roomUserCount = 1;
         //this.User_List = null;
         this.User_IDs = null;
         this.tasks_Lists = new ArrayList<String>();
+        this.loop = 1;
+        this.Admin_User = null;
         //this.roomTimerStart = LocalDateTime.now();
+    }
+
+    public void setAdmin_User(String admin_User) {
+        Admin_User = admin_User;
+    }
+
+    public String getAdmin_User() {
+        return Admin_User;
     }
 
     public void setTasks_Lists(ArrayList<String> tasks_Lists) { this.tasks_Lists = tasks_Lists; }
@@ -57,6 +78,19 @@ public class RoomModel {
 
     public void setRoomID(String roomID) {
         this.roomID = roomID;
+    }
+
+    public String getStartTime(){
+        return this.startTime;
+    }
+    public void setStartTime(String startTime){
+        this.startTime = startTime;
+    }
+    public int getLoop(){
+        return this.loop;
+    }
+    public void  setLoop(int loop){
+        this.loop = loop;
     }
 
     public String getRoomID() {

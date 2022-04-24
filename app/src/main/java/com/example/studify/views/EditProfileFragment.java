@@ -22,12 +22,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.studify.R;
 import com.example.studify.databinding.FragmentEditProfileBinding;
-import com.example.studify.models.UserProfile;
+import com.example.studify.models.UserProfileModel;
 import com.example.studify.viewmodel.UserViewModel;
 
 public class EditProfileFragment extends Fragment implements View.OnClickListener {
@@ -52,6 +51,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         binding.buttonDelete.setOnClickListener(this);
         binding.buttonChangePic.setOnClickListener(this);
         binding.changeProfileImage.setOnClickListener(this);
+        binding.backButtonProfile.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -60,67 +60,76 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         int id = view.getId();
         if (id == binding.buttonDelete.getId()) {
             UserViewModel.deleteProfile();
+        } else if (id == binding.backButtonProfile.getId()) {
+            Navigation.findNavController(view).navigate(R.id.action_editProfileFragment_to_profileFragment);
         } else if (id == binding.changeProfileImage.getId() || id == binding.buttonChangePic.getId()) {
             // Load Images from External Phone Storage
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             MainActivityResultLauncher.launch(intent);
         } else if (id == binding.buttonUpdateProfile.getId()) {
             String name = String.valueOf(binding.changeUsername.getText()).trim();
-            if (img == null) {
-                Toast.makeText(getContext(), "Image is Required", Toast.LENGTH_SHORT).show();
-                return;
+            if (img == null && TextUtils.isEmpty(name)) {
+
+            } else if (img == null) {
+                UserViewModel.updateProfile(new UserProfileModel.Builder()
+                        .setName(name)
+                        .setImg(null)
+                        .build());
             } else if (TextUtils.isEmpty(name)) {
-                binding.changeUsername.setError("Name is Required");
-                return;
+                UserViewModel.updateProfile(new UserProfileModel.Builder()
+                        .setName(null)
+                        .setImg(img.toString())
+                        .build());
+            } else {
+                UserViewModel.updateProfile(new UserProfileModel.Builder()
+                        .setImg(img.toString())
+                        .setName(name)
+                        .build());
             }
-            UserViewModel.updateProfile(new UserProfile.Builder()
-                    .setImg(img.toString())
-                    .setName(name)
-                    .build());
             Navigation.findNavController(view).navigate(R.id.action_editProfileFragment_to_profileFragment);
         }
     }
 
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        // // Redirects if Logout is Successful
-        UserViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean loggedOut) {
-                if (loggedOut) {
-                    Intent i = new Intent(getActivity(), AuthActivity.class);
-                    startActivity(i);
-                }
-            }
-        });
-
-        // LiveData Observer for UserProfile
-        UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
-            @Override
-            public void onChanged(UserProfile userProfile) {
-                if (userProfile != null) {
-                    binding.changeUsername.setHint(userProfile.getName());
-                    if (userProfile.getImg() != null) {
-                        updateProfilePicture(Uri.parse(userProfile.getImg()));
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            // Redirects if Logout is Successful
+            UserViewModel.getLoggedOutLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+                @Override
+                public void onChanged(Boolean loggedOut) {
+                    if (loggedOut) {
+                        Intent i = new Intent(getActivity(), AuthActivity.class);
+                        startActivity(i);
                     }
-                    Log.d(TAG, "onChanged: userProfile is not empty, fields updated ");
                 }
-            }
-        });
+            });
 
-        // TODO: check if this is appropriate - Manages Opening Images and Switching Profile Picture
-        MainActivityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result ->  {
-                    if(result.getResultCode() == Activity.RESULT_OK) { // no need for request code
-                        Intent data = result.getData();
-                        img = data.getData();
-                        updateProfilePicture(img);
+            // LiveData Observer for UserProfileModel
+            UserViewModel.getUserProfileLiveData().observe(getViewLifecycleOwner(), new Observer<UserProfileModel>() {
+                @Override
+                public void onChanged(UserProfileModel userProfileModel) {
+                    if (userProfileModel != null) {
+                        binding.changeUsername.setHint(userProfileModel.getName());
+                        if (userProfileModel.getImg() != null) {
+                            updateProfilePicture(Uri.parse(userProfileModel.getImg()));
+                        }
+                        Log.d(TAG, "onChanged: userProfileModel is not empty, fields updated ");
                     }
-                });
-    }
+                }
+            });
+
+            // ActivityResultLauncher - Manages Opening Images and Switching Profile Picture
+            MainActivityResultLauncher = registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
+                    result ->  {
+                        if(result.getResultCode() == Activity.RESULT_OK) { // no need for request code
+                            Intent data = result.getData();
+                            img = data.getData();
+                            updateProfilePicture(img);
+                        }
+                    });
+        }
 
 
     // Updates Profile Picture with Glide

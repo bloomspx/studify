@@ -1,46 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/fragment_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F2F4F7"
+    android:padding="10dp"
     tools:context=".views.TaskListFragment">
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/taskListToolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="#555"-->
-<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-<!--        />-->
-    <Button
-        android:id="@+id/taskListCreateRoomButton"
-        style="@style/green_word_button_style"
-        android:text="@string/create_room"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/createTaskHeader"
+            style="@style/sign_up_card"
+            android:text="@string/task_list_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/taskListCreateRoomButton"
+            style="@style/profile_white_button_style"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_rect_create_room"
+            android:text="Create Room"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/createTaskHeader"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/taskListRecyclerView"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="400dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskListCreateRoomButton"
+            app:layout_constraintBottom_toBottomOf="@id/midGuideline"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/taskListFab"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/midGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_arrow_back"
-            app:backgroundTint="#555"/>
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/taskListFab"
+            style="@style/profile_white_button_style"
+            android:gravity="center"
+            android:background="@drawable/round_rect_create_room"
+            android:text="Create Task"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/midGuideline"
+            app:layout_constraintBottom_toBottomOf="@id/botGuideline"/>
 
-</LinearLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/botGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

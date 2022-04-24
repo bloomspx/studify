@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
+
     android:layout_height="match_parent">
 
     <TextView
@@ -12,11 +13,16 @@
         android:text="@string/add_task"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="#000"
+        android:textSize="24sp"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:textSize="20sp"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,28 +33,44 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+
                 android:text="@string/add_task_name"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
+
             <EditText
                 android:id="@+id/taskNameHint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_edittext"
+                android:ellipsize="start"
                 android:hint="@string/add_task_name_hint"
-                android:textColor="#000"
-                android:textColorHint="#000"
-                android:textStyle="bold"
-                android:layout_margin="10dp"/>
+                android:paddingStart="10sp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -63,30 +85,51 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+
                 android:text="@string/add_taskTime"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
+
             <EditText
                 android:id="@+id/taskTimeHint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_edittext"
                 android:hint="@string/add_taskTime_hint"
-                android:textColor="#000"
-                android:textColorHint="#000"
-                android:textStyle="bold"
-                android:layout_margin="10dp"/>
+                android:paddingStart="10sp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/grey"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,32 +140,43 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
+
             <Button
                 android:id="@+id/cancelButton"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_style1"
                 android:text="@string/cancel_task"
                 android:textAllCaps="false"
-                android:textColor="#fff"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
+
             <Button
                 android:id="@+id/saveButton"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_style1"
                 android:text="@string/save_task"
                 android:textAllCaps="false"
-                android:textColor="#fff"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -1,7 +1,6 @@
 package com.example.studify.models;
 
 import android.app.Application;
-import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.studify.R;
+import com.example.studify.models.UserProfileModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,7 +38,7 @@ public class AuthAppRepository{
     public AuthAppRepository(Application application) {
         this.application = application;
 
-        // Authenticate User
+        // Authenticates User
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         userLiveData = new MutableLiveData<>();
@@ -47,25 +46,20 @@ public class AuthAppRepository{
 
         // Checks if User is logged in
         if (firebaseAuth.getCurrentUser() != null) {
-//            userLiveData = new MutableLiveData<>();
-//            loggedOutLiveData = new MutableLiveData<>();
-//            firebaseAuth.signOut();
-
             userLiveData.postValue(firebaseAuth.getCurrentUser());
             loggedOutLiveData.postValue(false);
         }
     }
 
-    // TODO: Check if getMainExecutor is needed
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public void register(UserProfile user) {
+    public void register(UserProfileModel user) {
         // Creates Firebase Account
         firebaseAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(application.getMainExecutor(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Log user into App and updates UserProfile
+                            // Log user into App and updates UserProfileModel
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(user.getName())
                                     .build();
@@ -80,7 +74,7 @@ public class AuthAppRepository{
     }
 
     // Creates Firestore Data based on UserID
-    public void addUser(UserProfile user) {
+    public void addUser(UserProfileModel user) {
         UserID = firebaseAuth.getCurrentUser().getUid();
         DocumentReference documentReference = firebaseFirestore.collection("users").document(UserID);
         Map<String, Object> userData = new HashMap<>();
@@ -162,7 +156,6 @@ public class AuthAppRepository{
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
         return userLiveData;
     }
-
 
     public MutableLiveData<Boolean> getLoggedOutLiveData() {
         return loggedOutLiveData;

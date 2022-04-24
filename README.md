@@ -1,6 +1,6 @@
 # App Package Outline
 
-## Description <br>
+## Description
 Studify is designed to make group studying more efficient and convenient for all by providing a virtual, collaborative platform that allows individuals to be more productive with friends, or even alone. 
 
 Take charge and create your own private room as an admin. Invite more peers to join your room and study together and customise group tasks to encourage everyone to strive towards a common goal. Need more motivation and focus? Set Pomodoro timers to motivate everyone to complete them on time. Once you are done with a task, delete them with ease or add more time to the room and extend your studying period with friends.

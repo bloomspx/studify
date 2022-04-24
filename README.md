@@ -39,7 +39,7 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > >
 > *room* 
 > > *AddTaskModel*<br>
-> > * data dlass to help add tasks for a specific room
+> > * data class to help add tasks for a specific room
 > >
 > > *RandomString*<br>
 > > * class to help generate random strings for Room ID allocation

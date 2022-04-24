@@ -55,7 +55,7 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > > *TimerRepository* <br>
 > > * methods: startStop,startTimer,stopTimer,updateTimer, getTimerLeftLiveData,getIsFinished
 > >
-> *GroupTimerRepository*<br>
+> >*GroupTimerRepository*<br>
 > > * methods: join,startTimer,startBreakTimer,updaterTimer,updateBreakTimer,getCount,getTimerLeftLiveData
 > >
 > *user*

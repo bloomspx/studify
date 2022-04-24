@@ -55,7 +55,7 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > > *TimerRepository* <br>
 > > * methods: startStop,startTimer,stopTimer,updateTimer, getTimerLeftLiveData,getIsFinished
 > >
-> >*GroupTimerRepository*<br>
+> > *GroupTimerRepository*<br>
 > > * methods: join,startTimer,startBreakTimer,updaterTimer,updateBreakTimer,getCount,getTimerLeftLiveData
 > >
 > *user*
@@ -108,7 +108,7 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > > *room*<br>
 > > > *pomodoro timer*<br>
 > > > PomodoroFragment
-> > > * empty
+> > > 
 > >
 > > > *room admin*<br>
 > > > RoomAdminFragment
@@ -119,12 +119,12 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > > > 
 > >
 > > > *room list*<br>
-> > > RoomListFragment
-> > > Firebase
+> > > RoomListFragment (firebase)
+> > >
 > >
 > > > *task list*<br>
 > > > TaskListFragment
-> > > 
+> > > * user methods: addTask, updateTask
 > >
 
 > >

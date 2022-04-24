@@ -40,15 +40,15 @@ Package: com.example.studify <br>
 > > * empty
 > >
 > > *RandomString*<br>
-> > * empty
+> > *  Class to help generate random strings for Room ID allocation
 > >
 > > *RoomModel*<br>
-> > * empty
+> > * Data Class to help build rooms.
 > > *GroupTimeRepository* <br>
 > >* room methods: timer
 > >
 > > *RoomAppRepository* <br>
-> > * empty
+> > * methods: createroom
 > >
 > > *TimerRepository* <br>
 > > * empty
@@ -76,7 +76,7 @@ Package: com.example.studify <br>
 > * room methods: timer
 >
 > *RoomViewModel* <br>
-> * empty
+> * room methods: createroom,startGroupTimer,getGroupTimerLeftLiveDate
 >
 > *UserViewModel* <br>
 > * authentication methods: logOut, deleteProfile, getLoggedOutLiveData
@@ -107,19 +107,19 @@ Package: com.example.studify <br>
 > >
 > > > *room admin*<br>
 > > > RoomAdminFragment
-> > > * empty
+> > >
 > >
 > > > *room*<br>
 > > > RoomFragment
-> > > * empty
+> > > 
 > >
 > > > *room list*<br>
 > > > RoomListFragment
-> > > * empty
+> > > Firebase
 > >
 > > > *task list*<br>
 > > > TaskListFragment
-> > > * empty
+> > > 
 > >
 
 > >

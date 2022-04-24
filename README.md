@@ -39,13 +39,13 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > >
 > *room* 
 > > *AddTaskModel*<br>
-> > * empty
+> > * data dlass to help add tasks for a specific room
 > >
 > > *RandomString*<br>
-> > *  Class to help generate random strings for Room ID allocation
+> > * class to help generate random strings for Room ID allocation
 > >
 > > *RoomModel*<br>
-> > * Data Class to help build rooms.
+> > * data class to help build rooms
 > > *GroupTimeRepository* <br>
 > >* room methods: timer
 > >
@@ -87,7 +87,7 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 ### ui
 > *adapter*
 > > Adapter
-> > * empty
+> > * recyclerview adapter for displaying tasks in the room fragment
 >
 > *authentication*
 > > *login*<br>

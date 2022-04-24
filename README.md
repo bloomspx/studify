@@ -66,7 +66,7 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > * navigates between LoginFragment, <br>ForgetPasswordFragment & RegisterFragment
 >
 > *main*<br>
-> * navigates between EditProfileFragment, MainFragment, PomodoroFragment, <br>ProfileFragment, RoomAdminFragment, RoomFragment, RoomList Fragment &TaskListFragment
+> * navigates between EditProfileFragment, MainFragment, PomodoroFragment, <br>ProfileFragment, RoomAdminFragment, RoomFragment,<br> RoomList Fragment &TaskListFragment
 
 ### viewmodels
 > *LoginViewModel* <br>

@@ -81,7 +81,7 @@ CircleImageView </a> - fast circular ImageView used for user profile images
 > * room methods: timer
 >
 > *RoomViewModel* <br>
-> * room methods: createroom,startGroupTimer,<br>getGroupTimerLeftLiveDate
+> * room methods: createRoom, startGroupTimer, getGroupTimerLeftLiveDate
 >
 > *UserViewModel* <br>
 > * authentication methods: logOut, deleteProfile, getLoggedOutLiveData

@@ -57,37 +57,7 @@ public class RoomAppRepository {
         System.out.println(room.getTasks_Lists());
         db.collection("rooms").document(roomID).set(room);
     }
-//    public void addTasks() {
-//        db = FirebaseFirestore.getInstance();
-//        db.collection("rooms").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    for (QueryDocumentSnapshot document : task.getResult()) {
-//                        db.collection("rooms").document(document.getId()).update("tasks", FieldValue.arrayUnion(room.getTasks_Lists()));
-//                    }
-//                } else {
-//                    Toast.makeText(application, "Incorrect ID", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//    }
 
-    /*public void createRoom()
-    {
-        System.out.println("*****************Hey I'm Here-3");
-        db = FirebaseFirestore.getInstance();
-        ArrayList<String> User_IDs = new ArrayList<String>();
-        User_IDs.add(firebaseAuth.getCurrentUser().getUid());
-        room = new RoomModel();
-        room.setUser_IDs(User_IDs);
-        String roomID = room.getRoomID();
-
-        db.collection("rooms").document(roomID).set(room);
-
-    }
-
-     */
     public void joinRoom(String ID) {
         System.out.println("Welcome to HELL!");
         String roomID = ID;
@@ -119,56 +89,7 @@ public class RoomAppRepository {
 
             }
         });
-        /*
-        if(roomExists==true){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-         */
     }
-        /*
-         db.collection("rooms")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (roomID == document.getId()) {
-
-                                }
-
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                            }
-                        }
-                            else {
-                                Log.d(TAG, "Error getting documents: ", task.getException());
-
-                            }
-
-                    }
-                });
-
-         */
-
-
-
-
-
-    /*public void addTask(String taskName) {
-
-
-    }
-
-    public void updateTask(String taskName) {
-
-    }
-
-     */
 
 
 }

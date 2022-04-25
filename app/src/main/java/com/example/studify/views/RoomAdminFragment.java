@@ -105,9 +105,6 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
             }
 
         });
-        //TODO: Implement Fragment Manager to move the fragment
-
-
 
         return binding.getRoot();
     }
@@ -125,83 +122,9 @@ public class RoomAdminFragment extends Fragment implements View.OnClickListener 
             db.collection("rooms").document(roomID).update("user_IDs", FieldValue.arrayRemove(firebaseAuth.getCurrentUser().getUid()));
             Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
         }
-        /*else if(id == binding.DeleteRoom.getId())
-        {
-            System.out.println("Inside Delete Room");
-            db.collection("rooms").document(roomID).delete();
-            System.out.println("Navigaion View");
-            Navigation.findNavController(view).navigate(R.id.action_roomFragment_to_roomListFragment);
-        }*/
-        
-
-
-
 
     }
 
-
-
-//        FirebaseRecyclerOptions<AddTaskModel> options = new FirebaseRecyclerOptions.Builder<AddTaskModel>()
-//                .setQuery(reference, AddTaskModel.class)
-//                .build();
-//
-//        FirebaseRecyclerAdapter<String, RoomFragment.MyViewHolder> Adapter = new FirebaseRecyclerAdapter<String, RoomFragment.MyViewHolder>(options) {
-//            @Override
-//            protected void onBindViewHolder(@NonNull RoomFragment.MyViewHolder holder, final int position, @NonNull final String task) {
-//                holder.setTask(task);
-//
-//                holder.mView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                    }
-//                });
-//            }
-//
-//            @NonNull
-//            @Override
-//            public RoomFragment.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.retrieved_layout, parent, false);
-//                return new RoomFragment.MyViewHolder(view);
-//            }
-//        };
-//
-//        recyclerView.setAdapter(Adapter);
-//        Adapter.startListening();
-//        db = FirebaseFirestore.getInstance();
-//        //Bundle bundle = new Bundle();
-//        // roomID = bundle.getString("roomID"); // Throws a null error
-//        DocumentReference docRef = db.collection("rooms").document(roomID);
-//        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                AlertDialog.Builder myDialog = new AlertDialog.Builder(getContext());
-//                DialogInputTaskBinding dialogBinding = DialogInputTaskBinding.inflate(getLayoutInflater());
-//                myDialog.setView(dialogBinding.getRoot());
-//
-//                final AlertDialog dialog = myDialog.create();
-//                dialog.setCancelable(false);
-//
-//                RoomModel room = documentSnapshot.toObject(RoomModel.class);
-//                System.out.println(room.getTasks_Lists());
-//                tasks = room.getTasks_Lists();
-//                for (String task: tasks) {
-//                    String id = reference.push().getKey();
-//                    AddTaskModel model = new AddTaskModel(task, "1", "0");
-//                    reference.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//
-//                        }
-//                    });
-//
-//                }
-//            }
-//            @NonNull
-//            public RoomFragment.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.retrieved_layout, parent, false);
-//                return new RoomFragment.MyViewHolder(view);
-//            }
-//        });
 
 
 

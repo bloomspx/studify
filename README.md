@@ -3,6 +3,15 @@ Studify is designed to make group studying more efficient and convenient for all
 
 Take charge and create your own private room as an admin. Invite more peers to join your room and study together and customise group tasks to encourage everyone to strive towards a common goal. Need more motivation and focus? Set Pomodoro timers to motivate everyone to complete them on time. Once you are done with a task, delete them with ease or add more time to the room and extend your studying period with friends.
 
+### Team 5F
+1004221	Myo Min Khant <br>
+1004874	Wang Shiyu <br>
+1004877	Wang Xilun <br>
+1005056	Lee Cheng Xin <br>
+1005254	Visshal Natarajan <br>
+1005397	Kaveri Priya Putti <br>
+1005552	Soh Pei Xuan <br>
+
 ## App Screenshots<br>
 <img src="images/Layout1.png" width="750dp"> <br>
 <img src="images/Layout2.png" width="750dp"> <br>
